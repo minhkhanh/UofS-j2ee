@@ -61,7 +61,7 @@ Create table TaiKhoan
 	MatKhau varchar(50) not null,
 	MaLoaiTaiKhoan int not null,
 	MaMultimediaAvatar int,
-	CoHienLuc bit not null default 1,
+	CoHieuLuc bit not null default 1,
 	primary key (MaTaiKhoan)
 );
 -- 7. 
@@ -73,7 +73,7 @@ Create table ThongTinTaiKhoan
 	NoiSinh nvarchar(50),
 	DiaChi nvarchar(50),
 	SoDienThoai nvarchar(50),
-	MaTheTinhDung nvarchar(50),
+	MaTheTinDung nvarchar(50),
 	GioiTinh int not null default 0, -- 0-chua xac dinh, 1:nam, -1:nu
 	Email nvarchar(50),
     DiemTinCayBan int,
