@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+#userpanel {
+ 	background-color: #06266f;
+ 	margin-bottom: 3px;
+	line-height: 30px;
+	vertical-align: middle;
+	border: #000 1px solid;
+}
+
+#userlocations a:hover {
+	color: #fff;
+}
+
+#displayname {
+	color: #FF0000;
+	display: inline;
+	padding-left: 5px;
+}
+
+#userlocations {
+	display: inline;
+}
+
+#userlocations a {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #e0e0e0;
+	padding-right: 10px;
+	padding-left: 10px;
+}
