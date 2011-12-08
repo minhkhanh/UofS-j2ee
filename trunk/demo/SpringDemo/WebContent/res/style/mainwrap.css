@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* left align */
+#mainwrap .captionbox {
+	padding: 0 0 0 10px;
+	margin-bottom:10px;
+}
+#mainwrap .contentframe {
+	margin: 3px 3px 40px 3px;
+}
+#mainwrap {
+	width: 75%;
+	float:right;
+	background:#ffffff;
+	min-height: 700px;
+	border: #000 1px solid;
+}

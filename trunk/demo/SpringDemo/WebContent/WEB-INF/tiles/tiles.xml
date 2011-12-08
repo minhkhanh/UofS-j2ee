@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="Template" template="/view/template/Template.jsp">
+        <put-attribute name="userpanel" value="/view/template/UserPanel.jsp" />
+        <put-attribute name="header" value="/view/template/Header.jsp" />
+        <put-attribute name="sidebar" value="/view/template/SideBar.jsp" />
+        <put-attribute name="main" value="place-holder" />
+        <put-attribute name="footer" value="/view/template/Footer.jsp" />
+        <put-attribute name="title" value="TiviOnline - Trang Template" />
+    </definition>
+    <definition name="List" extends="Template">
+        <put-attribute name="main" value="/view/articlesList.jsp" />
+        <put-attribute name="title" value="TiviOnline - Trang Chủ" />
+    </definition>
+    <definition name="Add" extends="Template">
+        <put-attribute name="main" value="/view/addArticle.jsp" />
+        <put-attribute name="title" value="TiviOnline - Trang Liên Hệ" />
+    </definition>
+</tiles-definitions>

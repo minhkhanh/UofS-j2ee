@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+#topmenu {
+	height: 30px;
+	background-color: #6c8cd5;
+}
+
+#topmenu ul {
+	margin: 0 0 0 0;
+	padding-left: 0px;
+}
+
+#topmenu li {
+	float: right;
+	list-style: none;
+	line-height: 30px; /*to be able to be aligned vertically*/
+	font-size: 18px;
+	font-family: tahoma;
+	width: 150px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#topmenu li:hover {
+	text-decoration: underline;
+}
+
+#topmenu a:link,#topmenu a:visited,#topmenu a:active {
+	text-decoration: none;
+	color: #06266f;
+}
+
+#header {
+	margin-bottom: 2px;
+	background: #3d62b9;
+	border: #000 1px solid;
+}
+
+#pagetitle {
+	float: left;
+	height: 100px;
+}
+
+#pagetitle h1 {
+	margin: 0;
+	padding: 10px;
+	color: #06266f;
+}
