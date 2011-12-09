@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+#mainwrap {
+	width: 75%;
+	float: left;
+	background: #ffffff;
+	min-height: 700px;
+}
+
+/* left align */
+#mainwrap .captionbox {
+	padding: 0 0 0 10px;
+	margin-bottom: 10px;
+}
+
+#mainwrap .contentframe {
+	margin: 3px 3px 40px 3px;
+}
+
+#arival {
+	float: left;
+	width: 47%;
+}
+
+#ending {
+	float: right;
+	width: 47%;
+}
