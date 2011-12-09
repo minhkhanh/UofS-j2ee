@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="TemplateMain" template="/jsp/template/TemplateMain.jsp">
+		<put-attribute name="userpanel" value="/jsp/template/UserPanel.jsp" />
+		<put-attribute name="header" value="/jsp/template/Header.jsp" />
+		<put-attribute name="mainmenu" value="/jsp/template/MainMenu.jsp" />
+		<put-attribute name="sidebar" value="/jsp/template/SideBar.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="contentwrap" value="" />
+		<put-attribute name="footer" value="/jsp/template/Footer.jsp" />
+		<put-attribute name="title" value="vBay - TemplateMain" />
+	</definition>
+	<definition name="TemplateStore" extends="TemplateMain">
+		<put-attribute name="header" value="/jsp/template/HeaderStore.jsp" />
+		<put-attribute name="mainmenu" value="" />
+		<put-attribute name="sidebar" value="/jsp/template/SideBarStore.jsp" />
+		<put-attribute name="title" value="vBay - TemplateStore" />
+	</definition>
+	<definition name="TemplateProduct" extends="TemplateMain">
+		<put-attribute name="sidebar" value="" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="title" value="vBay - TemplateStore" />
+	</definition>
+	<definition name="Home" extends="TemplateMain">
+		<put-attribute name="content" value="/jsp/content/Home.jsp" />
+		<put-attribute name="title" value="vBay - Trang Chủ" />
+	</definition>
+	<definition name="Store" extends="TemplateStore">
+		<put-attribute name="content" value="/jsp/content/Store.jsp" />
+		<put-attribute name="title" value="vBay - Trang Cửa Hàng" />
+	</definition>
+	<definition name="Product" extends="TemplateProduct">
+		<put-attribute name="contentwrap" value="/jsp/content/Product.jsp" />
+		<put-attribute name="title" value="vBay - TemplateStore" />
+	</definition>
+</tiles-definitions>

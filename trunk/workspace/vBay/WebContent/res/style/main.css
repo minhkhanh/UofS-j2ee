@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+body {
+	background: #FFFFFF;
+	font: 85% Arial, Helvetica, sans-serif;
+	margin: 10px 0 10px 0; /* separated to the top line*/
+	padding: 0;
+	text-align: center;
+	color: #000000;
+}
+
+a {
+	text-decoration: none;
+}
+
+#bodywrap {
+	background: #FFFFFF;
+}
+
+#container {
+	background: #ffffff;
+	width: 1100px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.clearfloat {
+	clear: both;
+	height: 0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+.product_table {
+	border: solid 1px;
+}
+
+.product_table td {
+	border: 1px dashed;
+	padding: 5px;
+}
+
+.mybutton {
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #3d62b9;
+	border: 1px solid /*#33cc33*/;
+	border-left-color: #06266f;
+	border-bottom-color: #06266f;
+	border-top-color: #6c8cd5;
+	border-right-color: #6c8cd5;
+	color: #e0e0e0;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.mybutton:hover {
+	background-color: #6c8cd5;
+	color: #fff;
+}
+
+.mybutton:active {
+	border-left-color: #6c8cd5;
+	border-bottom-color: #6c8cd5;
+	border-top-color: #06266f;
+	border-right-color: #06266f;
+	padding-left: 8px;
+}
+
+.info_table td {
+	border-bottom: 1px dashed;
+}
+
+#mainContent { /* temporary section for dreamweaver template issue */
+	
+}
+
+.contentframe {
+	border: #003783 1px solid;
+}
+
+.captionbox {
+	background: #c5d5eb;
+	color: #000;
+	font-weight: bold;
+	vertical-align: middle;
+	line-height: 27px;
+	border-bottom: #a1b8d8 1px solid;
+}
+
+.content {
+	margin: 10px;
+	line-height: 145%;
+}
+
+#footer {
+	padding: 0 10px;
+	background: #06266f;
+	border: #000 1px solid;
+	margin-top: 3px;
+}
+
+#footer p {
+	margin: 0;
+	padding: 10px 0;
+	color: #6c8cd5;
+}
+
+.vertlist {
+	margin: 0;
+	padding: 0;
+}
+
+.vertlist li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.horzlist {
+	margin: 0;
+	padding: 0;
+}
+
+.horzlist li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left; /* default direction to float*/
+}
+
+.bl {
+	background: url(../image/bl_corner.png) 0 100% no-repeat;
+}
+
+.br {
+	background: url(../image/br_corner.png) 100% 100% no-repeat;
+}
+
+.tl {
+	background: url(../image/tl_corner.png) 0 0 no-repeat;
+}
+
+.tr {
+	background: url(../image/tr_corner.png) 100% 0 no-repeat;
+	padding: 15px
+}

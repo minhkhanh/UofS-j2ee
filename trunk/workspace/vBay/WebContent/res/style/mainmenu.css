@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+#mainmenu ul {
+	background: #6c8cd5 url(../image/menuitem.png) repeat-x;
+	height: 30px;
+	margin: 0 0 15px 0;
+	border: solid 1px #c8d8ff;
+}
+
+#mainmenu li {
+	line-height: 30px; /*to be able to be aligned vertically*/
+	width: 150px;
+	text-align: center;
+	vertical-align: middle;
+	float: right;
+	font-weight: bold;
+}
+
+#mainmenu a:hover {
+	border-bottom: solid 2px #090974;
+}
+
+#mainmenu a {
+	display: block;
+}
+
+#mainmenu a:link,a:visited,a:active {
+	color: #06266f;
+}

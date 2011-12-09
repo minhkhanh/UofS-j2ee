@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+#header {
+	background: #ffffff;
+	height: 150px;
+}
+
+#toplogo {
+	float: left;
+}
+
+#quicksearch {
+	background: #cbd5e3;
+	float: left;
+	width: 450px;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+
+#quicksearch form {
+	line-height: 40px;
+}
+
+#welcome {
+	float: left;
+	margin: 10px;
+}
