@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/Product")
 public class Product {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/hi", method = RequestMethod.GET)
     public ModelAndView show() {
         return new ModelAndView("Product");
     }
