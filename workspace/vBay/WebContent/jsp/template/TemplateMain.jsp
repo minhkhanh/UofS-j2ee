@@ -8,16 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <t:useAttribute name="title" classname="String" id="tilesTitle" />
 <title>${tilesTitle}</title>
-<link href="<c:url value='/res/style/main.css'></c:url>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/style/sidewrap.css'></c:url>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/style/mainwrap.css'></c:url>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/style/header.css'></c:url>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/style/userpanel.css'></c:url>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/style/mainmenu.css'></c:url>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/main.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/sidewrap.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/mainwrap.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/header.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/userpanel.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/style/mainmenu.css'/>" rel="stylesheet" type="text/css" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+  rel="stylesheet" type="text/css" />
+<script src="<c:url value='/res/script/jquery-1.6.2.js' />"></script>
+<script src="<c:url value='/res/jquery-ui/jquery-ui-1.8.16.custom.min.js' />"></script>
 </head>
 <body>
-
   <div id="container">
+
     <div id="userpanel">
       <t:insertAttribute name="userpanel" />
     </div>
@@ -34,7 +38,7 @@
       <div id="contentwrap">
         <t:insertAttribute name="contentwrap" />
       </div>
-      
+
       <div id="sidewrap">
         <div id="sidecontent">
           <t:insertAttribute name="sidebar" />
