@@ -20,7 +20,7 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
     public TaiKhoan dangNhap(String tenTaiKhoan, String matKhau) {
         TaiKhoan taiKhoan = null;
         Session session = null;
-//        Transaction transaction = null;
+        // Transaction transaction = null;
 
         try {
             session = sessionFactory.getCurrentSession();
@@ -28,15 +28,15 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
             String hqlString = "select tk from TaiKhoan tk"
                     + " where tk.tenTaiKhoan = :tenTaiKhoan and tk.matKhau = :matKhau";
 
-//            transaction = session.beginTransaction();
+            // transaction = session.beginTransaction();
             taiKhoan = (TaiKhoan) session.createQuery(hqlString)
-                    .setString("tenTaiKhoan", tenTaiKhoan).setString("matKhau", matKhau)
-                    .list().get(0);
-//            transaction.commit();
+                    .setString("tenTaiKhoan", tenTaiKhoan).setString("matKhau", matKhau).list()
+                    .get(0);
+            // transaction.commit();
         } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
+            // if (transaction != null) {
+            // transaction.rollback();
+            // }
 
             e.printStackTrace();
 

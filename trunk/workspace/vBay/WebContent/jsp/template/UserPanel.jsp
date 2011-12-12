@@ -51,10 +51,10 @@
 
 									bValid = bValid
 											&& checkLength(tenTaiKhoan,
-													"tên tài khoản", 3, 16);
+													"tên tài khoản", 4, 16);
 									bValid = bValid
 											&& checkLength(matKhau, "mật khẩu",
-													5, 16);
+													4, 16);
 
 									bValid = bValid
 											&& checkRegexp(
@@ -80,7 +80,7 @@
 							}
 						});
 
-		$("#lnkDangNhap").click(function() {
+		$("#lnkLogIn").click(function() {
 			$("#dialog-form").dialog("open");
 		});
 	});
@@ -89,7 +89,7 @@
 <div id="dialog-form" title="Thông tin đăng nhập">
   <p class="validateTips">Vui lòng nhập đủ thông tin.</p>
 
-  <form method="post" action="<c:url value='/Home.vby' />">
+  <form method="post" action="<c:url value='/general/login' />">
     <table>
       <tr>
         <td><label for="tenTaiKhoan">Tên tài khoản</label></td>
@@ -102,25 +102,37 @@
             class="text ui-widget-content ui-corner-all" /></td>
       </tr>
     </table>
+    <input type="hidden" name="returnUrl" id="returnUrl" value="" />
+    <script type="text/javascript">
+					$("#returnUrl").val(document.URL);
+				</script>
   </form>
 </div>
 
 <div id="homebutton">
-  <a href="#"><img width="60" height="28" align="middle"
-    src="<c:url value='res/image/minilogo.png'/>" /></a>
+  <a href="<c:url value='/Home.vby' />"><img width="60" height="28" align="middle"
+    src="<c:url value='/res/image/minilogo.png'/>" /></a>
 </div>
 <c:choose>
   <c:when test="${!empty sessionScope.taiKhoan }">
     <div id="displayname">
-      Chào, <a href="#">${sessionScope.taiKhoan.tenTaiKhoan }</a>
+      Chào, <a href="<c:url value='/Account.vby' />">${sessionScope.taiKhoan.tenTaiKhoan }</a>
     </div>
     <div id="userlocations">
-      <a href="<c:url value='/general/logout' />?returnUrl=<c:out value='${pageContext.servletConfig.servletName}' />">ĐĂNG XUẤT</a> <a href="#">HƯỚNG DẪN</a>
+      <a id="lnkLogOut" href="<c:url value='/general/logout' />?returnUrl=">ĐĂNG XUẤT</a>
+      <script type="text/javascript">
+							$("#lnkLogOut")
+									.attr(
+											"href",
+											$("#lnkLogOut").attr("href")
+													+ document.URL);
+						</script>
+      <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:when>
   <c:otherwise>
     <div id="userlocations">
-      <a id="lnkDangNhap" href="#">ĐĂNG NHẬP</a> <a href="#">ĐĂNG KÝ</a> <a href="#">HƯỚNG DẪN</a>
+      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="#">ĐĂNG KÝ</a> <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:otherwise>
 </c:choose>

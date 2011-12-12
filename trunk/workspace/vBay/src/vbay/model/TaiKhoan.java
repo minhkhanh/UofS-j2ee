@@ -36,8 +36,19 @@ public class TaiKhoan implements java.io.Serializable {
     @Column(name = "CoHieuLuc")
     private boolean coHieuLuc;
     
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MaThongTinTaiKhoan")
+    private ThongTinTaiKhoan thongTinTaiKhoan;
+    
+    public ThongTinTaiKhoan getThongTinTaiKhoan() {
+        return thongTinTaiKhoan;
+    }
+
+    public void setThongTinTaiKhoan(ThongTinTaiKhoan thongTinTaiKhoan) {
+        this.thongTinTaiKhoan = thongTinTaiKhoan;
+    }
+
     public TaiKhoan() {
-        
     }
 
     public int getMaTaiKhoan() {
