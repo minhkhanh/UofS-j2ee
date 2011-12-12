@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="captionbox ui-widget-header ui-corner-all">THÔNG TIN ĐĂNG NHẬP</div>
+  <div class="captionbox ui-widget-header ui-corner-top">THÔNG TIN ĐĂNG NHẬP</div>
   <div class="content">
     <c:if test="${!empty actionFailure }">
       <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">

@@ -45,14 +45,14 @@
       </div>
 
       <div id="sidewrap">
-        <div id="sidecontent">
+        <div id="sidecontent" class="ui-widget">
           <t:insertAttribute name="sidebar" />
         </div>
         <br />
       </div>
 
       <div id="mainwrap">
-        <div id="maincontent">
+        <div id="maincontent" class="ui-widget">
           <t:insertAttribute name="content" />
         </div>
       </div>

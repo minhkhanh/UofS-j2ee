@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="contentframe" id="sidecat">
-  <div class="captionbox">TÌM KIẾM TRONG CỬA HÀNG</div>
+<div class="contentframe ui-widget-content ui-corner-all">
+  <div class="captionbox ui-widget-header ui-corner-top">TÌM KIẾM TRONG CỬA HÀNG</div>
   <div class="content">
     <form method="get" action="" name="formTimNhanh">
       <input type="text" name="tenTivi" value="" style="width: 60%" />
@@ -10,8 +10,8 @@
     </form>
   </div>
 </div>
-<div class="contentframe" id="sidecat">
-  <div class="captionbox">LIÊN KẾT NHANH</div>
+<div class="contentframe ui-widget-content ui-corner-all">
+  <div class="captionbox ui-widget-header ui-corner-top">LIÊN KẾT NHANH</div>
   <div class="content">
     <ul class="vertlist">
       <li><a href="#"><strong>Xem đấu giá</strong></a></li>
@@ -21,8 +21,8 @@
     </ul>
   </div>
 </div>
-<div class="contentframe" id="sidecat">
-  <div class="captionbox">DANH MỤC</div>
+<div class="contentframe ui-widget-content ui-corner-all">
+  <div class="captionbox ui-widget-header ui-corner-top">DANH MỤC</div>
   <div class="content">
     <ul class="vertlist">
       <li><a href="#"><strong>Antiques</strong></a></li>
