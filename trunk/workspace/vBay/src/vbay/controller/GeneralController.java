@@ -15,7 +15,7 @@ import vbay.util.Const;
 
 @Controller
 @RequestMapping("/general")
-public class GeneralActionController {
+public class GeneralController {
 
     @Autowired
     TaiKhoanDao taiKhoanDao;
