@@ -14,10 +14,15 @@
 <link href="<c:url value='/res/style/header.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/userpanel.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/mainmenu.css'/>" rel="stylesheet" type="text/css" />
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-  rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/jquery-ui/redmond/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
+  type="text/css" />
 <script src="<c:url value='/res/script/jquery-1.6.2.js' />"></script>
 <script src="<c:url value='/res/jquery-ui/jquery-ui-1.8.16.custom.min.js' />"></script>
+<script>
+	$(function() {
+		$("input:submit, button").button();
+	});
+</script>
 </head>
 <body>
   <div id="container">

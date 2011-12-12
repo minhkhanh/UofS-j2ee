@@ -30,7 +30,7 @@ public class Multimedia implements java.io.Serializable {
     private Integer dungLuong;
     
     @Column(name = "LinkURL")
-    private String LinkURL;
+    private String linkURL;
     
     public Multimedia() {
         
@@ -69,10 +69,10 @@ public class Multimedia implements java.io.Serializable {
     }
 
     public String getLinkURL() {
-        return LinkURL;
+        return linkURL;
     }
 
     public void setLinkURL(String linkURL) {
-        LinkURL = linkURL;
+        this.linkURL = linkURL;
     }
 }
