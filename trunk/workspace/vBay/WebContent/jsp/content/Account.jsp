@@ -8,9 +8,9 @@
 </script>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="captionbox ui-widget-header ui-corner-all">THÔNG TIN TÀI KHOẢN</div>
+  <div class="captionbox ui-widget-header ui-corner-top">THÔNG TIN TÀI KHOẢN</div>
   <div id="accordion" class="content">
-    <h3>Thay đổi mật khẩu</h3>
+    <h3><a href="#">Thay đổi mật khẩu</a></h3>
     <div>
       <table>
         <tr>
@@ -32,7 +32,7 @@
         </tr>
       </table>
     </div>
-    <h3>Thông tin liên lạc</h3>
+    <h3><a href="#">Thông tin liên lạc</a></h3>
     <div>
       <table>
         <tr>

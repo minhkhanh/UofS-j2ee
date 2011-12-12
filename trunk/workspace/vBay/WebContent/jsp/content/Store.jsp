@@ -3,8 +3,8 @@
 
 <div id="quickview">
   <div id="ending">
-    <div class="contentframe">
-      <div class="captionbox">Các phiên đấu giá sắp kết thúc</div>
+    <div class="contentframe ui-widget-content ui-corner-all">
+      <div class="captionbox ui-widget-header ui-corner-top">Các phiên đấu giá sắp kết thúc</div>
       <div class="content">
         <ul class="vertlist">
           <li><a href="#">Đồng hồ điện tử 6 số của Vua Bảo Đại - $3000</a></li>
@@ -15,8 +15,8 @@
     </div>
   </div>
   <div id="arival">
-    <div class="contentframe">
-      <div class="captionbox">Các sản phẩm mới đăng</div>
+    <div class="contentframe ui-widget-content ui-corner-all">
+      <div class="captionbox ui-widget-header ui-corner-top">Các sản phẩm mới đăng</div>
       <div class="content">
         <ul class="vertlist">
           <li><a href="#">Đồng hồ điện tử 6 số của Vua Bảo Đại - $3000</a></li>
