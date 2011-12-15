@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.imageButt {
+	cursor:pointer;
+}
+.imgCheckError {
+	background:url(../image/error.gif) right top no-repeat;
+	height:16px;
+	width:16px;
+}
+.imgCheckOk {
+	background:url(../image/check.gif) right top no-repeat;
+	height:16px;
+	width:16px;
+}
