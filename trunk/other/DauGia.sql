@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 12, 2011 at 05:06 PM
+-- Generation Time: Dec 15, 2011 at 05:49 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -25,8 +25,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `chitietdaugia`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `chitietdaugia`;
 CREATE TABLE IF NOT EXISTS `chitietdaugia` (
@@ -34,27 +32,17 @@ CREATE TABLE IF NOT EXISTS `chitietdaugia` (
   `MaTaiKhoan` int(11) DEFAULT NULL,
   `GiaGiaoDich` int(11) DEFAULT NULL,
   `ThoiGianGiaoDich` datetime DEFAULT NULL,
-  `TinhTrang` varchar(50) DEFAULT NULL,
+  `TinhTrang` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `MaSanPham` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaChiTietDauGia`),
   KEY `FK_CHITIETDAUGIA_SANPHAM` (`MaSanPham`),
   KEY `FK_CHITIETDAUGIA_TAIKHOAN` (`MaTaiKhoan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- RELATIONS FOR TABLE `chitietdaugia`:
---   `MaSanPham`
---       `sanpham` -> `MaSanPham`
---   `MaTaiKhoan`
---       `taikhoan` -> `MaTaiKhoan`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `chitietphanquyen`
---
--- Creation: Nov 28, 2011 at 06:56 AM
 --
 
 DROP TABLE IF EXISTS `chitietphanquyen`;
@@ -65,50 +53,30 @@ CREATE TABLE IF NOT EXISTS `chitietphanquyen` (
   PRIMARY KEY (`MaChiTietPhanQuyen`),
   KEY `FK_CHITIETPHANQUYEN_LOAITAIKHOAN` (`MaLoaiTaiKhoan`),
   KEY `FK_CHITIETPHANQUYEN_PHANQUYEN` (`MaPhanQuyen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- RELATIONS FOR TABLE `chitietphanquyen`:
---   `MaLoaiTaiKhoan`
---       `loaitaikhoan` -> `MaLoaiTaiKhoan`
---   `MaPhanQuyen`
---       `phanquyen` -> `MaPhanQuyen`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `comment`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `MaComment` int(11) NOT NULL AUTO_INCREMENT,
-  `NoiDungComment` varchar(5000) DEFAULT NULL,
+  `NoiDungComment` varchar(5000) CHARACTER SET utf8 DEFAULT NULL,
   `NgayComment` datetime DEFAULT NULL,
   `MaTaiKhoan` int(11) DEFAULT NULL,
   `MaSanPham` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaComment`),
   KEY `FK_COMMENT_TAIKHOAN` (`MaTaiKhoan`),
   KEY `FK_COMMENT_SANPHAM` (`MaSanPham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- RELATIONS FOR TABLE `comment`:
---   `MaSanPham`
---       `sanpham` -> `MaSanPham`
---   `MaTaiKhoan`
---       `taikhoan` -> `MaTaiKhoan`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `daugiathanhcong`
---
--- Creation: Nov 28, 2011 at 06:56 AM
 --
 
 DROP TABLE IF EXISTS `daugiathanhcong`;
@@ -117,38 +85,28 @@ CREATE TABLE IF NOT EXISTS `daugiathanhcong` (
   `MaTaiKhoan` int(11) DEFAULT NULL,
   `GiaKhopLenh` int(11) DEFAULT NULL,
   `MaChiTietGiaoDich` int(11) DEFAULT NULL,
-  `Comment` varchar(1000) DEFAULT NULL,
+  `Comment` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaDauGiaThanhCong`),
   KEY `FK_DAUGIATHANHCONG_TAIKHOAN` (`MaTaiKhoan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- RELATIONS FOR TABLE `daugiathanhcong`:
---   `MaTaiKhoan`
---       `taikhoan` -> `MaTaiKhoan`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `giaodien`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `giaodien`;
 CREATE TABLE IF NOT EXISTS `giaodien` (
   `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT,
-  `TenTheme` varchar(50) NOT NULL,
+  `TenTheme` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`MaGiaoDien`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `khoaphanquyen`
---
--- Creation: Nov 28, 2011 at 06:56 AM
 --
 
 DROP TABLE IF EXISTS `khoaphanquyen`;
@@ -159,75 +117,67 @@ CREATE TABLE IF NOT EXISTS `khoaphanquyen` (
   `MaChiTietPhanQuyen` int(11) NOT NULL,
   `NgayKhoa` datetime DEFAULT NULL,
   `NgayHetHan` datetime NOT NULL,
-  `GhiChu` varchar(500) DEFAULT NULL,
+  `GhiChu` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaKhoaPhanQuyen`),
   KEY `MaTaiKhoanKhoa` (`MaTaiKhoanKhoa`),
   KEY `FK_KhoaPhanQuyen_TaiKhoan2` (`MaTaiKhoanBiKhoa`),
   KEY `FK_KhoanPhanQuyen_ChiTietPhanQuyen` (`MaChiTietPhanQuyen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- RELATIONS FOR TABLE `khoaphanquyen`:
---   `MaChiTietPhanQuyen`
---       `chitietphanquyen` -> `MaChiTietPhanQuyen`
---   `MaTaiKhoanKhoa`
---       `taikhoan` -> `MaTaiKhoan`
---   `MaTaiKhoanBiKhoa`
---       `taikhoan` -> `MaTaiKhoan`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `loaimultimedia`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `loaimultimedia`;
 CREATE TABLE IF NOT EXISTS `loaimultimedia` (
   `MaLoaiMultimedia` int(11) NOT NULL AUTO_INCREMENT,
-  `TenLoaiMultimedia` varchar(50) DEFAULT NULL,
+  `TenLoaiMultimedia` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaLoaiMultimedia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `loaimultimedia`
 --
 
 INSERT INTO `loaimultimedia` (`MaLoaiMultimedia`, `TenLoaiMultimedia`) VALUES
-(1, 'Ảnh JPG'),
-(2, 'Ảnh PNG');
+(1, 'Ảnh số'),
+(2, 'Video số');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `loaisanpham`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `loaisanpham`;
 CREATE TABLE IF NOT EXISTS `loaisanpham` (
   `MaLoaiSanPham` int(11) NOT NULL AUTO_INCREMENT,
-  `TenLoaiSanPham` varchar(50) DEFAULT NULL,
+  `TenLoaiSanPham` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`MaLoaiSanPham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `loaisanpham`
+--
+
+INSERT INTO `loaisanpham` (`MaLoaiSanPham`, `TenLoaiSanPham`) VALUES
+(1, 'Sản phẩm test'),
+(2, 'Sản phẩm test 02');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `loaitaikhoan`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `loaitaikhoan`;
 CREATE TABLE IF NOT EXISTS `loaitaikhoan` (
   `MaLoaiTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
-  `TenLoaiTaiKhoan` varchar(50) NOT NULL,
+  `TenLoaiTaiKhoan` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`MaLoaiTaiKhoan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `loaitaikhoan`
@@ -242,25 +192,17 @@ INSERT INTO `loaitaikhoan` (`MaLoaiTaiKhoan`, `TenLoaiTaiKhoan`) VALUES
 --
 -- Table structure for table `multimedia`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `multimedia`;
 CREATE TABLE IF NOT EXISTS `multimedia` (
   `MaMultimedia` int(11) NOT NULL AUTO_INCREMENT,
-  `TenMultimedia` varchar(50) DEFAULT NULL,
+  `TenMultimedia` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `MaLoaiMultimedia` int(11) DEFAULT NULL,
   `DungLuong` int(11) DEFAULT NULL,
-  `LinkURL` varchar(50) DEFAULT NULL,
+  `LinkURL` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaMultimedia`),
   KEY `FK_MULTIMEDIA_LOAIMULTIMEDIA` (`MaLoaiMultimedia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- RELATIONS FOR TABLE `multimedia`:
---   `MaLoaiMultimedia`
---       `loaimultimedia` -> `MaLoaiMultimedia`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `multimedia`
@@ -268,35 +210,41 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
 
 INSERT INTO `multimedia` (`MaMultimedia`, `TenMultimedia`, `MaLoaiMultimedia`, `DungLuong`, `LinkURL`) VALUES
 (1, 'Avatar của admin', 1, NULL, '/res/image/avatar/smiley.jpg'),
-(2, 'Avatar của user', 2, NULL, '/res/image/avatar/sau_ngo.png');
+(2, 'Avatar của user', 1, NULL, '/res/image/avatar/sau_ngo.png'),
+(3, NULL, 1, NULL, '/res/image/product/facebook.png'),
+(4, NULL, 1, NULL, '/res/image/product/fy.jpg'),
+(5, NULL, 1, NULL, '/res/image/product/fy.jpg'),
+(6, NULL, 1, NULL, '/res/image/product/fy.jpg'),
+(16, NULL, 1, NULL, '/res/image/product/googleplus.png'),
+(17, NULL, 1, NULL, '/res/image/product/fy.jpg'),
+(22, NULL, 1, NULL, '/res/image/product/fy.jpg'),
+(24, NULL, 1, NULL, '/res/image/product/facebook.png'),
+(25, NULL, 1, NULL, '/res/image/product/facebook.png'),
+(26, NULL, 1, NULL, '/res/image/product/googleplus.png');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `phanquyen`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `phanquyen`;
 CREATE TABLE IF NOT EXISTS `phanquyen` (
   `MaPhanQuyen` int(11) NOT NULL AUTO_INCREMENT,
-  `TenPhanQuyen` varchar(50) NOT NULL,
+  `TenPhanQuyen` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`MaPhanQuyen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `sanpham`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `sanpham`;
 CREATE TABLE IF NOT EXISTS `sanpham` (
   `MaSanPham` int(11) NOT NULL AUTO_INCREMENT,
-  `TenSanPham` varchar(50) DEFAULT NULL,
+  `TenSanPham` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `MaLoaiSanPham` int(11) DEFAULT NULL,
   `MaTaiKhoan` int(11) DEFAULT NULL,
   `GiaKhoiDiem` int(11) DEFAULT NULL,
@@ -304,62 +252,74 @@ CREATE TABLE IF NOT EXISTS `sanpham` (
   `NgayDang` datetime DEFAULT NULL,
   `NgayHetHan` datetime DEFAULT NULL,
   `MaTinhTrangSanPham` int(11) DEFAULT NULL,
-  `MoTaSanPham` varchar(5000) DEFAULT NULL,
+  `MoTaSanPham` varchar(5000) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaSanPham`),
   KEY `FK_SANPHAM_TAIKHOAN` (`MaTaiKhoan`),
   KEY `FK_SANPHAM_TINHTRANGSANPHAM` (`MaTinhTrangSanPham`),
   KEY `FK_SANPHAM_LOAISANPHAM` (`MaLoaiSanPham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
--- RELATIONS FOR TABLE `sanpham`:
---   `MaLoaiSanPham`
---       `loaisanpham` -> `MaLoaiSanPham`
---   `MaTaiKhoan`
---       `taikhoan` -> `MaTaiKhoan`
---   `MaTinhTrangSanPham`
---       `tinhtrangsanpham` -> `MaTinhTrangSanPham`
+-- Dumping data for table `sanpham`
 --
+
+INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MaLoaiSanPham`, `MaTaiKhoan`, `GiaKhoiDiem`, `GiaHienTai`, `NgayDang`, `NgayHetHan`, `MaTinhTrangSanPham`, `MoTaSanPham`) VALUES
+(1, 'sản phẩm test 01', 1, NULL, 1, NULL, '2011-12-14 18:18:35', NULL, NULL, 'đây là sản phẩm test đầu tiên'),
+(2, 'sản phẩm test 02', 1, NULL, 1, NULL, '2011-12-14 18:28:17', NULL, NULL, 'đây là sản phẩm test thứ 02'),
+(3, 'sản phẩm test 03', 1, NULL, 1, NULL, '2011-12-14 18:29:39', NULL, NULL, 'đây là sản phẩm test thứ 03'),
+(4, 'sản phẩm test 04', 1, NULL, 1, NULL, '2011-12-14 18:31:15', '2011-12-31 15:45:00', NULL, 'đây là sản phẩm test thứ 04'),
+(5, 'sản phẩm test 05', 2, NULL, 1, NULL, '2011-12-14 18:33:04', '2011-12-17 00:00:00', NULL, 'đây là sản phẩm test thứ 05'),
+(19, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 09:22:41', '2011-12-29 00:00:00', NULL, 'mô tả sản phẩm test'),
+(20, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 09:34:00', '2011-12-19 00:00:00', NULL, 'mô tả sản phẩm test'),
+(21, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 09:35:31', '2011-12-22 00:00:00', NULL, 'mô tả sản phẩm test'),
+(22, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 09:40:14', '2011-12-27 00:00:00', NULL, 'mô tả sản phẩm test'),
+(23, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 09:41:45', '2011-12-29 00:00:00', NULL, 'mô tả sản phẩm test'),
+(24, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 10:12:31', '2011-12-26 00:00:00', NULL, 'mô tả sản phẩm test'),
+(25, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 10:34:49', '2011-12-27 00:00:00', NULL, 'mô tả sản phẩm test'),
+(30, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 11:13:32', '2011-12-20 00:00:00', NULL, 'mô tả sản phẩm test'),
+(32, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 11:36:39', '2011-12-27 00:00:00', NULL, 'mô tả sản phẩm test'),
+(33, 'sản phẩm test', 1, NULL, 1, NULL, '2011-12-15 11:41:21', '2011-12-20 00:00:00', NULL, 'mô tả sản phẩm test');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `sanpham_multimedia`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `sanpham_multimedia`;
 CREATE TABLE IF NOT EXISTS `sanpham_multimedia` (
-  `MaChiTietMultimedia` int(11) NOT NULL AUTO_INCREMENT,
-  `MaSanPham` int(11) DEFAULT NULL,
-  `MaMultimedia` int(11) DEFAULT NULL,
-  PRIMARY KEY (`MaChiTietMultimedia`),
+  `MaSanPham` int(11) NOT NULL,
+  `MaMultimedia` int(11) NOT NULL,
+  PRIMARY KEY (`MaSanPham`,`MaMultimedia`),
   KEY `FK_SANPHAMMULTI_SANPHAM` (`MaSanPham`),
   KEY `FK_SANPHAMMULTI_MULTIMEDIA` (`MaMultimedia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- RELATIONS FOR TABLE `sanpham_multimedia`:
---   `MaMultimedia`
---       `multimedia` -> `MaMultimedia`
---   `MaSanPham`
---       `sanpham` -> `MaSanPham`
+-- Dumping data for table `sanpham_multimedia`
 --
+
+INSERT INTO `sanpham_multimedia` (`MaSanPham`, `MaMultimedia`) VALUES
+(1, 3),
+(1, 4),
+(2, 5),
+(2, 6),
+(30, 22),
+(32, 24),
+(33, 25),
+(33, 26);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `taikhoan`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `taikhoan`;
 CREATE TABLE IF NOT EXISTS `taikhoan` (
   `MaTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
-  `TenTaiKhoan` varchar(50) NOT NULL,
-  `MatKhau` varchar(50) NOT NULL,
+  `TenTaiKhoan` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `MatKhau` varchar(50) CHARACTER SET utf8 NOT NULL,
   `MaLoaiTaiKhoan` int(11) NOT NULL,
   `MaMultimediaAvatar` int(11) DEFAULT NULL,
   `CoHieuLuc` bit(1) NOT NULL DEFAULT b'1',
@@ -368,17 +328,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   KEY `FK_TAIKHOAN_LOAITAIKHOAN` (`MaLoaiTaiKhoan`),
   KEY `FK_TAIKHOAN_MULTIMEDIA` (`MaMultimediaAvatar`),
   KEY `FK_TAIKHOAN_THONGTINTAIKHOAN` (`MaThongTinTaiKhoan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- RELATIONS FOR TABLE `taikhoan`:
---   `MaLoaiTaiKhoan`
---       `loaitaikhoan` -> `MaLoaiTaiKhoan`
---   `MaMultimediaAvatar`
---       `multimedia` -> `MaMultimedia`
---   `MaThongTinTaiKhoan`
---       `thongtintaikhoan` -> `MaThongTinTaiKhoan`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `taikhoan`
@@ -393,40 +343,36 @@ INSERT INTO `taikhoan` (`MaTaiKhoan`, `TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`
 --
 -- Table structure for table `thamso`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `thamso`;
 CREATE TABLE IF NOT EXISTS `thamso` (
   `MaThamSo` int(11) NOT NULL AUTO_INCREMENT,
-  `TenThamSo` varchar(50) NOT NULL,
-  `GiaTri` varchar(50) DEFAULT NULL,
+  `TenThamSo` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `GiaTri` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaThamSo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `thongtintaikhoan`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `thongtintaikhoan`;
 CREATE TABLE IF NOT EXISTS `thongtintaikhoan` (
   `MaThongTinTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
-  `HoTen` varchar(50) DEFAULT NULL,
+  `HoTen` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `NgaySinh` datetime DEFAULT NULL,
-  `NoiSinh` varchar(50) DEFAULT NULL,
-  `DiaChi` varchar(50) DEFAULT NULL,
-  `SoDienThoai` varchar(50) DEFAULT NULL,
-  `MaTheTinDung` varchar(50) DEFAULT NULL,
+  `NoiSinh` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `DiaChi` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `SoDienThoai` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `MaTheTinDung` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `GioiTinh` int(11) NOT NULL DEFAULT '0',
-  `Email` varchar(50) DEFAULT NULL,
+  `Email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `DiemTinCayBan` int(11) DEFAULT NULL,
   `DiemTinCayMua` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaThongTinTaiKhoan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `thongtintaikhoan`
@@ -434,22 +380,20 @@ CREATE TABLE IF NOT EXISTS `thongtintaikhoan` (
 
 INSERT INTO `thongtintaikhoan` (`MaThongTinTaiKhoan`, `HoTen`, `NgaySinh`, `NoiSinh`, `DiaChi`, `SoDienThoai`, `MaTheTinDung`, `GioiTinh`, `Email`, `DiemTinCayBan`, `DiemTinCayMua`) VALUES
 (1, 'Nguyễn Admin', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-(2, 'Trần User', '1990-05-12 00:00:00', 'TP', '727 Trần Hưng Đạo', '0973 586 043', '0x000000', 0, 'akhoi90@gmail.com', 0, 0);
+(2, 'Trần User', '1990-05-12 00:00:00', 'TP', '727 Trần Hưng Đạo', '0973 586 043', NULL, 0, 'akhoi90@gmail.com', 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tinhtrangsanpham`
 --
--- Creation: Nov 28, 2011 at 06:56 AM
---
 
 DROP TABLE IF EXISTS `tinhtrangsanpham`;
 CREATE TABLE IF NOT EXISTS `tinhtrangsanpham` (
   `MaTinhTrangSanPham` int(11) NOT NULL AUTO_INCREMENT,
-  `TenTinhTrangSanPham` varchar(50) DEFAULT NULL,
+  `TenTinhTrangSanPham` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`MaTinhTrangSanPham`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
