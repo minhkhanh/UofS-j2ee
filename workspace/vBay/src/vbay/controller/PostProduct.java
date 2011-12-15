@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,17 +17,11 @@ import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.google.gdata.data.DateTime;
 
 import vbay.dao.LoaiMultimediaDao;
 import vbay.dao.LoaiSanPhamDao;
@@ -92,7 +85,7 @@ public class PostProduct {
             ServletFileUpload upload = new ServletFileUpload(factory);
 
             // Parse the request
-            List items = null;
+            List<?> items = null;
             try {
                 items = upload.parseRequest(request);
             } catch (FileUploadException ex) {
@@ -100,7 +93,7 @@ public class PostProduct {
             }
 
             // Process the uploaded items
-            Iterator iter = items.iterator();
+            Iterator<?> iter = items.iterator();
             // Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
             Set<Multimedia> multimedias = new HashSet<Multimedia>();
             while (iter.hasNext()) {

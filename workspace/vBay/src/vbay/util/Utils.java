@@ -6,8 +6,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView;
-
 import com.google.gdata.client.youtube.YouTubeService;
 import com.google.gdata.data.media.mediarss.MediaCategory;
 import com.google.gdata.data.media.mediarss.MediaDescription;
@@ -90,4 +88,10 @@ public class Utils {
         request.setAttribute("youtubePostUrl", token.getUrl());
         request.setAttribute("youtubeToken", token.getToken());
     }
+    
+    
+    
+    /// Code by TMK 
+	public final static String RECAPTCHA_PUBLIC_KEY = "6Ldnp8gSAAAAACWq30BgevqwCrYiVGK-sKh3_hKT";
+	public final static String RECAPTCHA_PRIVATE_KEY = "6Ldnp8gSAAAAAFKglqGXBjxa9D1lhsESqgJNvPLb";
 }

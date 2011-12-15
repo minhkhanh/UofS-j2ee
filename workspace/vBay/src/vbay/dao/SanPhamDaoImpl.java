@@ -1,6 +1,5 @@
 package vbay.dao;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.hibernate.SessionFactory;
