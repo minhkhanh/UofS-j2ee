@@ -41,4 +41,22 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
         return taiKhoan;
     }
 
+    @Transactional(readOnly = true)
+	@Override
+	public boolean kiemTraTonTaiTenTaiKhoan(String tenTaiKhoan) {
+        Session session = null;
+
+        try {
+            session = sessionFactory.getCurrentSession();
+
+            String hqlString = "from TaiKhoan tk"
+                    + " where tk.tenTaiKhoan = :tenTaiKhoan";
+
+            return !session.createQuery(hqlString).setString("tenTaiKhoan", tenTaiKhoan).list().isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+	}
+
 }

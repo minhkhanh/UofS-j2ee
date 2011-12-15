@@ -1,5 +1,8 @@
 package vbay.controller;
 
+import java.io.StringWriter;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import vbay.dao.LoaiGioiTinhDao;
 import vbay.dao.TaiKhoanDao;
+import vbay.model.LoaiGioiTinh;
 import vbay.model.TaiKhoan;
 import vbay.util.Utils;
 
@@ -48,15 +53,53 @@ public class GeneralController {
         return new ModelAndView("redirect:/LogIn.vby");
     }
     
-    
-    
+    @Autowired
+    LoaiGioiTinhDao loaiGioiTinhDao;      
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register(HttpSession session) {
+    public ModelAndView register(HttpSession session, HttpServletRequest request, String ngaySinh, String noiSinh, String maTheTinDung, String maLoaiGioiTinh) {
         if (session.getAttribute(Utils.SESS_ACC) != null) {
             return new ModelAndView("redirect:/Home.vby");
         }
-        return new ModelAndView("redirect:/LogIn.vby");  
+        
+		String tenDangNhap = request.getParameter("tenDangNhap");
+		String matKhau = request.getParameter("matKhau");
+		String matKhauXacNhan = request.getParameter("matKhauXacNhan");
+		String hoVaTen = request.getParameter("hoVaTen");
+		String email = request.getParameter("email");
+		String diaChi = request.getParameter("diaChi");
+		String dienThoai = request.getParameter("dienThoai");
+		
+		boolean kq = true;
+		String strNoti = "";
+		if (tenDangNhap==null || tenDangNhap.length()<=4) kq = false;
+		if (taiKhoanDao.kiemTraTonTaiTenTaiKhoan(tenDangNhap)) { 
+			//kq = false;
+			strNoti += "Tên đăng nhập bị trùng.<br/>";
+		}
+		if (matKhau==null || matKhau.length()<=4) kq = false;
+		if (matKhauXacNhan==null || matKhauXacNhan.length()<=4 || matKhau.compareTo(matKhauXacNhan)!=0)  {
+			//kq = false;
+			strNoti += "Mật khẩu nhập lại phải giống.<br/>";
+		}
+		if (email==null || email.length()<=4) kq = false;
+		
+		
+		if (hoVaTen==null || hoVaTen.length()<=4) kq = false;
+		if (diaChi==null || diaChi.length()<=4) kq = false;
+		if (dienThoai==null || dienThoai.length()<=4) kq = false;
+        
+        
+        
+	    List<LoaiGioiTinh> listLoaiGioiTinh = loaiGioiTinhDao.layDanhSachLoaiGioiTinh();
+	    ModelAndView result = new ModelAndView("Register");
+	    result.addObject("danhSachLoaiGioiTinh", listLoaiGioiTinh);
+	    result.addObject("publicKey", Utils.RECAPTCHA_PUBLIC_KEY);
+	    result.addObject("privateKey", Utils.RECAPTCHA_PRIVATE_KEY);
+	    result.addObject(Utils.SESS_ACTFAIL, strNoti);
+	    return result;
     }
+    
+
     
 }
