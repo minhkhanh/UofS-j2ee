@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "LoaiGioiTinh")
+@Table(name = "loaigioitinh")
 public class LoaiGioiTinh implements java.io.Serializable {
 
     @Id
@@ -17,7 +17,7 @@ public class LoaiGioiTinh implements java.io.Serializable {
     @Column(name = "MaLoaiGioiTinh")
     private int maLoaiGioiTinh;
     
-    @Column(name = "TenLoaiGioiTinh", nullable = false, length = 45)
+    @Column(name = "TenLoaiGioiTinh", nullable = false, length = 50)
     private String tenLoaiGioiTinh;
     
     public LoaiGioiTinh() {

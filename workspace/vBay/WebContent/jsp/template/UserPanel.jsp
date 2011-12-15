@@ -132,7 +132,7 @@
   </c:when>
   <c:otherwise>
     <div id="userlocations">
-      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="#">ĐĂNG KÝ</a> <a href="#">HƯỚNG DẪN</a>
+      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a> <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:otherwise>
 </c:choose>

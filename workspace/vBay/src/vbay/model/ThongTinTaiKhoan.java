@@ -2,10 +2,13 @@ package vbay.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -33,17 +36,23 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
     @Column(name = "MaTheTinDung", length = 50)
     private String maTheTinDung;
     
-    @Column(name = "Email", length = 50)
-    private String email;
-    
     @Column(name = "DiemTinCayBan")
     private Integer diemTinCayBan;
     
     @Column(name = "DiemTinCayMua")
     private Integer diemTinCayMua;
     
-    @Column(name = "GioiTinh")
-    private int gioiTinh;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MaLoaiGioiTinh")
+    private LoaiGioiTinh loaiGioiTinh;
+
+    public LoaiGioiTinh getLoaiGioiTinh() {
+        return loaiGioiTinh;
+    }
+
+    public void setLoaiGioiTinh(LoaiGioiTinh loaiGioiTinh) {
+        this.loaiGioiTinh = loaiGioiTinh;
+    }
 
     public int getMaThongTinTaiKhoan() {
         return maThongTinTaiKhoan;
@@ -93,14 +102,6 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
         this.maTheTinDung = maTheTinDung;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Integer getDiemTinCayBan() {
         return diemTinCayBan;
     }
@@ -115,13 +116,5 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
 
     public void setDiemTinCayMua(Integer diemTinCayMua) {
         this.diemTinCayMua = diemTinCayMua;
-    }
-
-    public int getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(int gioiTinh) {
-        this.gioiTinh = gioiTinh;
     }
 }

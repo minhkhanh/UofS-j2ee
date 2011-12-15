@@ -41,10 +41,10 @@ public class TaiKhoan implements java.io.Serializable {
     private ThongTinTaiKhoan thongTinTaiKhoan;
     
     @Column(name = "Email", nullable = false, length = 100)
-    private boolean email;
+    private String email;
 
     @Column(name = "DaKichHoatEmail", nullable = false)
-    private int daKichHoatEmail;
+    private boolean daKichHoatEmail;
     
     public ThongTinTaiKhoan getThongTinTaiKhoan() {
         return thongTinTaiKhoan;
@@ -105,19 +105,19 @@ public class TaiKhoan implements java.io.Serializable {
         this.coHieuLuc = coHieuLuc;
     }
 
-	public boolean isEmail() {
+	public String isEmail() {
 		return email;
 	}
 
-	public void setEmail(boolean email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public int getDaKichHoatEmail() {
+	public boolean getDaKichHoatEmail() {
 		return daKichHoatEmail;
 	}
 
-	public void setDaKichHoatEmail(int daKichHoatEmail) {
+	public void setDaKichHoatEmail(boolean daKichHoatEmail) {
 		this.daKichHoatEmail = daKichHoatEmail;
 	}
 }
