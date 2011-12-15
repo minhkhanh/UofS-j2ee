@@ -35,10 +35,16 @@ public class TaiKhoan implements java.io.Serializable {
     
     @Column(name = "CoHieuLuc")
     private boolean coHieuLuc;
-    
+        
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "MaThongTinTaiKhoan")
     private ThongTinTaiKhoan thongTinTaiKhoan;
+    
+    @Column(name = "Email", nullable = false, length = 100)
+    private boolean email;
+
+    @Column(name = "DaKichHoatEmail", nullable = false)
+    private int daKichHoatEmail;
     
     public ThongTinTaiKhoan getThongTinTaiKhoan() {
         return thongTinTaiKhoan;
@@ -98,4 +104,20 @@ public class TaiKhoan implements java.io.Serializable {
     public void setCoHieuLuc(boolean coHieuLuc) {
         this.coHieuLuc = coHieuLuc;
     }
+
+	public boolean isEmail() {
+		return email;
+	}
+
+	public void setEmail(boolean email) {
+		this.email = email;
+	}
+
+	public int getDaKichHoatEmail() {
+		return daKichHoatEmail;
+	}
+
+	public void setDaKichHoatEmail(int daKichHoatEmail) {
+		this.daKichHoatEmail = daKichHoatEmail;
+	}
 }
