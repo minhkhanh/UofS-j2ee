@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+#sidewrap {
+	float: left;
+	width: 24%;
+	background: #ffffff;
+	border: #000 1px solid;
+	
+}
+#sidewrap p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#sidecontent {
+	width: 100%;
+	padding: 0;
+	margin:0;
+	float:left;
+}
+#sidecontent .captionbox {
+	text-align:center;
+	margin:0;
+	padding:0;
+}
+#sidecontent .contentframe {
+	margin: 3px 3px 20px 3px;
+}

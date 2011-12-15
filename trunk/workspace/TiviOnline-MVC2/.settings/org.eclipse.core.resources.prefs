@@ -1,0 +1,19 @@
+#Mon Nov 28 23:47:01 ICT 2011
+eclipse.preferences.version=1
+encoding//WebContent/subpage/SearchResult.jsp=UTF-8
+encoding//src/controller/TrangChiTietDonDatHang.java=UTF-8
+encoding//src/controller/TrangChiTietTivi.java=UTF-8
+encoding//src/controller/TrangDangKy.java=UTF-8
+encoding//src/controller/TrangDangNhap.java=UTF-8
+encoding//src/controller/TrangGioHang.java=UTF-8
+encoding//src/controller/TrangSuaTivi.java=UTF-8
+encoding//src/controller/TrangThemTivi.java=UTF-8
+encoding//src/controller/TrangTimKiemNhanh.java=UTF-8
+encoding//src/custom/CategoryCombobox.java=UTF-8
+encoding//src/custom/HtmlHeadTag.java=UTF-8
+encoding//src/custom/UserPanelTag.java=UTF-8
+encoding//src/model/dao/DanhMucDAO.java=UTF-8
+encoding//src/model/dao/KhachHangDAO.java=UTF-8
+encoding//src/model/dao/TiviDAO.java=UTF-8
+encoding//src/util/EmailService.java=UTF-8
+encoding//src/util/ProcedureHelper.java=UTF-8

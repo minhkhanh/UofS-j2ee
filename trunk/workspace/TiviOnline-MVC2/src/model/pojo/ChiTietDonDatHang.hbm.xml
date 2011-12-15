@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.pojo.ChiTietDonDatHang" table="chitietdondathang" catalog="tivionline">
+        <composite-id name="chiTietId" class="model.pojo.ChiTietId">
+            <key-property name="maDonDatHang" column="MaDonDatHang" length="10" type="integer"
+                />
+            <key-property name="soThuTu" column="SoThuTu" length="10" type="integer"/>
+        </composite-id>
+        <property name="soLuong" type="integer">
+            <column name="SoLuong" length="10" />
+        </property>
+        <property name="donGia" type="float">
+            <column name="DonGia" />
+        </property>
+        <many-to-one name="tivi" class="model.pojo.Tivi" lazy="false" fetch="join"
+            cascade="save-update">
+            <column name="MaTivi" />
+        </many-to-one>
+        <many-to-one name="donDatHang" class="model.pojo.DonDatHang" lazy="false"
+            fetch="join" cascade="save-update" insert="false" update="false">
+            <column name="MaDonDatHang" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

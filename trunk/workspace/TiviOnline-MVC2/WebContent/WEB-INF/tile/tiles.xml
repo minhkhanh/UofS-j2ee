@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="template" template="/template/Template.jsp">
+		<put-attribute name="userpanel" value="/template/UserPanel.jsp" />
+		<put-attribute name="header" value="/template/Header.jsp" />
+		<put-attribute name="sidebar" value="/template/SideBar.jsp" />
+		<put-attribute name="main" value="no-body" />
+		<put-attribute name="footer" value="/template/Footer.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Template" />
+	</definition>
+	<definition name="TrangChu" extends="template">
+		<put-attribute name="main" value="/subpage/TrangChuMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Chủ" />
+	</definition>
+	<definition name="TrangLienHe" extends="template">
+		<put-attribute name="main" value="/subpage/TrangLienHeMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Liên Hệ" />
+	</definition>
+	<definition name="TrangGioiThieu" extends="template">
+		<put-attribute name="main" value="/subpage/TrangGioiThieuMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Giới Thiệu" />
+	</definition>
+	<definition name="TrangHuongDan" extends="template">
+		<put-attribute name="main" value="/subpage/TrangHuongDanMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Hướng Dẫn" />
+	</definition>
+	<definition name="TrangDangNhap" extends="template">
+		<put-attribute name="main" value="/subpage/TrangDangNhapMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Đăng Nhập" />
+	</definition>
+	<definition name="TrangDangKy" extends="template">
+		<put-attribute name="main" value="/subpage/TrangDangKyMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Đăng Ký" />
+	</definition>
+	<definition name="TrangGioHang" extends="template">
+		<put-attribute name="main" value="/subpage/TrangGioHangMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Giỏ Hàng" />
+	</definition>
+	<definition name="TrangChiTietTivi" extends="template">
+		<put-attribute name="main" value="/subpage/TrangChiTietTiviMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Chi Tiết Tivi" />
+	</definition>
+	<definition name="TrangTimKiemNhanh" extends="template">
+		<put-attribute name="main" value="/subpage/TrangTimKiemNhanhMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Tìm Kiếm Nhanh" />
+	</definition>
+	<definition name="TrangTimKiemNangCao" extends="template">
+		<put-attribute name="main" value="/subpage/TrangTimKiemNangCaoMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Tìm Kiếm Nâng Cao" />
+	</definition>
+	<definition name="TrangLichSuMuaHang" extends="template">
+		<put-attribute name="main" value="/subpage/TrangLichSuMuaHangMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Lịch Sử Mua Hàng" />
+	</definition>
+	<definition name="TrangChiTietDonDatHang" extends="template">
+		<put-attribute name="main" value="/subpage/TrangChiTietDonDatHangMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Chi Tiết Đơn Đặt Hàng" />
+	</definition>
+	<definition name="TrangTiviBanChay" extends="template">
+		<put-attribute name="main" value="/subpage/TrangTiviBanChayMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Tivi Bán Chạy" />
+	</definition>
+		<definition name="TrangThemTivi" extends="template">
+		<put-attribute name="main" value="/subpage/TrangThemTiviMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Thêm Tivi" />
+	</definition>
+	<definition name="TrangSuaTivi" extends="template">
+		<put-attribute name="main" value="/subpage/TrangSuaTiviMain.jsp" />
+		<put-attribute name="title" value="TiviOnline - Trang Sửa Tivi" />
+	</definition>
+</tiles-definitions>

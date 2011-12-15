@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.pojo.KhachHang" table="khachhang" catalog="tivionline">
+        <id name="tenDangNhap" type="string">
+            <column name="TenDangNhap" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="matKhau" type="string">
+            <column name="MatKhau" length="45" />
+        </property>
+        <property name="hoVaTen" type="string">
+            <column name="HoVaTen" length="45" />
+        </property>
+        <property name="diaChi" type="string">
+            <column name="DiaChi" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="45" />
+        </property>
+        <property name="dienThoai" type="string">
+            <column name="DienThoai" length="45" />
+        </property>
+        <many-to-one name="phanHe" class="model.pojo.PhanHe" lazy="false" fetch="join"
+            cascade="save-update">
+            <column name="MaPhanHe" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
