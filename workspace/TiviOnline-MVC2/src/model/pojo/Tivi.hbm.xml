@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="tivionline" name="model.pojo.Tivi" table="tivi">
+        <id name="maTivi" type="string">
+            <column length="45" name="MaTivi" />
+            <generator class="assigned" />
+        </id>
+        <property name="tenTivi" type="string">
+            <column length="45" name="TenTivi" />
+        </property>
+        <property name="giaBan" type="float">
+            <column name="GiaBan" />
+        </property>
+        <property name="soLuongTon" type="integer">
+            <column length="10" name="SoLuongTon" />
+        </property>
+        <property name="hinhAnh" type="string">
+            <column length="45" name="HinhAnh" />
+        </property>
+        <property name="moTa" type="string">
+            <column length="45" name="MoTa" />
+        </property>
+        <property name="kichThuoc" type="string">
+            <column length="45" name="KichThuoc" />
+        </property>
+        <property name="khuyenMai" type="string">
+            <column length="45" name="KhuyenMai" />
+        </property>
+        <property name="xuatXu" type="string">
+            <column length="45" name="XuatXu" />
+        </property>
+        <property name="biXoa" type="boolean">
+            <column length="1" name="BiXoa" />
+        </property>
+        <many-to-one cascade="save-update" class="model.pojo.DanhMuc" fetch="join"
+            lazy="false" name="danhMuc">
+            <column name="MaDanhMuc" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.pojo.PhanHe" table="phanhe" catalog="tivionline">
+        <id name="maPhanHe" type="integer">
+            <column name="MaPhanHe" length="11" />
+            <generator class="identity" />
+        </id>
+        <property name="tenPhanHe" type="string">
+            <column name="TenPhanHe" length="45" />
+        </property>
+        <property name="moTa" type="string">
+            <column name="MoTa" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
