@@ -16,6 +16,13 @@
 </c:if> --%>
 
 <%-- <c:if test="${dkThanhCong eq false}"> --%>
+
+<c:if test="${!empty actionFailure }">
+  <jsp:include page="/jsp/component/CautionMessage.jsp">
+    <jsp:param value="${actionFailure}" name="cautionMessage" />
+  </jsp:include>
+</c:if>
+
 <table width="500px" border="1" cellspacing="0" cellpadding="5"
 	align="center">
 	<tr bgcolor="#666666">
@@ -92,7 +99,7 @@
 						<td><label for="maLoaiGioiTinh">Giới tính</label></td>
 						<td><select  id="maLoaiGioiTinh" style="width: 100%">  
 							<c:forEach items='${danhSachLoaiGioiTinh}' var='item'>  
-							   <option> <c:out value='${item.tenLoaiGioiTinh}'/></option>  
+							   <option value="${item.maLoaiGioiTinh}"> <c:out value='${item.tenLoaiGioiTinh}'/></option>  
 							</c:forEach>  
 						</select></td>
 						

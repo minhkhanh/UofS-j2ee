@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import net.tanesha.recaptcha.ReCaptchaImpl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +24,14 @@ public class Register {
         if (session.getAttribute(Utils.SESS_ACC) != null) {
             return new ModelAndView("redirect:/Home.vby");
         }
-	    ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-	    reCaptcha.setPrivateKey(Utils.RECAPTCHA_PRIVATE_KEY);
-	    request.setAttribute("publicKey", Utils.RECAPTCHA_PUBLIC_KEY);
-	    request.setAttribute("privateKey", Utils.RECAPTCHA_PRIVATE_KEY);
+/*	    ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+	    reCaptcha.setPrivateKey(Utils.RECAPTCHA_PRIVATE_KEY);*/
 	    List<LoaiGioiTinh> listLoaiGioiTinh = loaiGioiTinhDao.layDanhSachLoaiGioiTinh();
-	    request.setAttribute("danhSachLoaiGioiTinh", listLoaiGioiTinh);
-        return new ModelAndView("Register");
+	    ModelAndView result = new ModelAndView("Register");
+	    result.addObject("danhSachLoaiGioiTinh", listLoaiGioiTinh);
+	    result.addObject("publicKey", Utils.RECAPTCHA_PUBLIC_KEY);
+	    result.addObject("privateKey", Utils.RECAPTCHA_PRIVATE_KEY);
+	    return result;
     }
+
 }
