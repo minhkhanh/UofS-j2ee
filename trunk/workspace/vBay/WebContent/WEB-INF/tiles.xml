@@ -24,6 +24,10 @@
 		<put-attribute name="content" value="" />
 		<put-attribute name="title" value="vBay - TemplateStore" />
 	</definition>
+	<definition name="PostProduct" extends="TemplateMain">
+		<put-attribute name="content" value="/jsp/content/PostProduct.jsp" />
+		<put-attribute name="title" value="vBay - Trang Đăng Ký Tài Khoản" />
+	</definition>
 	<definition name="Register" extends="TemplateMain">
 		<put-attribute name="content" value="/jsp/content/Register.jsp" />
 		<put-attribute name="title" value="vBay - Trang Đăng Ký Tài Khoản" />

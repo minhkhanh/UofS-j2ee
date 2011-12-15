@@ -127,7 +127,7 @@
 											$("#lnkLogOut").attr("href")
 													+ document.URL);
 						</script>
-      <a href="#">HƯỚNG DẪN</a>
+      <a href="<c:url value='/PostProduct.vby' />">ĐĂNG SẢN PHẨM</a> <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:when>
   <c:otherwise>
