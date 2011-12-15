@@ -17,12 +17,13 @@ public class Account {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView handle(HttpSession session, HttpServletRequest request) {
         if (session.getAttribute(Utils.SESS_ACC) == null) {
-            session.setAttribute(Utils.SESS_ACTFAIL, "Bạn cần phải đăng nhập mới xem được trang Account");
-            session.setAttribute(Utils.SESS_RETURL,
-                    Utils.createFullPath(request.getServletContext(), "/Account.vby"));
+            session.setAttribute(Utils.SESS_ACTFAIL,
+                    "Bạn cần phải đăng nhập mới xem được trang Account");
+            session.setAttribute(Utils.SESS_RETURL, "/Account.vby");
             return new ModelAndView("redirect:/LogIn.vby");
         }
 
+        Utils.removeTransferAttributes(session);
         return new ModelAndView("Account");
     }
 }

@@ -5,12 +5,9 @@
   <div class="captionbox ui-widget-header ui-corner-top">THÔNG TIN ĐĂNG NHẬP</div>
   <div class="content">
     <c:if test="${!empty actionFailure }">
-      <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-        <p>
-          <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> <strong>Nhắc nhở:</strong>
-          ${actionFailure }.
-        </p>
-      </div>
+      <jsp:include page="/jsp/component/CautionMessage.jsp">
+        <jsp:param value="${actionFailure}" name="cautionMessage" />
+      </jsp:include>
     </c:if>
     <form action="<c:url value='/general/login' />" method="post">
       <table>
@@ -25,8 +22,8 @@
               class="text ui-widget-content ui-corner-all" /></td>
         </tr>
         <tr>
-        <td></td>
-        <td><input type="submit" name="submitLogIn" value="Đăng nhập"/></td>
+          <td></td>
+          <td><input type="submit" name="submitLogIn" value="Đăng nhập" /></td>
         </tr>
       </table>
       <input type="hidden" name="returnUrl" value="${returnUrl}" />
