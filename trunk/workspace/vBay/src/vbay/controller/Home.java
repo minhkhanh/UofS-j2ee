@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import vbay.dao.SanPhamDao;
 import vbay.dao.TaiKhoanDao;
-import vbay.model.SanPham;
 
 @Controller
 @RequestMapping("/Home.vby")
