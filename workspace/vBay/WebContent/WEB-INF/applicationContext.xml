@@ -18,7 +18,7 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/daugia?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
-		<property name="password" value="minhkhanh" />
+		<property name="password" value="" />
 	</bean>
 
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
