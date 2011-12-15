@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2011 at 05:49 AM
--- Server version: 5.5.16
+-- Generation Time: Dec 15, 2011 at 09:39 AM
+-- Server version: 5.5.15
 -- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `chitietdaugia`
 --
 
-DROP TABLE IF EXISTS `chitietdaugia`;
 CREATE TABLE IF NOT EXISTS `chitietdaugia` (
   `MaChiTietDauGia` int(11) NOT NULL AUTO_INCREMENT,
   `MaTaiKhoan` int(11) DEFAULT NULL,
@@ -45,7 +44,6 @@ CREATE TABLE IF NOT EXISTS `chitietdaugia` (
 -- Table structure for table `chitietphanquyen`
 --
 
-DROP TABLE IF EXISTS `chitietphanquyen`;
 CREATE TABLE IF NOT EXISTS `chitietphanquyen` (
   `MaChiTietPhanQuyen` int(11) NOT NULL AUTO_INCREMENT,
   `MaLoaiTaiKhoan` int(11) NOT NULL,
@@ -61,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `chitietphanquyen` (
 -- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `MaComment` int(11) NOT NULL AUTO_INCREMENT,
   `NoiDungComment` varchar(5000) CHARACTER SET utf8 DEFAULT NULL,
@@ -79,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Table structure for table `daugiathanhcong`
 --
 
-DROP TABLE IF EXISTS `daugiathanhcong`;
 CREATE TABLE IF NOT EXISTS `daugiathanhcong` (
   `MaDauGiaThanhCong` int(11) NOT NULL AUTO_INCREMENT,
   `MaTaiKhoan` int(11) DEFAULT NULL,
@@ -96,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `daugiathanhcong` (
 -- Table structure for table `giaodien`
 --
 
-DROP TABLE IF EXISTS `giaodien`;
 CREATE TABLE IF NOT EXISTS `giaodien` (
   `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT,
   `TenTheme` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -109,7 +104,6 @@ CREATE TABLE IF NOT EXISTS `giaodien` (
 -- Table structure for table `khoaphanquyen`
 --
 
-DROP TABLE IF EXISTS `khoaphanquyen`;
 CREATE TABLE IF NOT EXISTS `khoaphanquyen` (
   `MaKhoaPhanQuyen` int(11) NOT NULL AUTO_INCREMENT,
   `MaTaiKhoanKhoa` int(11) NOT NULL,
@@ -127,10 +121,30 @@ CREATE TABLE IF NOT EXISTS `khoaphanquyen` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `loaigioitinh`
+--
+
+CREATE TABLE IF NOT EXISTS `loaigioitinh` (
+  `MaLoaiGioiTinh` int(11) NOT NULL AUTO_INCREMENT,
+  `TenLoaiGioiTinh` varchar(45) NOT NULL,
+  PRIMARY KEY (`MaLoaiGioiTinh`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `loaigioitinh`
+--
+
+INSERT INTO `loaigioitinh` (`MaLoaiGioiTinh`, `TenLoaiGioiTinh`) VALUES
+(1, 'Không rõ'),
+(2, 'Nam'),
+(3, 'Nữ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loaimultimedia`
 --
 
-DROP TABLE IF EXISTS `loaimultimedia`;
 CREATE TABLE IF NOT EXISTS `loaimultimedia` (
   `MaLoaiMultimedia` int(11) NOT NULL AUTO_INCREMENT,
   `TenLoaiMultimedia` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -151,7 +165,6 @@ INSERT INTO `loaimultimedia` (`MaLoaiMultimedia`, `TenLoaiMultimedia`) VALUES
 -- Table structure for table `loaisanpham`
 --
 
-DROP TABLE IF EXISTS `loaisanpham`;
 CREATE TABLE IF NOT EXISTS `loaisanpham` (
   `MaLoaiSanPham` int(11) NOT NULL AUTO_INCREMENT,
   `TenLoaiSanPham` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -172,7 +185,6 @@ INSERT INTO `loaisanpham` (`MaLoaiSanPham`, `TenLoaiSanPham`) VALUES
 -- Table structure for table `loaitaikhoan`
 --
 
-DROP TABLE IF EXISTS `loaitaikhoan`;
 CREATE TABLE IF NOT EXISTS `loaitaikhoan` (
   `MaLoaiTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
   `TenLoaiTaiKhoan` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -193,7 +205,6 @@ INSERT INTO `loaitaikhoan` (`MaLoaiTaiKhoan`, `TenLoaiTaiKhoan`) VALUES
 -- Table structure for table `multimedia`
 --
 
-DROP TABLE IF EXISTS `multimedia`;
 CREATE TABLE IF NOT EXISTS `multimedia` (
   `MaMultimedia` int(11) NOT NULL AUTO_INCREMENT,
   `TenMultimedia` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -228,7 +239,6 @@ INSERT INTO `multimedia` (`MaMultimedia`, `TenMultimedia`, `MaLoaiMultimedia`, `
 -- Table structure for table `phanquyen`
 --
 
-DROP TABLE IF EXISTS `phanquyen`;
 CREATE TABLE IF NOT EXISTS `phanquyen` (
   `MaPhanQuyen` int(11) NOT NULL AUTO_INCREMENT,
   `TenPhanQuyen` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -241,7 +251,6 @@ CREATE TABLE IF NOT EXISTS `phanquyen` (
 -- Table structure for table `sanpham`
 --
 
-DROP TABLE IF EXISTS `sanpham`;
 CREATE TABLE IF NOT EXISTS `sanpham` (
   `MaSanPham` int(11) NOT NULL AUTO_INCREMENT,
   `TenSanPham` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -286,7 +295,6 @@ INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MaLoaiSanPham`, `MaTaiKhoan`,
 -- Table structure for table `sanpham_multimedia`
 --
 
-DROP TABLE IF EXISTS `sanpham_multimedia`;
 CREATE TABLE IF NOT EXISTS `sanpham_multimedia` (
   `MaSanPham` int(11) NOT NULL,
   `MaMultimedia` int(11) NOT NULL,
@@ -315,16 +323,19 @@ INSERT INTO `sanpham_multimedia` (`MaSanPham`, `MaMultimedia`) VALUES
 -- Table structure for table `taikhoan`
 --
 
-DROP TABLE IF EXISTS `taikhoan`;
 CREATE TABLE IF NOT EXISTS `taikhoan` (
   `MaTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
   `TenTaiKhoan` varchar(50) CHARACTER SET utf8 NOT NULL,
   `MatKhau` varchar(50) CHARACTER SET utf8 NOT NULL,
   `MaLoaiTaiKhoan` int(11) NOT NULL,
   `MaMultimediaAvatar` int(11) DEFAULT NULL,
-  `CoHieuLuc` bit(1) NOT NULL DEFAULT b'1',
+  `CoHieuLuc` bit(1) NOT NULL DEFAULT b'0',
   `MaThongTinTaiKhoan` int(11) NOT NULL,
+  `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `DaKichHoatEmail` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`MaTaiKhoan`),
+  UNIQUE KEY `TenTaiKhoan_UNIQUE` (`TenTaiKhoan`),
+  UNIQUE KEY `Email_UNIQUE` (`Email`),
   KEY `FK_TAIKHOAN_LOAITAIKHOAN` (`MaLoaiTaiKhoan`),
   KEY `FK_TAIKHOAN_MULTIMEDIA` (`MaMultimediaAvatar`),
   KEY `FK_TAIKHOAN_THONGTINTAIKHOAN` (`MaThongTinTaiKhoan`)
@@ -334,9 +345,9 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
 -- Dumping data for table `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`MaTaiKhoan`, `TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`, `MaMultimediaAvatar`, `CoHieuLuc`, `MaThongTinTaiKhoan`) VALUES
-(3, 'admin', 'admin', 1, 1, '1', 1),
-(4, 'user', 'user', 2, 2, '1', 2);
+INSERT INTO `taikhoan` (`MaTaiKhoan`, `TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`, `MaMultimediaAvatar`, `CoHieuLuc`, `MaThongTinTaiKhoan`, `Email`, `DaKichHoatEmail`) VALUES
+(3, 'admin', 'admin', 1, 1, '1', 1, 'a@a.a', '0'),
+(4, 'user', 'user', 2, 2, '1', 2, 'a@a.b', '0');
 
 -- --------------------------------------------------------
 
@@ -344,7 +355,6 @@ INSERT INTO `taikhoan` (`MaTaiKhoan`, `TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`
 -- Table structure for table `thamso`
 --
 
-DROP TABLE IF EXISTS `thamso`;
 CREATE TABLE IF NOT EXISTS `thamso` (
   `MaThamSo` int(11) NOT NULL AUTO_INCREMENT,
   `TenThamSo` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -358,29 +368,28 @@ CREATE TABLE IF NOT EXISTS `thamso` (
 -- Table structure for table `thongtintaikhoan`
 --
 
-DROP TABLE IF EXISTS `thongtintaikhoan`;
 CREATE TABLE IF NOT EXISTS `thongtintaikhoan` (
   `MaThongTinTaiKhoan` int(11) NOT NULL AUTO_INCREMENT,
   `HoTen` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `NgaySinh` datetime DEFAULT NULL,
   `NoiSinh` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `DiaChi` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `SoDienThoai` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `DienThoai` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `MaTheTinDung` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `GioiTinh` int(11) NOT NULL DEFAULT '0',
-  `Email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `MaLoaiGioiTinh` int(11) NOT NULL DEFAULT '1',
   `DiemTinCayBan` int(11) DEFAULT NULL,
   `DiemTinCayMua` int(11) DEFAULT NULL,
-  PRIMARY KEY (`MaThongTinTaiKhoan`)
+  PRIMARY KEY (`MaThongTinTaiKhoan`),
+  KEY `FK_LoaiGioiTinh_ThongTinTaiKhoan` (`MaLoaiGioiTinh`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `thongtintaikhoan`
 --
 
-INSERT INTO `thongtintaikhoan` (`MaThongTinTaiKhoan`, `HoTen`, `NgaySinh`, `NoiSinh`, `DiaChi`, `SoDienThoai`, `MaTheTinDung`, `GioiTinh`, `Email`, `DiemTinCayBan`, `DiemTinCayMua`) VALUES
-(1, 'Nguyễn Admin', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
-(2, 'Trần User', '1990-05-12 00:00:00', 'TP', '727 Trần Hưng Đạo', '0973 586 043', NULL, 0, 'akhoi90@gmail.com', 0, 0);
+INSERT INTO `thongtintaikhoan` (`MaThongTinTaiKhoan`, `HoTen`, `NgaySinh`, `NoiSinh`, `DiaChi`, `DienThoai`, `MaTheTinDung`, `MaLoaiGioiTinh`, `DiemTinCayBan`, `DiemTinCayMua`) VALUES
+(1, 'Nguyễn Admin', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL),
+(2, 'Trần User', '1990-05-12 00:00:00', 'TP', '727 Trần Hưng Đạo', '0973 586 043', NULL, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -388,7 +397,6 @@ INSERT INTO `thongtintaikhoan` (`MaThongTinTaiKhoan`, `HoTen`, `NgaySinh`, `NoiS
 -- Table structure for table `tinhtrangsanpham`
 --
 
-DROP TABLE IF EXISTS `tinhtrangsanpham`;
 CREATE TABLE IF NOT EXISTS `tinhtrangsanpham` (
   `MaTinhTrangSanPham` int(11) NOT NULL AUTO_INCREMENT,
   `TenTinhTrangSanPham` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -459,9 +467,15 @@ ALTER TABLE `sanpham_multimedia`
 -- Constraints for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
+  ADD CONSTRAINT `FK_TAIKHOAN_THONGTINTAIKHOAN` FOREIGN KEY (`MaThongTinTaiKhoan`) REFERENCES `thongtintaikhoan` (`MaThongTinTaiKhoan`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_TAIKHOAN_LOAITAIKHOAN` FOREIGN KEY (`MaLoaiTaiKhoan`) REFERENCES `loaitaikhoan` (`MaLoaiTaiKhoan`),
-  ADD CONSTRAINT `FK_TAIKHOAN_MULTIMEDIA` FOREIGN KEY (`MaMultimediaAvatar`) REFERENCES `multimedia` (`MaMultimedia`),
-  ADD CONSTRAINT `FK_TAIKHOAN_THONGTINTAIKHOAN` FOREIGN KEY (`MaThongTinTaiKhoan`) REFERENCES `thongtintaikhoan` (`MaThongTinTaiKhoan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_TAIKHOAN_MULTIMEDIA` FOREIGN KEY (`MaMultimediaAvatar`) REFERENCES `multimedia` (`MaMultimedia`);
+
+--
+-- Constraints for table `thongtintaikhoan`
+--
+ALTER TABLE `thongtintaikhoan`
+  ADD CONSTRAINT `FK_LoaiGioiTinh_ThongTinTaiKhoan` FOREIGN KEY (`MaLoaiGioiTinh`) REFERENCES `loaigioitinh` (`MaLoaiGioiTinh`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
