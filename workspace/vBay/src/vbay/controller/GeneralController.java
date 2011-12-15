@@ -47,4 +47,16 @@ public class GeneralController {
         session.setAttribute(Utils.SESS_RETURL, returnUrl);
         return new ModelAndView("redirect:/LogIn.vby");
     }
+    
+    
+    
+    
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView register(HttpSession session) {
+        if (session.getAttribute(Utils.SESS_ACC) != null) {
+            return new ModelAndView("redirect:/Home.vby");
+        }
+        return new ModelAndView("redirect:/LogIn.vby");  
+    }
+    
 }

@@ -50,6 +50,11 @@
 						</td>
 					</tr>
 					<tr>
+						<td><label for="email">Email</label></td>
+						<td><input type="text" name="email" style="width: 100%" value="${param.email }"
+							onkeyup="checkValidationRegObj('email')" /></td>
+					</tr>					
+					<tr>
 						<td colspan="2"><strong>Thông tin cá nhân</strong>
 						</td>
 					</tr>
@@ -57,11 +62,6 @@
 						<td><label for="hoVaTen">Họ và tên</label></td>
 						<td><input type="text" name="hoVaTen" style="width: 100%" value="${param.hoVaTen }"
 							onkeyup="checkValidationRegObj('hoVaTen')" /></td>
-					</tr>
-					<tr>
-						<td><label for="email">Email</label></td>
-						<td><input type="text" name="email" style="width: 100%" value="${param.email }"
-							onkeyup="checkValidationRegObj('email')" /></td>
 					</tr>
 					<tr>
 						<td><label for="diaChi">Địa chỉ</label></td>
@@ -73,6 +73,32 @@
 						<td><input type="text" name="dienThoai" style="width: 100%" value="${param.dienThoai }"
 							onkeyup="checkValidationRegObj('dienThoai')" /></td>
 					</tr>
+					<tr>
+						<td><label for="ngaySinh">Ngày sinh</label></td>
+						<td><input type="text" name="ngaySinh" style="width: 100%" value="${param.ngaySinh }"
+							onkeyup="checkValidationRegObj('ngaySinh')" /></td>
+					</tr>
+					<tr>
+						<td><label for="noiSinh">Nơi sinh</label></td>
+						<td><input type="text" name="noiSinh" style="width: 100%" value="${param.noiSinh }"
+							onkeyup="checkValidationRegObj('noiSinh')" /></td>
+					</tr>										
+					<tr>
+						<td><label for="maTheTinDung">Mã thẻ tín dụng</label></td>
+						<td><input type="text" name="maTheTinDung" style="width: 100%" value="${param.maTheTinDung }"
+							onkeyup="checkValidationRegObj('maTheTinDung')" /></td>
+					</tr>
+					<tr>
+						<td><label for="maLoaiGioiTinh">Giới tính</label></td>
+						<td><select  id="maLoaiGioiTinh" style="width: 100%">  
+							<c:forEach items='${request.danhSachLoaiGioiTinh}' var='item'>  
+							   <option> <c:out value='${item}'/></option>  
+							</c:forEach>  
+						</select></td>
+						
+<%-- 						<td><input type="text" name="maLoaiGioiTinh" style="width: 100%" value="${param.maLoaiGioiTinh }"
+							onkeyup="checkValidationRegObj('maTheTinDung')" /></td>
+ --%>					</tr>										
 					<tr>
 						<td><label for="reCAPTCHA" <c:if test="${kqCaptcha eq false}">style='color: red;'</c:if> >Nhập mã an ninh</label></td>
 						<td>
