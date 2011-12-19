@@ -50,10 +50,10 @@ public class Utils {
 
     public final static void handleYoutubeUpload(HttpServletRequest request) {
         YouTubeService service = new YouTubeService(
-                "vBay Online Auction",
-                "AI39si5O7meRcD8iNB47ZI54S00Th_b0V8tB59U4jYNCqBO2y_5fQVJZMpezoxiwXUQzuYS3CJW5XM_w0_NYNosl_GSvCYB5vw");
+                "vBay Net",
+                "AI39si7u0BLRK59lnIi2MESQmy1mRprksnenwhOIvwKrl1eKrxo_GlEx5Yqj4MLc_L_kJ0JOwtTzYVE05B7zmoeOjRt_NRIahg");
         try {
-            service.setUserCredentials("akhoi90@gmail.com", "pegasuscode0015");
+            service.setUserCredentials("vbaynet@gmail.com", "ak127601");
         } catch (AuthenticationException e1) {
             e1.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class Utils {
 
         YouTubeMediaGroup mg = newEntry.getOrCreateMediaGroup();
         mg.setTitle(new MediaTitle());
-        mg.getTitle().setPlainTextContent("My Test Movie");
+        mg.getTitle().setPlainTextContent("My Test Movie 2");
         mg.addCategory(new MediaCategory(YouTubeNamespace.CATEGORY_SCHEME, "Autos"));
         mg.setKeywords(new MediaKeywords());
         mg.getKeywords().addKeyword("cars");
