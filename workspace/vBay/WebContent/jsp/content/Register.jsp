@@ -97,7 +97,7 @@
 					</tr>
 					<tr>
 						<td><label for="maLoaiGioiTinh">Giới tính</label></td>
-						<td><select  id="maLoaiGioiTinh" style="width: 100%">  
+						<td><select  id="maLoaiGioiTinh" name="maLoaiGioiTinh" style="width: 100%">  
 							<c:forEach items='${danhSachLoaiGioiTinh}' var='item'>  
 							   <option value="${item.maLoaiGioiTinh}"> <c:out value='${item.tenLoaiGioiTinh}'/></option>  
 							</c:forEach>  

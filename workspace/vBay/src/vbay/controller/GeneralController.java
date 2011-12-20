@@ -1,10 +1,14 @@
 package vbay.controller;
 
-import java.io.StringWriter;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import vbay.dao.LoaiGioiTinhDao;
+import vbay.dao.LoaiTaiKhoanDao;
 import vbay.dao.TaiKhoanDao;
+import vbay.dao.ThongTinTaiKhoanDao;
 import vbay.model.LoaiGioiTinh;
 import vbay.model.TaiKhoan;
+import vbay.model.ThongTinTaiKhoan;
 import vbay.util.Utils;
 
 @Controller
@@ -54,9 +61,16 @@ public class GeneralController {
     }
     
     @Autowired
-    LoaiGioiTinhDao loaiGioiTinhDao;      
+    LoaiGioiTinhDao loaiGioiTinhDao;
     
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @Autowired
+    ThongTinTaiKhoanDao thongTinTaiKhoanDao;    
+    
+    @Autowired
+    LoaiTaiKhoanDao loaiTaiKhoanDao;
+    
+    @SuppressWarnings("deprecation")
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView register(HttpSession session, HttpServletRequest request, String ngaySinh, String noiSinh, String maTheTinDung, String maLoaiGioiTinh) {
         if (session.getAttribute(Utils.SESS_ACC) != null) {
             return new ModelAndView("redirect:/Home.vby");
@@ -88,9 +102,71 @@ public class GeneralController {
 		if (hoVaTen==null || hoVaTen.length()<=4) kq = false;
 		if (diaChi==null || diaChi.length()<=4) kq = false;
 		if (dienThoai==null || dienThoai.length()<=4) kq = false;
+		Date objNgaySinh = null;
+		if (ngaySinh==null || ngaySinh.length()<=4) kq = false;
+		else {			
+			try {
+				objNgaySinh = new Date(Date.parse(ngaySinh));
+			} catch (Exception e) {
+				objNgaySinh = new Date(Calendar.getInstance().getTimeInMillis());
+				kq = false;
+			}						
+		}
+		if (noiSinh==null || noiSinh.length()<=4) kq = false;
+		if (maTheTinDung==null || maTheTinDung.length()<=4) kq = false;
+		LoaiGioiTinh objLoaiGioiTinh = null;
+		if (maLoaiGioiTinh==null || maLoaiGioiTinh.length()<1) kq = false;
+		else {
+			int iMaLoaiGioiTinh = Integer.parseInt(maLoaiGioiTinh);
+			objLoaiGioiTinh = loaiGioiTinhDao.layLoaiGioiTinh(iMaLoaiGioiTinh);
+			if (objLoaiGioiTinh==null) kq = false;
+		}
+		
+	    String remoteAddr = request.getRemoteAddr();
+	    ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+	    reCaptcha.setPrivateKey(Utils.RECAPTCHA_PRIVATE_KEY);
+
+	    String challenge = request.getParameter("recaptcha_challenge_field");
+	    String uresponse = request.getParameter("recaptcha_response_field");
+	    
+	    if (challenge!=null && uresponse!=null) {
+	    	ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, uresponse);
+	        if (!reCaptchaResponse.isValid()) {      
+	        	strNoti += "Thông tin captcha không đúng.<br/>";
+	        }
+	    }
         
+		if (!kq) {
+			strNoti += "Mọi thông tin đều bắt buộc.<br/>";
+		}
         
-        
+        if (strNoti!="") { // tien hanh them vao csdl
+        	try {
+				ThongTinTaiKhoan thongTinTaiKhoan = new ThongTinTaiKhoan();
+				thongTinTaiKhoan.setDiaChi(diaChi);
+				thongTinTaiKhoan.setHoTen(hoVaTen);
+				thongTinTaiKhoan.setLoaiGioiTinh(objLoaiGioiTinh);
+				thongTinTaiKhoan.setMaTheTinDung(maTheTinDung);
+				thongTinTaiKhoan.setSoDienThoai(dienThoai);
+				thongTinTaiKhoan.setNgaySinh(objNgaySinh);
+				thongTinTaiKhoan.setNoiSinh(noiSinh);
+				//thongTinTaiKhoanDao.themThongTinTaiKhoan(thongTinTaiKhoan);
+				TaiKhoan taiKhoan = new TaiKhoan();
+				taiKhoan.setCoHieuLuc(false);
+				taiKhoan.setDaKichHoatEmail(false);
+				taiKhoan.setEmail(email);
+				taiKhoan.setMatKhau(matKhau);
+				taiKhoan.setTenTaiKhoan(tenDangNhap);
+				taiKhoan.setLoaiTaiKhoan(loaiTaiKhoanDao.layLoaiTaiKhoan("User"));
+				taiKhoan.setThongTinTaiKhoan(thongTinTaiKhoan);
+				taiKhoanDao.themTaiKhoan(taiKhoan);
+				return new ModelAndView("redirect:/LogIn.vby");
+			} catch (Exception e) {			    
+			    ModelAndView result = new ModelAndView("ErrorMessage");			    
+			    result.addObject(Utils.SESS_ACTFAIL, "Server đang quá tải vui lòng đăng ký lúc khác");
+			    return result;
+			}
+        }
 	    List<LoaiGioiTinh> listLoaiGioiTinh = loaiGioiTinhDao.layDanhSachLoaiGioiTinh();
 	    ModelAndView result = new ModelAndView("Register");
 	    result.addObject("danhSachLoaiGioiTinh", listLoaiGioiTinh);

@@ -27,6 +27,9 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
     @Column(name = "NgaySinh")
     private Date ngaySinh;
     
+    @Column(name = "NoiSinh", length = 50)
+    private String noiSinh;
+    
     @Column(name = "DiaChi", length = 50)
     private String diaChi;
     
@@ -117,4 +120,12 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
     public void setDiemTinCayMua(Integer diemTinCayMua) {
         this.diemTinCayMua = diemTinCayMua;
     }
+
+	public String getNoiSinh() {
+		return noiSinh;
+	}
+
+	public void setNoiSinh(String noiSinh) {
+		this.noiSinh = noiSinh;
+	}
 }
