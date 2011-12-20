@@ -59,4 +59,23 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
         }
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public boolean themTaiKhoan(TaiKhoan taiKhoan) {
+   		Session session = null;
+   		//Transaction tran = null;
+   		try {
+   			session = sessionFactory.getCurrentSession();
+   			//tran = session.beginTransaction();
+   			//tran.begin();
+   			session.save(taiKhoan);
+   			//tran.commit();
+   			return true;
+		} catch (Exception e) {
+			//tran.rollback();
+			System.out.println(e);
+			return false;
+		}
+	}
+
 }

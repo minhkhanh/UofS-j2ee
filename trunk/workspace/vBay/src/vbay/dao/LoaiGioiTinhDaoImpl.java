@@ -31,4 +31,10 @@ public class LoaiGioiTinhDaoImpl implements LoaiGioiTinhDao {
         dsLoaiGioiTinh = query.list();
         return dsLoaiGioiTinh;
     }
+
+	@Override
+	@Transactional(readOnly = true)
+	public LoaiGioiTinh layLoaiGioiTinh(int maLoaiGioiTinh) {
+		return (LoaiGioiTinh) sessionFactory.getCurrentSession().get(LoaiGioiTinh.class, maLoaiGioiTinh);
+	}
 }
