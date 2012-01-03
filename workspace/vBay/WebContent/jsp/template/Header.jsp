@@ -9,9 +9,9 @@
     <div class="br">
       <div class="tl">
         <div class="tr">
-          <form method="get" action="" name="formTimNhanh">
-            <input type="text" name="tenTivi" value="" style="width: 100%" />
-            <select name="maDanhMuc" style="width: 75%">
+          <form method="get" action="Search.vby" name="formTimNhanh">
+            <input type="text" name="khoaTimKiem" value="" style="width: 100%" />
+            <select name="maLoaiSanPham" style="width: 75%">
               <option value="" selected="selected">Tất cả</option>
               <option value="mã danh mục thứ nhất">Antiques</option>
               <option value="mã danh mục thứ hai">Baby</option>
@@ -19,9 +19,9 @@
               <option value="mã danh mục thứ hai">DVD's And Movies</option>
               <option value="mã danh mục thứ hai">Electronics</option>
             </select>
-            <input type="submit" value="Tìm kiếm" name="submitTimNhanh" style="width: 22%">
+            <input type="submit" value="Tìm kiếm" name="submitTimNhanh" style=" width : 102px;">
           </form>
-          <a href="#">Tìm kiếm nâng cao...</a>
+          <a href="Search.vby?typeSearch=advancedSearch">Tìm kiếm nâng cao...</a>
         </div>
       </div>
     </div>

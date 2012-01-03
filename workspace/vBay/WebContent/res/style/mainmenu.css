@@ -1,10 +1,10 @@
 @charset "utf-8";
 
 #mainmenu ul {
-	background: #6c8cd5 url(../image/menuitem.png) repeat-x;
+	border: 1px solid black;
+	background: #9FDA58 url(../image/menuitem.png) 50% 50% repeat-x; 
 	height: 30px;
-	margin: 0 0 15px 0;
-	border: solid 1px #c8d8ff;
+	margin: 15px 0 15px 0;
 }
 
 #mainmenu li {
@@ -16,14 +16,15 @@
 	font-weight: bold;
 }
 
-#mainmenu a:hover {
-	border-bottom: solid 2px #090974;
-}
-
 #mainmenu a {
 	display: block;
+	color: #B8EC79;
 }
 
-#mainmenu a:link,a:visited,a:active {
-	color: #06266f;
+#mainmenu a:link,active,visit {
+	color: ##B8EC79;
+}
+
+#mainmenu a:hover {
+	color: #fff;
 }
