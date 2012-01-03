@@ -18,10 +18,10 @@
 <link href="<c:url value='/res/style/userpanel.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/mainmenu.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/timepicker.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/jquery-ui/redmond/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
+<link href="<c:url value='/res/jquery-ui/css/trontastic/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
   type="text/css" />
 <script src="<c:url value='/res/script/jquery-1.6.2.js' />"></script>
-<script src="<c:url value='/res/jquery-ui/jquery-ui-1.8.16.custom.min.js' />"></script>
+<script src="<c:url value='/res/jquery-ui/js/jquery-ui-1.8.16.custom.min.js' />"></script>
 <script src="<c:url value='/res/script/jquery-ui-timepicker-addon.js' />"></script>
 <script>
 	$(function() {

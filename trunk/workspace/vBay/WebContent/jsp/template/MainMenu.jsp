@@ -3,7 +3,10 @@
 
 <ul class="horzlist">
   <li><a href="Product">Hàng Hot</a></li>
+  <span class="line"></span>
   <li><a href="#">Hàng Đã Bán</a></li>
+  <span class="line"></span>
   <li><a href="Store">Tìm Cửa Hàng</a></li>
+  <span class="line"></span>
   <li><a href="#">Tin Tức</a></li>
 </ul>

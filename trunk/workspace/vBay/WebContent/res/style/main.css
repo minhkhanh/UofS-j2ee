@@ -96,6 +96,15 @@ a {
 	line-height: 145%;
 }
 
+.line {
+	margin: 2px;
+	float: right;
+	width: 2px;
+	height: 25px;
+	background: url(../image/header-bluebar.gif) no-repeat;
+	display: inline-block;
+}
+
 #footer {
 	padding: 0 10px;
 	background: #06266f;
