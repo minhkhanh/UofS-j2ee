@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -55,7 +56,7 @@ public class SanPham implements java.io.Serializable {
     @Column(name = "MoTaSanPham", length = 5000)
     private String moTaSanPham;
 
-    @ManyToMany(targetEntity = Multimedia.class, cascade = CascadeType.ALL)
+    @ManyToMany(fetch=FetchType.EAGER, targetEntity = Multimedia.class, cascade = CascadeType.ALL)
     @JoinTable(name = "sanpham_multimedia", joinColumns = @JoinColumn(name = "MaSanPham"), inverseJoinColumns = @JoinColumn(name = "MaMultimedia"))
     private Set<Multimedia> multimedias = new HashSet<Multimedia>(0);
 
