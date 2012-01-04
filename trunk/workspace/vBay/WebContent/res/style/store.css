@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.postcontrols {
+    float: right;
+    padding-right: 10px;
+    text-align: right;
+    width: 50%;
+    font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+    display: inline-block;
+    margin-top: 5px;
+}
+.postcontrols a.editpost {
+    background: url(../image/buttons/edit_40b.png) no-repeat scroll left center ;
+    border: 0 solid #A8A8A8;
+    padding: 0 0 0 20px;
+}
