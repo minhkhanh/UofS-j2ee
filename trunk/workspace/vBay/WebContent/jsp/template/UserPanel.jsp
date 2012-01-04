@@ -4,23 +4,32 @@
 <script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-		$("#dialog:ui-dialog").dialog("destroy");
+		$('#dialog:ui-dialog').dialog('destroy');
 
-		var tenTaiKhoan = $("#tenTaiKhoan"), matKhau = $("#matKhau"), allFields = $(
-				[]).add(tenTaiKhoan).add(matKhau), tips = $(".validateTips");
+// 		$('#ghiNho').button();
+		$('#ghiNho').click(function() {
+			if ($(this).button('option', 'label') == 'Ghi nhớ') {
+				$(this).button('option', 'label', 'Không ghi nhớ'); 
+			} else {
+				$(this).button('option', 'label', 'Ghi nhớ');
+			}
+		});
+
+		var tenTaiKhoan = $('#tenTaiKhoan'), matKhau = $('#matKhau'), allFields = $(
+				[]).add(tenTaiKhoan).add(matKhau), tips = $('.validateTips');
 
 		function updateTips(t) {
-			tips.text(t).addClass("ui-state-highlight");
+			tips.text(t).addClass('ui-state-highlight');
 			setTimeout(function() {
-				tips.removeClass("ui-state-highlight", 1500);
+				tips.removeClass('ui-state-highlight', 1500);
 			}, 500);
 		}
 
 		function checkLength(o, n, min, max) {
 			if (o.val().length > max || o.val().length < min) {
-				o.addClass("ui-state-error");
-				updateTips("Độ dài " + n + " bắt buộc từ " + min + " đến "
-						+ max + " kí tự.");
+				o.addClass('ui-state-error');
+				updateTips('Độ dài ' + n + ' bắt buộc từ ' + min + ' đến '
+						+ max + ' kí tự.');
 				return false;
 			} else {
 				return true;
@@ -29,7 +38,7 @@
 
 		function checkRegexp(o, regexp, n) {
 			if (!(regexp.test(o.val()))) {
-				o.addClass("ui-state-error");
+				o.addClass('ui-state-error');
 				updateTips(n);
 				return false;
 			} else {
@@ -37,7 +46,7 @@
 			}
 		}
 
-		$("#dialog-form")
+		$('#dialog-form')
 				.dialog(
 						{
 							autoOpen : false,
@@ -45,43 +54,43 @@
 							width : 350,
 							modal : true,
 							buttons : {
-								"Đăng nhập" : function() {
+								'Đăng nhập' : function() {
 									var bValid = true;
-									allFields.removeClass("ui-state-error");
+									allFields.removeClass('ui-state-error');
 
 									bValid = bValid
 											&& checkLength(tenTaiKhoan,
-													"tên tài khoản", 4, 16);
+													'tên tài khoản', 4, 16);
 									bValid = bValid
-											&& checkLength(matKhau, "mật khẩu",
+											&& checkLength(matKhau, 'mật khẩu',
 													4, 16);
 
 									bValid = bValid
 											&& checkRegexp(
 													tenTaiKhoan,
 													/^[a-z]([0-9a-z_])+$/i,
-													"Tên tài khoản chỉ bao gồm các kí tự a-z, 0-9, gạch dưới, và bắt đầu bằng một chữ cái.");
+													'Tên tài khoản chỉ bao gồm các kí tự a-z, 0-9, gạch dưới, và bắt đầu bằng một chữ cái.');
 									bValid = bValid
 											&& checkRegexp(matKhau,
 													/^([0-9a-zA-Z])+$/,
-													"Mật khẩu chỉ cho phép các kí tự: a-z 0-9");
+													'Mật khẩu chỉ cho phép các kí tự: a-z 0-9');
 
 									if (bValid) {
-										$("#dialog-form form").submit();
-										$(this).dialog("close");
+										$('#dialog-form form').submit();
+										$(this).dialog('close');
 									}
 								},
 								Cancel : function() {
-									$(this).dialog("close");
+									$(this).dialog('close');
 								}
 							},
 							close : function() {
-								allFields.val("").removeClass("ui-state-error");
+								allFields.val('').removeClass('ui-state-error');
 							}
 						});
 
-		$("#lnkLogIn").click(function() {
-			$("#dialog-form").dialog("open");
+		$('#lnkLogIn').click(function() {
+			$('#dialog-form').dialog('open');
 		});
 	});
 </script>
@@ -92,14 +101,18 @@
   <form method="post" action="<c:url value='/general/login' />">
     <table>
       <tr>
-        <td><label for="tenTaiKhoan">Tên tài khoản</label></td>
+        <td align="left"><label for="tenTaiKhoan">Tên tài khoản</label></td>
         <td><input type="text" name="tenTaiKhoan" id="tenTaiKhoan"
             class="text ui-widget-content ui-corner-all" /></td>
       </tr>
       <tr>
-        <td><label for="matKhau">Mật khẩu</label></td>
+        <td align="left"><label for="matKhau">Mật khẩu</label></td>
         <td><input type="password" name="matKhau" id="matKhau" value=""
             class="text ui-widget-content ui-corner-all" /></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="ghiNho" id="ghiNho" /></td>
+        <td align="left"><label for="ghiNho">Ghi nhớ</label></td>
       </tr>
     </table>
     <input type="hidden" name="returnUrl" id="returnUrl" value="" />
@@ -132,7 +145,8 @@
   </c:when>
   <c:otherwise>
     <div id="userlocations">
-      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a> <a href="#">HƯỚNG DẪN</a>
+      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a>
+      <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:otherwise>
 </c:choose>

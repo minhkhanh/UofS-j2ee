@@ -26,7 +26,7 @@
 	</definition>
 	<definition name="PostProduct" extends="TemplateMain">
 		<put-attribute name="content" value="/jsp/content/PostProduct.jsp" />
-		<put-attribute name="title" value="vBay - Trang Đăng Ký Tài Khoản" />
+		<put-attribute name="title" value="vBay - Trang Đăng Sản Phẩm Đấu Giá" />
 	</definition>
 	<definition name="Register" extends="TemplateMain">
 		<put-attribute name="content" value="/jsp/content/Register.jsp" />
@@ -50,7 +50,7 @@
 	</definition>
 	<definition name="Product" extends="TemplateProduct">
 		<put-attribute name="contentwrap" value="/jsp/content/Product.jsp" />
-		<put-attribute name="title" value="vBay - TemplateStore" />
+		<put-attribute name="title" value="vBay - Trang Chi Tiết Sản Phẩm" />
 	</definition>
 	<definition name="Search" extends="TemplateMain">
 		<put-attribute name="content" value="/jsp/content/Search.jsp" />

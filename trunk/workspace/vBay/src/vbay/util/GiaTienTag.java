@@ -34,7 +34,6 @@ public class GiaTienTag extends TagSupport {
 	
 	@Override
 	public int doStartTag() throws JspException {
-		// TODO Auto-generated method stub
 		JspWriter out = this.pageContext.getOut();
 		try {
 			out.println (String.format("%,d", giaTien) + " " + strUnit);

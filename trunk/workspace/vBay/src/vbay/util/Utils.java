@@ -3,7 +3,9 @@ package vbay.util;
 import java.net.URL;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gdata.client.youtube.YouTubeService;
@@ -24,6 +26,32 @@ public class Utils {
     public final static String SESS_ACC = "taiKhoan";
     public final static String SESS_ACTFAIL = "actionFailure";
     public final static String SESS_RETURL = "returnUrl";
+    
+    public final static String SESATT_ACCNAME = "tenTaiKhoan";
+    public final static String SESATT_PASSW = "matKhau";
+    
+    public final static Cookie createCookie(String name, String value, String path, int maxAge) {
+        Cookie cookie = new Cookie(name, value);
+        cookie.setPath(path);
+        cookie.setMaxAge(maxAge);
+        
+        return cookie;
+    }
+    
+    public final static void removeLoggingCookie(Cookie[] cookies, HttpServletResponse response) {
+        Cookie cookie = new Cookie(Utils.SESATT_ACCNAME, "");
+        cookie.setPath("/");
+        cookie.setMaxAge(0);// delete this cookie
+        response.addCookie(cookie);
+        
+        cookie = new Cookie(Utils.SESATT_PASSW, "");
+        cookie.setPath("/");
+        cookie.setMaxAge(0);// delete this cookie
+        
+        response.addCookie(cookie);
+        
+        System.out.println("logging cookie removed ");
+    }
 
     public final static void removeTransferAttributes(HttpSession session) {
         session.removeAttribute(Utils.SESS_ACTFAIL);
@@ -56,13 +84,14 @@ public class Utils {
             service.setUserCredentials("vbaynet@gmail.com", "ak127601");
         } catch (AuthenticationException e1) {
             e1.printStackTrace();
+            return;
         }
 
         VideoEntry newEntry = new VideoEntry();
 
         YouTubeMediaGroup mg = newEntry.getOrCreateMediaGroup();
         mg.setTitle(new MediaTitle());
-        mg.getTitle().setPlainTextContent("My Test Movie 2");
+        mg.getTitle().setPlainTextContent("My Test Movie -3");
         mg.addCategory(new MediaCategory(YouTubeNamespace.CATEGORY_SCHEME, "Autos"));
         mg.setKeywords(new MediaKeywords());
         mg.getKeywords().addKeyword("cars");
@@ -83,6 +112,7 @@ public class Utils {
             token = service.getFormUploadToken(uploadUrl, newEntry);
         } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
 
         request.setAttribute("youtubePostUrl", token.getUrl());

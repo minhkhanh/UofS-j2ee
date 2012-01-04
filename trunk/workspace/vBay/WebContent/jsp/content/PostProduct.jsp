@@ -59,25 +59,13 @@
           <td><input type="file" name="hinhAnh" class="hinhAnh"></td>
         </tr>
         <tr>
-          <td></td>
           <td><input type="button" id="themAnh" value="Thêm ảnh"></td>
+          <td></td>
         </tr>
         <tr>
           <td><input type="submit" name="submitChiTietSP" value="Đăng sản phẩm"></td>
         </tr>
       </table>
     </form>
-    <%--     <form id="formYoutubeUpload" action="${youtubePostUrl}?nexturl=" method="post" --%>
-    <!--       enctype="multipart/form-data"> -->
-    <!--       <input type="file" name="clip" /> -->
-    <%--       <input type="hidden" name="token" value="${youtubeToken}" /> --%>
-    <!--       <input type="submit" value="Go" /> -->
-    <!--     </form> -->
-    <!--     <script type="text/javascript"> -->
-    <!-- // 					$("#formYoutubeUpload").attr( -->
-    <!-- // 							"action", -->
-    <!-- // 							$("#formYoutubeUpload").attr("action") -->
-    <!-- // 									+ document.URL); -->
-    <!-- 				</script> -->
   </div>
 </div>

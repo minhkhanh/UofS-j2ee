@@ -35,4 +35,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<bean id="filterBean" class="vbay.filter.MainFilter">
+	</bean>
+
 </beans>
