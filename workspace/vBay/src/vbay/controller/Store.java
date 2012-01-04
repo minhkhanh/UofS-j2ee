@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/Store")
+@RequestMapping("/Store.vby")
 public class Store {
 
     @RequestMapping(method = RequestMethod.GET)
