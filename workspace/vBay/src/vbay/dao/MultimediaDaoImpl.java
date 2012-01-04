@@ -23,4 +23,9 @@ public class MultimediaDaoImpl implements MultimediaDao {
         return sessionFactory.getCurrentSession().save(multimedia);
     }
 
+    @Override
+    public Multimedia layMultimedia(int maMultimedia) {
+        return (Multimedia) sessionFactory.getCurrentSession().get(Multimedia.class, maMultimedia);
+    }
+
 }

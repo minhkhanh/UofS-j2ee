@@ -28,7 +28,7 @@ public class SanPhamDaoImpl implements SanPhamDao {
     public Integer themSanPham(SanPham sanPham) {
         sanPham.setNgayDang(new Date());
         return (Integer) sessionFactory.getCurrentSession().save(sanPham);
-    }
+    }    
 
     @Override
 	@Transactional(readOnly = true)

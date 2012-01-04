@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="toplogo">
-  <img width="150px" height="150px" src="<c:url value='res/image/clockstore.jpg'/>" />
+  <img width="150px" height="150px" src='<c:url value='res/image/clockstore.jpg'/>' />
 </div>
 <div id="welcome">
   <p>

@@ -2,7 +2,8 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-    request.setCharacterEncoding("UTF-8");
+//     request.setCharacterEncoding("UTF-8");
+// 	  response.setCharacterEncoding("UTF-8");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,11 +19,16 @@
 <link href="<c:url value='/res/style/userpanel.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/mainmenu.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/style/timepicker.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/res/jquery-ui/css/trontastic/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
+<link href="<c:url value='/res/jquery-ui/trontastic/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
   type="text/css" />
 <script src="<c:url value='/res/script/jquery-1.6.2.js' />"></script>
-<script src="<c:url value='/res/jquery-ui/js/jquery-ui-1.8.16.custom.min.js' />"></script>
+
+<script src="<c:url value='/res/jquery-ui/trontastic/jquery-ui-1.8.16.custom.min.js' />"></script>
 <script src="<c:url value='/res/script/jquery-ui-timepicker-addon.js' />"></script>
+
+<link href="<c:url value='/res/ajaxupload/fileuploader.css'/>" rel="stylesheet" type="text/css" />
+<script src="<c:url value='/res/script/main.js' />" type="text/javascript"></script>
+<script src="<c:url value='/res/script/jquery.form-2.77.js' />" type="text/javascript"></script>
 <script>
 	$(function() {
 		$("input:submit, button").button();
@@ -30,6 +36,8 @@
 </script>
 </head>
 <body>
+  <c:set var="contextPath" value="${pageContext.servletContext.contextPath }" scope="request"></c:set>
+  <input type="hidden" value="${pageContext.servletContext.contextPath }" id="contextPath">
   <div id="container">
 
     <div id="userpanel">
