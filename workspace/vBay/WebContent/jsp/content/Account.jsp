@@ -46,7 +46,7 @@
         </tr>
         <tr>
           <td>Email</td>
-          <td><input type="text" name="email" value="${taiKhoan.thongTinTaiKhoan.email }" /></td>
+          <td><input type="text" name="email" value="${taiKhoan.email }" /></td>
         </tr>
         <tr>
           <td>Địa chỉ</td>
