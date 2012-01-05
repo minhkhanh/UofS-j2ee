@@ -78,6 +78,35 @@ a {
 	
 }
 
+.thumbpitem {
+	float: left;
+	width: 120px;
+	margin: 0px 17px 62px 17px;
+}
+
+.thumbpitem_img_con {
+	height: 110px;
+	width: 120px;
+	margin-top: 10px;
+	border: #cccccc 1px solid;
+}
+.thumbpitem_img_con_inner {
+	border: white 1px solid;
+	height: 108px;
+	width: 118px;
+	overflow: hidden;
+}
+.thumbpitem_img {
+	height: 108px;
+	width: 118px;
+	display: table;
+	overflow: hidden;
+}
+.thumbpitem_title {
+	margin-top: 8px;
+	size: 10px;
+}
+
 .contentframe {
 	border: #003783 1px solid;
 }

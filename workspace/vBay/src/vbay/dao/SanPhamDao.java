@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import vbay.model.ChiTietDauGia;
 import vbay.model.SanPham;
 
 public interface SanPhamDao {
@@ -14,7 +15,7 @@ public interface SanPhamDao {
     Integer soLuongTrangTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int soSPTrenTrang, Integer soLuong);
     List<SanPham> timKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int trangHienThi, int soSPTrenTrang);
     List<SanPham> hotAuctions();
-    List<SanPham> recentlySoldProducts();
+    List<ChiTietDauGia> recentlySoldProducts();
     List<SanPham> newAuctions();
     
 }

@@ -30,8 +30,8 @@ public class ChiTietDauGia implements java.io.Serializable{
 	@Column(name = "GiaGiaoDich")
 	private int giaGiaoDich;
 	
-	@Column(name = "ThoiDiemGiaoDich")
-	private Date thoiDiemGiaoDich;
+	@Column(name = "ThoiGianGiaoDich")
+	private Date thoiGianGiaoDich;
 	
 	@Column(name = "TinhTrang")
 	private String tinhTrang;
@@ -64,12 +64,12 @@ public class ChiTietDauGia implements java.io.Serializable{
 		this.giaGiaoDich = giaGiaoDich;
 	}
 
-	public Date getThoiDiemGiaoDich() {
-		return thoiDiemGiaoDich;
+	public Date getThoiGianGiaoDich() {
+		return thoiGianGiaoDich;
 	}
 
-	public void setThoiDiemGiaoDich(Date thoiDiemGiaoDich) {
-		this.thoiDiemGiaoDich = thoiDiemGiaoDich;
+	public void setThoiGianGiaoDich(Date thoiGianGiaoDich) {
+		this.thoiGianGiaoDich = thoiGianGiaoDich;
 	}
 
 	public String getTinhTrang() {

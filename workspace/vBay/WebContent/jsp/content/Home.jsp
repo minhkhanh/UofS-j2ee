@@ -1,39 +1,138 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="captionbox ui-widget-header ui-corner-top">XIN CHÀO</div>
-  <div class="content">
-    Các bạn đang ở trang web Đấu Giá Online.
-    <br />
-    <c:if test="${!empty nameAttr }">
-      <h2>name = ${nameAttr }</h2>
-    </c:if>
-    <c:if test="${empty nameAttr }">
-      <h2>Không có param name trong url</h2>
-    </c:if>
-  </div>
+	<div class="contextbox ui-widget-header ui-corner-top">SẢN PHẨM
+		MỚI</div>
+	<div class="content">
+		<c:forEach var="sp" items="${newAuctions}" varStatus="i">
+			<div class="thumbpitem">
+				<div class="thumbpitem_img_con">
+					<div class="thumbpitem_img_con_inner">
+						<div class="thumbpitem_img">
+							<a href="#"><img width="118px" height="108px" src="<c:url value='${listImageNewAuctions.get(i.index)}'/>"> </a>
+						</div>
+					</div>
+				</div>
+				<div
+					style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
+					<em>Price:</em>
+				</div>
+				<div
+					style="margin-right: 2px; font-size: 11px; color: #f92c0a">
+					<b>${sp.giaHienTai} VNĐ</b>
+				</div>
+				<div
+					style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
+					<em>Ngày hết hạn:</em>
+				</div>
+				<div
+					style="margin-right: 2px; font-size: 11px; color: #f92c0a">
+					<b>${sp.ngayHetHan}</b>
+				</div>
+				<div class="thumbpitem_title">
+					<a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 </div>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="captionbox ui-widget-header ui-corner-top">TEST AJAX TAGS</div>
-  <div class="content"></div>
-  <form id="formYoutubeUpload"
-    action="${youtubePostUrl }?nexturl=http://localhost:8080/vBay/general/ytnext" method='POST'
-    enctype="multipart/form-data">
-    <input type="file" name="clip" />
-    <input type="hidden" name="token" value="${youtubeToken}" />
-    <input type="submit" value="Go" />
-  </form>
-  <div id="ajaxOut"></div>
+	<div class="contentbox ui-widget-header ui-corner-top">SẢN PHẨM
+		HOT</div>
+	<div class="content">
+		<c:forEach var="sp" items="${hotAuctions}" varStatus="i">
+			<div class="thumbpitem">
+			<div class="thumbpitem_img_con">
+				<div class="thumbpitem_img_con_inner">
+					<div class="thumbpitem_img">
+						<a href="#"><img width="118px" height="108px" src="<c:url value='${listImageHotAuctions.get(i.index)}'/>"> </a>
+						</div>
+					</div>
+				</div>
+				<div
+					style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
+					<em>Price:</em>
+				</div>
+				<div
+					style="margin-right: 2px; font-size: 11px; color: #f92c0a">
+					<b>${sp.giaHienTai} VNĐ</b>
+				</div>
+				<div
+					style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
+					<em>Ngày hết hạn:</em>
+				</div>
+				<div
+					style="margin-right: 2px; font-size: 11px; color: #f92c0a">
+					<b>${sp.ngayHetHan}</b>
+				</div>
+				<div class="thumbpitem_title">
+					<a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+</div>
+
+<div class="contentframe ui-widget-content ui-corner-all">
+	<div class="contentbox ui-widget-header ui-corner-top">SẢN PHẨM
+		ĐÃ BÁN</div>
+	<div class="content">
+		<c:forEach var="ct" items="${recentlySoldProducts}" varStatus="i">
+			<div class="thumbpitem">
+			<div class="thumbpitem_img_con">
+				<div class="thumbpitem_img_con_inner">
+					<div class="thumbpitem_img">
+						<a href="#"><img width="118px" height="108px" src="<c:url value='${listImageRecentlySold.get(i.index)}'/>"> </a>
+					</div>
+				</div>
+			</div>
+			<div style="float: left; margin-right: 2px; font-size: 16px; color: #cccccc"><b><em>Selled:</em></b></div>
+			<div style="float: left; margin-right: 2px; font-size: 16px; color: #f92c0a"><b>${ct.giaGiaoDich} VNĐ</b></div>
+			<div class="thumbpitem_title">
+				<a href="#"><b>${ct.sanPham.tenSanPham.toUpperCase()}</b></a>
+			</div>
+		</div>
+		</c:forEach>
+	</div>
+</div>
+
+<div class="contentframe ui-widget-content ui-corner-all">
+	<div class="captionbox ui-widget-header ui-corner-top">XIN CHÀO</div>
+	<div class="content">
+		Các bạn đang ở trang web Đấu Giá Online. <br />
+		<c:if test="${!empty nameAttr }">
+			<h2>name = ${nameAttr }</h2>
+		</c:if>
+		<c:if test="${empty nameAttr }">
+			<h2>Không có param name trong url</h2>
+		</c:if>
+	</div>
+</div>
+
+<div class="contentframe ui-widget-content ui-corner-all">
+	<div class="captionbox ui-widget-header ui-corner-top">TEST AJAX
+		TAGS</div>
+	<div class="content"></div>
+	<form id="formYoutubeUpload"
+		action="${youtubePostUrl }?nexturl=http://localhost:8080/vBay/general/ytnext"
+		method='POST' enctype="multipart/form-data">
+		<input type="file" name="clip" /> <input type="hidden" name="token"
+			value="${youtubeToken}" /> <input type="submit" value="Go" />
+	</form>
+	<div id="ajaxOut"></div>
 </div>
 <script type="text/javascript">
 	$('#formYoutubeUpload')
 			.ajaxForm(
 					{
 						beforeSubmit : function() {
-// 							$('#ajaxOut').css({'display': 'inline'});
-							$('#ajaxOut').html('<img src="${contextPath}/res/ajaxupload/loading.gif" />');
+							// 							$('#ajaxOut').css({'display': 'inline'});
+							$('#ajaxOut')
+									.html(
+											'<img src="${contextPath}/res/ajaxupload/loading.gif" />');
 						},
 						success : function(responseText, statusText, xhr, $form) {
 							$('#ajaxOut')
@@ -45,9 +144,10 @@
 </script>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="captionbox ui-widget-header ui-corner-top">TEST AJAX TAGS</div>
-  <div class="content"></div>
-  <div id="file-uploader"></div>
+	<div class="captionbox ui-widget-header ui-corner-top">TEST AJAX
+		TAGS</div>
+	<div class="content"></div>
+	<div id="file-uploader"></div>
 </div>
 <script type="text/javascript">
 	var uploader = new qq.FileUploader(
