@@ -48,7 +48,12 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "MaLoaiGioiTinh")
     private LoaiGioiTinh loaiGioiTinh;
-
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MaCuaHang")
+    private CuaHang cuaHang;
+    
+    
     public LoaiGioiTinh getLoaiGioiTinh() {
         return loaiGioiTinh;
     }
@@ -127,5 +132,13 @@ public class ThongTinTaiKhoan implements java.io.Serializable {
 
 	public void setNoiSinh(String noiSinh) {
 		this.noiSinh = noiSinh;
+	}
+
+	public CuaHang getCuaHang() {
+		return cuaHang;
+	}
+
+	public void setCuaHang(CuaHang cuaHang) {
+		this.cuaHang = cuaHang;
 	}
 }

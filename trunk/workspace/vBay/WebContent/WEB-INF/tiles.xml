@@ -64,4 +64,8 @@
 		<put-attribute name="content" value="/jsp/content/ErrorMessage.jsp" />
 		<put-attribute name="title" value="vBay - Có lỗi sảy ra" />
 	</definition>		
+	<definition name="CreateStore" extends="TemplateMain">
+		<put-attribute name="content" value="/jsp/content/CreateStore.jsp" />
+		<put-attribute name="title" value="vBay - Trang Tạo cửa hàng" />
+	</definition>	
 </tiles-definitions>
