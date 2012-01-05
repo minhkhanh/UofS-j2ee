@@ -1,12 +1,17 @@
 package vbay.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -45,6 +50,9 @@ public class TaiKhoan implements java.io.Serializable {
 
     @Column(name = "DaKichHoatEmail", nullable = false)
     private boolean daKichHoatEmail;
+    
+//    @OneToMany(fetch=FetchType.EAGER, mappedBy="")
+//    private Set<ChiTietDauGia> chiTietDauGias = new HashSet<ChiTietDauGia>(0);
     
     public ThongTinTaiKhoan getThongTinTaiKhoan() {
         return thongTinTaiKhoan;
@@ -105,7 +113,7 @@ public class TaiKhoan implements java.io.Serializable {
         this.coHieuLuc = coHieuLuc;
     }
 
-	public String isEmail() {
+	public String getEmail() {
 		return email;
 	}
 
