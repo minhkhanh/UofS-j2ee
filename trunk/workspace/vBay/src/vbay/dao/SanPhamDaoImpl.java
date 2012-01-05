@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import vbay.model.ChiTietDauGia;
 import vbay.model.Multimedia;
 import vbay.model.SanPham;
 
@@ -22,19 +23,19 @@ import vbay.model.SanPham;
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class SanPhamDaoImpl implements SanPhamDao {
 
-    @Autowired
-    SessionFactory sessionFactory;
-    @Autowired
-    ChiTietDauGiaDao chiTietDauGiaDao;
-    
-    @Override
-    @Transactional(readOnly = false)
-    public Integer themSanPham(SanPham sanPham) {
-        sanPham.setNgayDang(new Date());
-        return (Integer) sessionFactory.getCurrentSession().save(sanPham);
-    }    
+	@Autowired
+	SessionFactory sessionFactory;
+	@Autowired
+	ChiTietDauGiaDao chiTietDauGiaDao;
 
-    @Override
+	@Override
+	@Transactional(readOnly = false)
+	public Integer themSanPham(SanPham sanPham) {
+		sanPham.setNgayDang(new Date());
+		return (Integer) sessionFactory.getCurrentSession().save(sanPham);
+	}
+
+	@Override
 	@Transactional(readOnly = true)
 	public ArrayList<String> layDanhSachHinhAnh(int maSanPham) {
 		SanPham sp = new SanPham();
@@ -56,6 +57,11 @@ public class SanPhamDaoImpl implements SanPhamDao {
 			dsHinhAnh = null;
 		}
 
+		if (dsHinhAnh.size() == 0) {
+			String str = "no_image";
+			dsHinhAnh.add(str);
+		}
+		
 		return dsHinhAnh;
 	}
 
@@ -70,17 +76,18 @@ public class SanPhamDaoImpl implements SanPhamDao {
 	@Transactional(readOnly = true)
 	public Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham,
 			int giaNhoNhat, int giaLonNhat, Date thoiGian) {
-		
+
 		if (khoaTimKiem == null) {
-			khoaTimKiem = "";			
+			khoaTimKiem = "";
 		}
-		
-		if (khoaTimKiem.equals("") && maLoaiSanPham == -1 && giaNhoNhat == 0 && giaLonNhat == 0 && thoiGian == null) {
+
+		if (khoaTimKiem.equals("") && maLoaiSanPham == -1 && giaNhoNhat == 0
+				&& giaLonNhat == 0 && thoiGian == null) {
 			return 0;
 		}
-		
+
 		Integer soLuong = 0;
-		
+
 		Session session = null;
 		try {
 			session = sessionFactory.getCurrentSession();
@@ -89,7 +96,7 @@ public class SanPhamDaoImpl implements SanPhamDao {
 			if (!khoaTimKiem.equals("")) {
 				hql += " and sp.tenSanPham like :khoaTimKiem";
 			}
-			
+
 			if (maLoaiSanPham != -1) {
 				hql += " and sp.loaiSanPham.maLoaiSanPham =:maLoaiSanPham";
 			}
@@ -154,18 +161,19 @@ public class SanPhamDaoImpl implements SanPhamDao {
 	public List<SanPham> timKiem(String khoaTimKiem, int maLoaiSanPham,
 			int giaNhoNhat, int giaLonNhat, Date thoiGian, int trangHienThi,
 			int soSPTrenTrang) {
-		
+
 		if (khoaTimKiem == null) {
 			khoaTimKiem = "";
 		}
-		
-		if (khoaTimKiem.equals("") && maLoaiSanPham == -1 && giaNhoNhat == 0 && giaLonNhat == 0 && thoiGian == null) {
+
+		if (khoaTimKiem.equals("") && maLoaiSanPham == -1 && giaNhoNhat == 0
+				&& giaLonNhat == 0 && thoiGian == null) {
 			return null;
 		}
-		
+
 		List<SanPham> dsSanPham = null;
 		Session session = null;
-		
+
 		try {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
@@ -209,50 +217,39 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			dsSanPham = null;
-		} 
-		
+		}
+
 		return dsSanPham;
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
-	public List<SanPham> hotAuctions(){
+	public List<SanPham> hotAuctions() {
 		return chiTietDauGiaDao.hotAuctions();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional(readOnly=true)
-	public List<SanPham> recentlySoldProducts(){
-		List<SanPham> dsSanPham = null;
-		Session session = null;
-		try{
-			session = sessionFactory.getCurrentSession();
-			String hql = "Select sp from SanPham sp where sp.tinhTrangSanPham.maTinhTrangSanPham=2 order by sp.ngayDang desc";
-			Query query = session.createQuery(hql);
-			dsSanPham = query.setMaxResults(10).list();
-		}catch (Exception ex){
-			ex.printStackTrace();
-			dsSanPham = null;			
-		}		
-		return dsSanPham;
+	@Transactional(readOnly = true)
+	public List<ChiTietDauGia> recentlySoldProducts() {
+		return chiTietDauGiaDao.recentlySoldProducts();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional(readOnly=true)
-	public List<SanPham> newAuctions(){
+	@Transactional(readOnly = true)
+	public List<SanPham> newAuctions() {
 		List<SanPham> dsSanPham = null;
 		Session session = null;
-		try{
+		try {
 			session = sessionFactory.getCurrentSession();
 			String hql = "Select sp from SanPham sp order by sp.ngayDang desc";
 			Query query = session.createQuery(hql);
-			dsSanPham = query.setMaxResults(10).list();
-		}catch (Exception ex){
+			dsSanPham = query.setMaxResults(5).list();
+		} catch (Exception ex) {
 			ex.printStackTrace();
-			dsSanPham = null;			
-		}		
+			dsSanPham = null;
+		}
 		return dsSanPham;
 	}
 }

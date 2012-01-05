@@ -4,9 +4,9 @@
 <div class="contentframe ui-widget-content ui-corner-all">
   <div class="captionbox ui-widget-header ui-corner-top">TÌM KIẾM TRONG CỬA HÀNG</div>
   <div class="content">
-    <form method="get" action="" name="formTimNhanh">
-      <input type="text" name="tenTivi" value="" style="width: 60%" />
-      <input type="submit" value="Tìm kiếm" name="submitTimNhanh" style="width: 30%">
+    <form method="get" action="Search.vby" name="formTimNhanh">
+      <input type="text" name="khoaTimKiem" value="" style="width: 55%" />
+      <input type="submit" value="Tìm kiếm" name="submitTimNhanh" style="width: 40%">
     </form>
   </div>
 </div>
