@@ -13,4 +13,8 @@ public interface SanPhamDao {
     Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian);
     Integer soLuongTrangTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int soSPTrenTrang, Integer soLuong);
     List<SanPham> timKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int trangHienThi, int soSPTrenTrang);
+    List<SanPham> hotAuctions();
+    List<SanPham> recentlySoldProducts();
+    List<SanPham> newAuctions();
+    
 }

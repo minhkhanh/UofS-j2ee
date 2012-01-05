@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.UniqueConstraint;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +24,8 @@ public class SanPhamDaoImpl implements SanPhamDao {
 
     @Autowired
     SessionFactory sessionFactory;
+    @Autowired
+    ChiTietDauGiaDao chiTietDauGiaDao;
     
     @Override
     @Transactional(readOnly = false)
@@ -207,6 +211,48 @@ public class SanPhamDaoImpl implements SanPhamDao {
 			dsSanPham = null;
 		} 
 		
+		return dsSanPham;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<SanPham> hotAuctions(){
+		return chiTietDauGiaDao.hotAuctions();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly=true)
+	public List<SanPham> recentlySoldProducts(){
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try{
+			session = sessionFactory.getCurrentSession();
+			String hql = "Select sp from SanPham sp where sp.tinhTrangSanPham.maTinhTrangSanPham=2 order by sp.ngayDang desc";
+			Query query = session.createQuery(hql);
+			dsSanPham = query.setMaxResults(10).list();
+		}catch (Exception ex){
+			ex.printStackTrace();
+			dsSanPham = null;			
+		}		
+		return dsSanPham;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly=true)
+	public List<SanPham> newAuctions(){
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try{
+			session = sessionFactory.getCurrentSession();
+			String hql = "Select sp from SanPham sp order by sp.ngayDang desc";
+			Query query = session.createQuery(hql);
+			dsSanPham = query.setMaxResults(10).list();
+		}catch (Exception ex){
+			ex.printStackTrace();
+			dsSanPham = null;			
+		}		
 		return dsSanPham;
 	}
 }

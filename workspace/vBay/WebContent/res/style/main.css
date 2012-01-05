@@ -141,6 +141,7 @@ a {
 	float: left; /* default direction to float*/
 }
 
+
 .bl {
 	background: url(../image/bl_corner.png) 0 100% no-repeat;
 }
@@ -150,10 +151,10 @@ a {
 }
 
 .tl {
-	background: url(../image/tl_corner.png) 0 0 no-repeat;
+	background: url(../image/tl_corner.png) 0 0 no-repeat;	
 }
 
 .tr {
 	background: url(../image/tr_corner.png) 100% 0 no-repeat;
-	padding: 15px
+	padding: 10px;
 }
