@@ -7,40 +7,23 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import vbay.model.ThongTinTaiKhoan;
+import vbay.model.CuaHang;
 
-@Repository("thongTinTaiKhoanDao")
+@Repository("cuaHangDao")
 @Transactional(propagation = Propagation.REQUIRES_NEW)
-public class ThongTinTaiKhoanDaoImpl implements ThongTinTaiKhoanDao {
+public class CuaHangDaoImpl implements CuaHangDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
-    @Override
-    @Transactional(readOnly = false)
-	public boolean themThongTinTaiKhoan(ThongTinTaiKhoan thongTinTaiKhoan) {
-   		Session session = null;
-   		try {
-   			session = sessionFactory.getCurrentSession();
-   			session.beginTransaction();
-   			session.save(thongTinTaiKhoan);
-   			session.getTransaction().commit();
-   			return true;
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			System.out.println(e);
-			return false;
-		}
-	}
-
 	@Override
 	@Transactional(readOnly = false)
-	public boolean capNhatThongTinTaiKhoan(ThongTinTaiKhoan thongTinTaiKhoan) {
+	public boolean themCuaHang(CuaHang cuaHang) {
    		Session session = null;
    		try {
    			session = sessionFactory.getCurrentSession();
    			//session.beginTransaction();
-   			session.saveOrUpdate(thongTinTaiKhoan);
+   			session.save(cuaHang);
    			//session.getTransaction().commit();
    			return true;
 		} catch (Exception e) {

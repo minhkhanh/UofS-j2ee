@@ -21,21 +21,20 @@
     <div class="contentframe ui-corner-all">
       <div class="captionbox ui-widget-header ui-corner-top">
       	<span class="posttile">
-      		Các phiên đấu giá sắp kết thúc
+      		Mô tả cửa hàng
       	</span>
       	<span class="postcontrols">
       		<a id="editpost"
-      		class="editpost" rel="nofollow"> Sửa Bài Viết</a>
+      		class="editpost" rel="nofollow"> Sửa </a>
       	</span>
       </div>
       <div id="contentThongTinCuaHang">
-		<p>This is some <strong>sample text</strong>. You are using <a href="http://ckeditor.com/">CKEditor</a>.</p>;
+		<!-- <p>This is some <strong>sample text</strong>. You are using <a href="http://ckeditor.com/">CKEditor</a>.</p>; -->
+		${cuaHang.moTaCuaHang }
       </div>      
     </div>
 <div id="dialog-form-editor" title="Sửa nội dung">
-	<form>
-		<textarea id="editor1" name="editor1" ></textarea>
-	</form>
+	<textarea id="editor1" name="editor1" ></textarea>
 </div>    
 <script type="text/javascript">
 <!--
@@ -46,8 +45,7 @@
 			width: 800,
 			modal: true,
 			buttons: {
-				"Sửa nội dung": function() {
-					//$('.contentThongTinCuaHang').html($('#editor1').html());					
+				"Lưu": function() {
 					document.getElementById('contentThongTinCuaHang').innerHTML  =  CKEDITOR.instances['editor1'].getData(); //$('#editor1').val();
 					CKEDITOR.instances['editor1'].destroy();
 					$( this ).dialog( "close" );
@@ -61,10 +59,6 @@
 	});
 	$("#editpost").click(function(){
 		$( "#dialog-form-editor" ).dialog( "open" );
-		//$('#editor1').ckeditor();		
-		//$('#editor1').val('&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are    using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;');
-		//CKEDITOR.dom.document.getBody().innerHTML = '&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are    using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;';
-		//$('#editor1').html('&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;');
 		CKEDITOR.replace( 'editor1' );
 		CKEDITOR.instances['editor1'].setData(document.getElementById('contentThongTinCuaHang').innerHTML);
 	});
