@@ -78,6 +78,29 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
         }
     }
 
+	@Override
+	@Transactional(readOnly = true)
+	public TaiKhoan layTaiKhoanTheoMa(int maTaiKhoan) {
+        TaiKhoan taiKhoan = null;
+        Session session = null;
+
+        try {
+            session = sessionFactory.getCurrentSession();
+
+            String hqlString = "select tk from TaiKhoan tk"
+                    + " where tk.maTaiKhoan = :maTaiKhoan and tk.coHieuLuc = 1";
+
+            taiKhoan = (TaiKhoan) session.createQuery(hqlString)
+                    .setInteger("maTaiKhoan", maTaiKhoan).list()
+                    .get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            taiKhoan = null;
+        }
+
+        return taiKhoan;
+	}
+
     @Override
     public void capNhat(TaiKhoan taiKhoan) {
         try {

@@ -6,10 +6,15 @@
     <div class="contentframe ui-widget-content ui-corner-all">
       <div class="captionbox ui-widget-header ui-corner-top">Các phiên đấu giá sắp kết thúc</div>
       <div class="content">
-        <ul class="vertlist">
-          <li><a href="#">Đồng hồ điện tử 6 số của Vua Bảo Đại - $3000</a></li>
-          <li><a href="#">Đồng hồ cát chạy pin AAA - $155</a></li>
-          <li><a href="#">Đồng hồ đếm giờ mặt không số - $2000</a></li>
+        <ul class="vertlist">    
+			<c:if test="${empty dsSanPhamSapKetThuc }">
+				<li>Chưa đăng sản phẩm nào.</li>
+			</c:if>        
+			<c:forEach var="sanPham" items="${dsSanPhamSapKetThuc}">
+				<li>
+					<a href='./Detail.vby?id=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${sanPham.giaHienTai?sanPham.giaHienTai:sanPham.giaKhoiDiem}</a>
+				</li> 
+			</c:forEach>   
         </ul>
       </div>
     </div>
@@ -19,9 +24,14 @@
       <div class="captionbox ui-widget-header ui-corner-top">Các sản phẩm mới đăng</div>
       <div class="content">
         <ul class="vertlist">
-          <li><a href="#">Đồng hồ điện tử 6 số của Vua Bảo Đại - $3000</a></li>
-          <li><a href="#">Đồng hồ cát chạy pin AAA - $155</a></li>
-          <li><a href="#">Đồng hồ đếm giờ mặt không số - $2000</a></li>
+			<c:if test="${empty dsSanPhamMoiDang }">
+				<li>Chưa đăng sản phẩm nào.</li>
+			</c:if>        
+			<c:forEach var="sanPham" items="${dsSanPhamMoiDang}">
+				<li>
+					<a href='./Detail.vby?id=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${sanPham.giaHienTai?sanPham.giaHienTai:sanPham.giaKhoiDiem}</a>
+				</li> 
+			</c:forEach>            
         </ul>
       </div>
     </div>
@@ -29,33 +39,43 @@
 </div>
 <hr class="clearfloat" />
 <div id="itemlist">
-  <form name="formThongSoHienThi" method="get" action="#">
+  <form name="formThongSoHienThi" method="get" action="">
+  	<input type="hidden" name="id" value="${id }"/>
     <table width="100%" cellpadding="5" cellspacing="0">
-      <tr>
-        <td align="left">Trang <a href="#"><b>1</b> </a> <a href="#">2</a> <a href="#">3</a>
-        </td>
-        <td align="right" width="50%"><label for="soSPTrenTrang">Số sản phẩm trên trang
-        </label> <select name="soSPTrenTrang" style="width: 20%" onchange="submit()">
-            <option value="5" selected="selected">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select></td>
-      <tr>
-        <td width="50%"></td>
-        <td align="right"><label for="kieuHienThi">Kiểu hiển thị </label> <select
-            name="kieuHienThi" style="width: 20%" onchange="submit()">
-            <option value="detail">Chi tiết</option>
-            <option value="brief">Ngắn gọn</option>
-            <option value="list">Danh sách</option>
-          </select> <input type="hidden" name="maDanhMuc" value="" /> <input type="hidden" name="tenSanPham"
-            value="" /> <input type="hidden" name="trangHienThi" value="1" /> <input type="hidden"
-            name="soSPTrenTrangPrev" value="5" /></td>
-      </tr>
+					<tr>
+						<td align="left">Trang <c:forEach var="i" begin="1"
+								end="${soTrang}">
+								<a
+									href="Store.vby?id=${param.id}&trangHienThi=${i}&soSPTrenTrang=${soSPTrenTrang}">
+									<c:choose>
+										<c:when test="${trangHienThi == i}">
+											<b>${i}</b>
+										</c:when>
+										<c:otherwise>${i}</c:otherwise>
+									</c:choose>
+								</a>
+							</c:forEach>
+						</td>
+						<td align="right" width="50%"><label for="soSPTrenTrang">Số
+								sản phẩm trên trang </label> <select name="soSPTrenTrang"
+							style="height: 25px; width: 53px;" onchange="submit()">
+								<!-- <option value="-1" selected="selected">Tất cả</option> -->
+								<c:forEach var="i" begin="1" end="3">
+									<c:choose>
+										<c:when test="${i*10 == soSPTrenTrang}">
+											<option value="${i*10}" selected="selected">${i*10}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${i*10}">${i*10}</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+						</select></td>
+					</tr>      
     </table>
   </form>
   <br />
-  <table width="100%" class="product_table" cellspacing="0" cellpadding="5">
+<%--   <table width="100%" class="product_table" cellspacing="0" cellpadding="5">
     <tr>
       <td width="20%"><strong>Hình ảnh</strong></td>
       <td width="28%"><strong>Mô tả</strong></td>
@@ -82,29 +102,67 @@
       <td width="7%"><strong>0</strong></td>
       <td width="17%"><strong>22/12/2012</strong></td>
     </tr>
-  </table>
+  </table> --%>
+	<table class="product_table" width="100%" cellspacing="0" cellpadding="5">
+		<tr>
+			<th width="60%" colspan="2">Mô tả</th>
+			<th width="13%">Giá</th>
+			<th width="14%">Bids</th>
+			<th width="13%">Kết thúc</th>
+		</tr>
+		<c:forEach var="sp" items="${dsSanPham}" varStatus="status">
+			<tr>
+				<td width="20%"><a href="#"><img width="75px"
+						height="75px"
+						src="<c:url value='${dsHinhAnh.get(count.index)}'/>"> </a></td>
+				<c:choose>
+					<c:when test="${status.first == true }">
+						<td colspan="4">${sp.moTaSanPham}</td>
+					</c:when>
+					<c:otherwise>
+						<td width="40%"><a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a></td>
+						<td width="13%" align="center">${sp.giaKhoiDiem }</td>
+						<td width="14%" align="center">${sp.giaHienTai}</td>
+						<td width="13%">${sp.ngayHetHan}</td>
+					</c:otherwise>
+				</c:choose>
+			</tr>
+		</c:forEach>
+	</table>  
   <br />
-  <table width="100%" cellpadding="5" cellspacing="0">
-    <tr>
-      <td align="left">Trang <a href="#"><b>1</b> </a> <a href="#">2</a> <a href="#">3</a>
-      </td>
-      <td align="right" width="50%"><label for="soSPTrenTrang">Số sản phẩm trên trang </label>
-        <select name="soSPTrenTrang" style="width: 20%" onchange="submit()">
-          <option value="5" selected="selected">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-        </select></td>
-    <tr>
-      <td width="50%"></td>
-      <td align="right"><label for="kieuHienThi">Kiểu hiển thị </label> <select
-          name="kieuHienThi" style="width: 20%" onchange="submit()">
-          <option value="detail">Chi tiết</option>
-          <option value="brief">Ngắn gọn</option>
-          <option value="list">Danh sách</option>
-        </select> <input type="hidden" name="maDanhMuc" value="" /> <input type="hidden" name="tenSanPham"
-          value="" /> <input type="hidden" name="trangHienThi" value="1" /> <input type="hidden"
-          name="soSPTrenTrangPrev" value="5" /></td>
-    </tr>
-  </table>
+ <form name="formThongSoHienThi" method="get" action="">
+  	<input type="hidden" name="id" value="${id }"/>
+    <table width="100%" cellpadding="5" cellspacing="0">
+					<tr>
+						<td align="left">Trang <c:forEach var="i" begin="1"
+								end="${soTrang}">
+								<a
+									href="Store.vby?id=${param.id}&trangHienThi=${i}&soSPTrenTrang=${soSPTrenTrang}">
+									<c:choose>
+										<c:when test="${trangHienThi == i}">
+											<b>${i}</b>
+										</c:when>
+										<c:otherwise>${i}</c:otherwise>
+									</c:choose>
+								</a>
+							</c:forEach>
+						</td>
+						<td align="right" width="50%"><label for="soSPTrenTrang">Số
+								sản phẩm trên trang </label> <select name="soSPTrenTrang"
+							style="height: 25px; width: 53px;" onchange="submit()">
+								<!-- <option value="-1" selected="selected">Tất cả</option> -->
+								<c:forEach var="i" begin="1" end="3">
+									<c:choose>
+										<c:when test="${i*10 == soSPTrenTrang}">
+											<option value="${i*10}" selected="selected">${i*10}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${i*10}">${i*10}</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+						</select></td>
+					</tr>      
+    </table>
+  </form>
 </div>

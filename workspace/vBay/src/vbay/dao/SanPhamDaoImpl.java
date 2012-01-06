@@ -250,14 +250,107 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		return dsSanPham;
 	}
 
-    @Override
+	@Override
     public void capNhat(SanPham sanPham) {
         sessionFactory.getCurrentSession().update(sanPham);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional(readOnly = true)
 	public List<SanPham> sanPhamMoiDang(int maTaiKhoan) {
-		// TODO Auto-generated method stub
-		return null;
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			String hql = "Select sp from SanPham sp where sp.taiKhoan.maTaiKhoan=:maTaiKhoan order by sp.ngayDang desc";
+			Query query = session.createQuery(hql);
+			query.setInteger("maTaiKhoan", maTaiKhoan);
+			dsSanPham = query.setMaxResults(3).list();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			dsSanPham = null;
+		}
+		return dsSanPham;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public List<SanPham> sanPhamSapKetThuc(int maTaiKhoan) {
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			String hql = "Select sp from SanPham sp where sp.taiKhoan.maTaiKhoan=:maTaiKhoan and sp.ngayHetHan>current_date() order by (sp.ngayHetHan-current_date()) asc";
+			Query query = session.createQuery(hql);
+			query.setInteger("maTaiKhoan", maTaiKhoan);
+			dsSanPham = query.setMaxResults(3).list();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			dsSanPham = null;
+		}
+		return dsSanPham;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Integer soLuongSanPhamCuaHang(int maTaiKhoan) {
+		Integer soLuong = 0;
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			String hql = "select count(*) from SanPham sp where sp.taiKhoan.maTaiKhoan=:maTaiKhoan";
+
+			Query query = session.createQuery(hql);
+			query.setInteger("maTaiKhoan", maTaiKhoan);
+			soLuong = ((Long) query.list().get(0)).intValue();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return soLuong;
+	}
+
+	@Override
+	public Integer soLuongTrangCuaHang(int maTaiKhoan, int soSPTrenTrang,
+			Integer soLuong) {
+		Integer pageNume = 0;
+		try {
+			pageNume = soLuong / soSPTrenTrang;
+			if (soLuong % soSPTrenTrang != 0) {
+				++pageNume;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return pageNume;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public List<SanPham> sanPhamCuaHang(int maTaiKhoan, int trangHienThi,
+			int soSPTrenTrang) {
+
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			String hql = "from SanPham sp where sp.taiKhoan.maTaiKhoan=:maTaiKhoan";
+			Query query = session.createQuery(hql);
+			query.setInteger("maTaiKhoan", maTaiKhoan);
+
+			int pos = (trangHienThi - 1) * soSPTrenTrang;
+			dsSanPham = query.setFirstResult(pos).setMaxResults(soSPTrenTrang)
+					.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			dsSanPham = null;
+		}
+
+		return dsSanPham;
 	}
 }
