@@ -42,40 +42,49 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
     }
 
     @Transactional(readOnly = true)
-	@Override
-	public boolean kiemTraTonTaiTenTaiKhoan(String tenTaiKhoan) {
+    @Override
+    public boolean kiemTraTonTaiTenTaiKhoan(String tenTaiKhoan) {
         Session session = null;
 
         try {
             session = sessionFactory.getCurrentSession();
 
-            String hqlString = "from TaiKhoan tk"
-                    + " where tk.tenTaiKhoan = :tenTaiKhoan";
+            String hqlString = "from TaiKhoan tk" + " where tk.tenTaiKhoan = :tenTaiKhoan";
 
-            return !session.createQuery(hqlString).setString("tenTaiKhoan", tenTaiKhoan).list().isEmpty();
+            return !session.createQuery(hqlString).setString("tenTaiKhoan", tenTaiKhoan).list()
+                    .isEmpty();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-	}
+    }
 
-	@Override
-	@Transactional(readOnly = false)
-	public boolean themTaiKhoan(TaiKhoan taiKhoan) {
-   		Session session = null;
-   		//Transaction tran = null;
-   		try {
-   			session = sessionFactory.getCurrentSession();
-   			//tran = session.beginTransaction();
-   			//tran.begin();
-   			session.save(taiKhoan);
-   			//tran.commit();
-   			return true;
-		} catch (Exception e) {
-			//tran.rollback();
-			System.out.println(e);
-			return false;
-		}
-	}
+    @Override
+    @Transactional(readOnly = false)
+    public boolean themTaiKhoan(TaiKhoan taiKhoan) {
+        Session session = null;
+        // Transaction tran = null;
+        try {
+            session = sessionFactory.getCurrentSession();
+            // tran = session.beginTransaction();
+            // tran.begin();
+            session.save(taiKhoan);
+            // tran.commit();
+            return true;
+        } catch (Exception e) {
+            // tran.rollback();
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public void capNhat(TaiKhoan taiKhoan) {
+        try {
+            sessionFactory.getCurrentSession().update(taiKhoan);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

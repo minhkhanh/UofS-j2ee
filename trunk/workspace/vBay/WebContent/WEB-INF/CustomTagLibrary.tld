@@ -6,7 +6,25 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"> 
    <tlib-version>1.0</tlib-version> 
    <short-name>customtaglibrary</short-name> 
-   <uri>/WEB-INF/CustomTagLibrary</uri> 
+   <uri>/WEB-INF/CustomTagLibrary</uri>
+   <tag> 
+        <name>ShowMultimediaTag</name> 
+        <tag-class>vbay.customtag.ShowMultimediaTag</tag-class>
+        <body-content>empty</body-content>  
+        <attribute>
+        	<name>multimedia</name>
+        	<required>true</required>
+        	<rtexprvalue>true</rtexprvalue>
+        </attribute>        
+        <attribute>
+        	<name>width</name>
+        	<required>false</required>
+        </attribute>
+        <attribute>
+        	<name>height</name>
+        	<required>false</required>
+        </attribute>      
+   </tag> 
    <tag> 
         <name>GiaTienTag</name> 
         <tag-class>vbay.util.GiaTienTag</tag-class>

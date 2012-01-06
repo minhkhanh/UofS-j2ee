@@ -51,9 +51,17 @@ public class TaiKhoan implements java.io.Serializable {
     @Column(name = "DaKichHoatEmail", nullable = false)
     private boolean daKichHoatEmail;
     
-//    @OneToMany(fetch=FetchType.EAGER, mappedBy="")
-//    private Set<ChiTietDauGia> chiTietDauGias = new HashSet<ChiTietDauGia>(0);
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="chiTietDauGiaId.taiKhoan", cascade = CascadeType.ALL)
+    private Set<ChiTietDauGia> chiTietDauGias = new HashSet<ChiTietDauGia>(0);
     
+    public Set<ChiTietDauGia> getChiTietDauGias() {
+        return chiTietDauGias;
+    }
+
+    public void setChiTietDauGias(Set<ChiTietDauGia> chiTietDauGias) {
+        this.chiTietDauGias = chiTietDauGias;
+    }
+
     public ThongTinTaiKhoan getThongTinTaiKhoan() {
         return thongTinTaiKhoan;
     }

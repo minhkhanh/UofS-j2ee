@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -59,6 +60,17 @@ public class SanPham implements java.io.Serializable {
     @ManyToMany(fetch=FetchType.EAGER, targetEntity = Multimedia.class, cascade = CascadeType.ALL)
     @JoinTable(name = "sanpham_multimedia", joinColumns = @JoinColumn(name = "MaSanPham"), inverseJoinColumns = @JoinColumn(name = "MaMultimedia"))
     private Set<Multimedia> multimedias = new HashSet<Multimedia>(0);
+    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "chiTietDauGiaId.sanPham", cascade = CascadeType.ALL)
+    public Set<ChiTietDauGia> chiTietDauGias = new HashSet<ChiTietDauGia>(0);
+
+    public Set<ChiTietDauGia> getChiTietDauGias() {
+        return chiTietDauGias;
+    }
+
+    public void setChiTietDauGias(Set<ChiTietDauGia> chiTietDauGias) {
+        this.chiTietDauGias = chiTietDauGias;
+    }
 
     public Set<Multimedia> getMultimedias() {
         return multimedias;

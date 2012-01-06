@@ -46,21 +46,6 @@ public class GeneralController {
 
     @Autowired
     LoaiTaiKhoanDao loaiTaiKhoanDao;
-    
-    @Autowired
-    MultimediaDao multimediaDao;
-    
-    @RequestMapping(value="/productdemo", method=RequestMethod.POST)
-    public @ResponseBody String getProductDemo(HttpServletRequest request, @RequestParam String maMultimedia) {
-        Multimedia multimedia = multimediaDao.layMultimedia(Integer.valueOf(maMultimedia));
-        if (multimedia.getLoaiMultimedia().getMaLoaiMultimedia() == 1) {        // multimedia is a picture
-            return "<img src='" + Utils.createFullPath(request.getServletContext(), multimedia.getLinkURL()) + "' />";
-        } else if (multimedia.getLoaiMultimedia().getMaLoaiMultimedia() == 2) { // multimedia is a Youtube video clip
-            return "<iframe width='560' height='315' src='http://www.youtube.com/embed/" + multimedia.getLinkURL() + "' frameborder='0' allowfullscreen></iframe>";
-        }
-        
-        return "";
-    }
 
     @RequestMapping(params = { "id", "status" }, value = "/ytnext")
     public @ResponseBody
@@ -82,7 +67,7 @@ public class GeneralController {
     public ModelAndView logIn(HttpSession session, HttpServletRequest request,
             HttpServletResponse response, String tenTaiKhoan, String matKhau, String ghiNho,
             String returnUrl) {
-        System.out.println("/general/login");
+        //System.out.println("/general/login");
         if (session.getAttribute(Utils.SESS_ACC) != null) {
             return new ModelAndView("redirect:/Home.vby");
         }
@@ -91,7 +76,7 @@ public class GeneralController {
         if (taiKhoan != null) {
             session.removeAttribute(Utils.SESS_ACTFAIL);
             session.removeAttribute(Utils.SESS_RETURL);
-            session.setAttribute("taiKhoan", taiKhoan);
+            session.setAttribute(Utils.SESS_ACC, taiKhoan);
 
             if (ghiNho != null) {
                 response.addCookie(Utils.createCookie(Utils.SESATT_ACCNAME, tenTaiKhoan, "/", 60*2));
@@ -101,6 +86,9 @@ public class GeneralController {
                 Utils.removeLoggingCookie(request.getCookies(), response);
             }
 
+            if (returnUrl == null) {
+                returnUrl = "/Home.vby";
+            }
             String mapPath = Utils.getMapPath(session.getServletContext(), returnUrl);
             return new ModelAndView("redirect:" + mapPath);
         }
