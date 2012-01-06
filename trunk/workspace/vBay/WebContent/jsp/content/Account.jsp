@@ -8,7 +8,7 @@
 		$('#matKhauCu').change(
 				function() {
 					$.post('${contextPath}/Account.vby', {
-						matKhauCu : $('#matKhauCu').val()
+						matKhauCu : MD5($('#matKhauCu').val())
 					}, function(data) {
 
 						if (data == 'false') {
@@ -42,6 +42,12 @@
 									'#matKhauMoi02').val() == '')) {
 						return false;
 					}
+
+					$('#matKhauCu').val(MD5($('#matKhauCu').val()));
+					$('#matKhauMoi').val(MD5($('#matKhauMoi').val()));
+					$('#matKhauMoi02').val(MD5($('#matKhauMoi02').val()));
+					
+					return true;
 				});
 
 		$('#frmThongTinLienLac').submit(function() {

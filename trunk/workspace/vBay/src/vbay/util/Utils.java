@@ -30,6 +30,8 @@ public class Utils {
     public final static String SESATT_ACCNAME = "tenTaiKhoan";
     public final static String SESATT_PASSW = "matKhau";
     
+    public final static String REQATT_CATLIST = "dsLoaiSanPham";
+    
     public final static Cookie createCookie(String name, String value, String path, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath(path);

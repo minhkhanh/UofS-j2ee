@@ -1,6 +1,7 @@
 package vbay.filter;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
@@ -17,8 +18,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import vbay.dao.LoaiSanPhamDao;
 import vbay.dao.TaiKhoanDao;
+import vbay.model.LoaiSanPham;
 import vbay.model.TaiKhoan;
 import vbay.util.Utils;
 
@@ -34,10 +36,17 @@ public class MainFilter implements Filter {
     @Autowired
     TaiKhoanDao taiKhoanDao;
 
+    @Autowired
+    LoaiSanPhamDao loaiSanPhamDao;
+
+//    List<LoaiSanPham> dsLoaiSanPham;
+
     /**
      * Default constructor.
      */
     public MainFilter() {
+        System.out.println("filter created");
+//        dsLoaiSanPham = loaiSanPhamDao.layDanhSachLoaiSanPham();
     }
 
     /**
@@ -51,16 +60,21 @@ public class MainFilter implements Filter {
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        
+
+        if (request.getAttribute(Utils.REQATT_CATLIST) == null) {
+            List<LoaiSanPham> ds = loaiSanPhamDao.layDanhSachLoaiSanPham();
+            request.setAttribute(Utils.REQATT_CATLIST, ds);
+        }
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         HttpServletRequest hreq = (HttpServletRequest) request;
         HttpServletResponse hres = (HttpServletResponse) response;
-        
+
         HttpSession session = hreq.getSession();
-        
-//        System.out.println("filter " + cookies.length);
+
+        // System.out.println("filter " + cookies.length);
         if (session.getAttribute(Utils.SESS_ACC) == null) {
             Cookie[] cookies = hreq.getCookies();
             if (cookies != null) {
@@ -87,10 +101,10 @@ public class MainFilter implements Filter {
                 }
 
                 // still no account logged
-//                if (session.getAttribute(Utils.SESS_ACC) == null) {
-////                    response.setContentType("text/html");
-//                    Utils.removeLoggingCookie(hres);
-//                }
+                // if (session.getAttribute(Utils.SESS_ACC) == null) {
+                // // response.setContentType("text/html");
+                // Utils.removeLoggingCookie(hres);
+                // }
             }
         }
 
