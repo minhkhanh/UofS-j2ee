@@ -250,6 +250,11 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		return dsSanPham;
 	}
 
+    @Override
+    public void capNhat(SanPham sanPham) {
+        sessionFactory.getCurrentSession().update(sanPham);
+    }
+
 	@Override
 	public List<SanPham> sanPhamMoiDang(int maTaiKhoan) {
 		// TODO Auto-generated method stub

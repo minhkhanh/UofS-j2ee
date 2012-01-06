@@ -80,7 +80,7 @@
 										$(this).dialog('close');
 									}
 								},
-								Cancel : function() {
+								'Thoát' : function() {
 									$(this).dialog('close');
 								}
 							},
@@ -89,8 +89,9 @@
 							}
 						});
 
-		$('#lnkLogIn').click(function() {
+		$('.lnkLogIn').click(function() {
 			$('#dialog-form').dialog('open');
+			return false;	// to prevent sending request to a href
 		});
 	});
 </script>
@@ -145,7 +146,7 @@
   </c:when>
   <c:otherwise>
     <div id="userlocations">
-      <a id="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a>
+      <a class="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a>
       <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:otherwise>

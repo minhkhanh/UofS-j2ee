@@ -51,7 +51,6 @@ public class MainFilter implements Filter {
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-//        System.out.println("main filter accessed");
         
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
