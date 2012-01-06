@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.UniqueConstraint;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -228,7 +226,6 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		return chiTietDauGiaDao.hotAuctions();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<ChiTietDauGia> recentlySoldProducts() {
@@ -251,5 +248,11 @@ public class SanPhamDaoImpl implements SanPhamDao {
 			dsSanPham = null;
 		}
 		return dsSanPham;
+	}
+
+	@Override
+	public List<SanPham> sanPhamMoiDang(int maTaiKhoan) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

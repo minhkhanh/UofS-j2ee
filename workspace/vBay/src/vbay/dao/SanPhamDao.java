@@ -18,4 +18,5 @@ public interface SanPhamDao {
     List<ChiTietDauGia> recentlySoldProducts();
     List<SanPham> newAuctions();
     
+    List<SanPham> sanPhamMoiDang(int maTaiKhoan);
 }
