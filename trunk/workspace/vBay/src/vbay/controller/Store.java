@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import vbay.dao.CuaHangDao;
@@ -54,9 +56,9 @@ public class Store {
         TaiKhoan tk = (TaiKhoan)session.getAttribute(Utils.SESS_ACC);
         CuaHang cuaHang = tk.getThongTinTaiKhoan().getCuaHang();
         if (cuaHang==null) {
-        	System.out.println("táº¡o cá»­a hÃ ng.");
+        	System.out.println("tao cua hang.");
         	cuaHang = new CuaHang();
-        	cuaHang.setMoTaCuaHang("MÃ´ táº£ cá»­a hÃ ng.");
+        	cuaHang.setMoTaCuaHang("Mô tả cửa hàng.");
         	if (cuaHangDao.themCuaHang(cuaHang)) {
         		tk.getThongTinTaiKhoan().setCuaHang(cuaHang);
         		thongTinTaiKhoanDao.capNhatThongTinTaiKhoan(tk.getThongTinTaiKhoan());
@@ -65,5 +67,23 @@ public class Store {
         }
         request.setAttribute("cuaHang", cuaHang);
         return new ModelAndView("Store");
+    }    
+    @RequestMapping(value="/capNhatMoTaCuaHang", method = RequestMethod.POST)
+    public @ResponseBody String capNhatMoTaCuaHang(HttpServletRequest request , HttpSession session) {
+        if (session.getAttribute(Utils.SESS_ACC) == null) {
+            return "false";
+        }
+        String moTaCuaHang = request.getParameter("moTaCuaHang");
+        TaiKhoan tk = (TaiKhoan)session.getAttribute(Utils.SESS_ACC);
+        CuaHang cuaHang = tk.getThongTinTaiKhoan().getCuaHang();
+        if (cuaHang==null) {
+        	return "false";
+        }
+        if (moTaCuaHang==null || moTaCuaHang.length()<5) return "false";
+        
+        System.out.println("ajax cap nhat mo ta:" + moTaCuaHang);
+        cuaHang.setMoTaCuaHang(moTaCuaHang);
+        cuaHangDao.capNhatCuaHang(cuaHang);
+        return "true";
     }
 }
