@@ -3,21 +3,6 @@
 <link href="<c:url value='/res/style/store.css'/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
 
-<%-- <div id="toplogo">
-  <img width="150px" height="150px" src='<c:url value='res/image/clockstore.jpg'/>' />
-</div>
-<div id="welcome">
-  <p>
-    <b>Chào mừng bạn đến với cửa hàng Đồng Hồ WHATEVER.</b>
-  </p>
-  <p>Chúng tôi chuyên bán đấu giá các loại đồng hồ cổ có xuất xứ từ Việt Nam và các nước trên
-    Thế giới.</p>
-</div> --%>
-<style>
-<!--
-
--->
-</style>
     <div class="contentframe ui-corner-all">
       <div class="captionbox ui-widget-header ui-corner-top">
       	<span class="posttile">
@@ -45,9 +30,19 @@
 			width: 800,
 			modal: true,
 			buttons: {
-				"Lưu": function() {
-					document.getElementById('contentThongTinCuaHang').innerHTML  =  CKEDITOR.instances['editor1'].getData(); //$('#editor1').val();
-					CKEDITOR.instances['editor1'].destroy();
+				"Lưu": function() {		
+			        $.ajax({
+			        	url: "./Store/capNhatMoTaCuaHang",
+			        	type: "post",
+			        	dataType: "text",
+			        	data: CKEDITOR.instances['editor1'].getData(),
+			      		success: function(data) {
+			    			if (data == "true") {
+			    				document.getElementById('contentThongTinCuaHang').innerHTML  =  CKEDITOR.instances['editor1'].getData();
+								CKEDITOR.instances['editor1'].destroy();
+			    			}
+			    	    }
+			    	});
 					$( this ).dialog( "close" );
 				},
 				"Hủy bỏ": function() {

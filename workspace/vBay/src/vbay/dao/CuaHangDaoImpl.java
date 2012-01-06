@@ -33,4 +33,17 @@ public class CuaHangDaoImpl implements CuaHangDao {
 		}
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public boolean capNhatCuaHang(CuaHang cuaHang) {
+   		Session session = null;
+   		try {
+   			session = sessionFactory.getCurrentSession();
+   			session.saveOrUpdate(cuaHang);
+   			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
 }
