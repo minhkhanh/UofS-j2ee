@@ -19,4 +19,8 @@ public interface SanPhamDao {
     List<SanPham> newAuctions();
     void capNhat(SanPham sanPham);
     List<SanPham> sanPhamMoiDang(int maTaiKhoan);
+    List<SanPham> sanPhamSapKetThuc(int maTaiKhoan);
+    Integer soLuongSanPhamCuaHang(int maTaiKhoan);
+    Integer soLuongTrangCuaHang(int maTaiKhoan, int soSPTrenTrang, Integer soLuong);
+    List<SanPham> sanPhamCuaHang(int maTaiKhoan, int trangHienThi, int soSPTrenTrang);    
 }
