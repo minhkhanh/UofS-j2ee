@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
-        request.setCharacterEncoding("UTF-8");
-				  response.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,7 +22,8 @@
 <link href="<c:url value='/res/style/timepicker.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/res/jquery-ui/trontastic/jquery-ui-1.8.16.custom.css'/>" rel="stylesheet"
   type="text/css" />
-<link href="<c:url value='/res/countdown/jquery.countdown.custom.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/res/countdown/jquery.countdown.custom.css'/>" rel="stylesheet"
+  type="text/css" />
 
 <script src="<c:url value='/res/script/jquery-1.6.2.js' />"></script>
 <script src="<c:url value='/res/countdown/jquery.countdown.js' />"></script>
@@ -32,6 +34,7 @@
 <link href="<c:url value='/res/ajaxupload/fileuploader.css'/>" rel="stylesheet" type="text/css" />
 <script src="<c:url value='/res/script/main.js' />" type="text/javascript"></script>
 <script src="<c:url value='/res/script/jquery.form-2.77.js' />" type="text/javascript"></script>
+<script src="<c:url value='/res/script/register.js' />" type="text/javascript"></script>
 <script>
 	$(function() {
 		$("input:submit, button").button();

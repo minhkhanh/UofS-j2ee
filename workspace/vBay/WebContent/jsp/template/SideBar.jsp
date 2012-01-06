@@ -5,11 +5,9 @@
   <div class="captionbox ui-widget-header ui-corner-top">DANH MỤC CHÍNH</div>
   <div class="content">
     <ul class="vertlist">
-      <li><a href="#"><strong>Antiques</strong></a></li>
-      <li><a href="#"><strong>Baby</strong></a></li>
-      <li><a href="#"><strong>Coins And Currency</strong></a></li>
-      <li><a href="#"><strong>DVD's And Movies</strong></a></li>
-      <li><a href="#"><strong>Electronics</strong></a></li>
+      <c:forEach var="loaiSanPham" items="${ dsLoaiSanPham}">
+        <li><a href="#"><strong>${loaiSanPham.tenLoaiSanPham }</strong></a></li>
+      </c:forEach>
     </ul>
   </div>
 </div>

@@ -3,7 +3,6 @@
 <%@ taglib uri="/WEB-INF/CustomTagLibrary" prefix="tmk" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <link href="<c:url value='/res/style/register.css'/>" rel="stylesheet" type="text/css" />
-<script src="<c:url value='/res/script/register.js' />"></script>
 <%-- <c:if test="${dkThanhCong eq true}">
 	<table width="500px" border="1" cellspacing="0" cellpadding="5" align="center">
 			<tr bgcolor="#666666">

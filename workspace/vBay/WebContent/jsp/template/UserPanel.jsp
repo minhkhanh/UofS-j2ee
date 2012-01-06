@@ -6,10 +6,10 @@
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$('#dialog:ui-dialog').dialog('destroy');
 
-// 		$('#ghiNho').button();
+		// 		$('#ghiNho').button();
 		$('#ghiNho').click(function() {
 			if ($(this).button('option', 'label') == 'Ghi nhớ') {
-				$(this).button('option', 'label', 'Không ghi nhớ'); 
+				$(this).button('option', 'label', 'Không ghi nhớ');
 			} else {
 				$(this).button('option', 'label', 'Ghi nhớ');
 			}
@@ -76,6 +76,11 @@
 													'Mật khẩu chỉ cho phép các kí tự: a-z 0-9');
 
 									if (bValid) {
+										$('#dialog-form form #matKhau')
+												.val(
+														MD5($(
+																'#dialog-form form #matKhau')
+																.val()));
 										$('#dialog-form form').submit();
 										$(this).dialog('close');
 									}
@@ -91,7 +96,7 @@
 
 		$('.lnkLogIn').click(function() {
 			$('#dialog-form').dialog('open');
-			return false;	// to prevent sending request to a href
+			return false; // to prevent sending request to a href
 		});
 	});
 </script>
@@ -146,8 +151,8 @@
   </c:when>
   <c:otherwise>
     <div id="userlocations">
-      <a class="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG KÝ</a>
-      <a href="#">HƯỚNG DẪN</a>
+      <a class="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG
+        KÝ</a> <a href="#">HƯỚNG DẪN</a>
     </div>
   </c:otherwise>
 </c:choose>

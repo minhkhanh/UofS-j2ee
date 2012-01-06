@@ -31,7 +31,6 @@ public class Search {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView handle(HttpSession session, HttpServletRequest request) {
-
 		String typeSearch = request.getParameter("typeSearch");
 		if (typeSearch != null)
 			if (typeSearch.equals("advancedSearch")) {
