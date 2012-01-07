@@ -2,97 +2,107 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="contextbox ui-widget-header ui-corner-top">SẢN PHẨM MỚI</div>
-  <div class="content">
-    <c:forEach var="sp" items="${newAuctions}" varStatus="i">
-      <div class="thumbpitem">
-        <div class="thumbpitem_img_con">
-          <div class="thumbpitem_img_con_inner">
-            <div class="thumbpitem_img">
-              <a href="#"><img width="118px" height="108px"
-                src="<c:url value='${listImageNewAuctions.get(i.index)}'/>"> </a>
-            </div>
-          </div>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
-          <em>Price:</em>
-        </div>
-        <div style="margin-right: 2px; font-size: 11px; color: #f92c0a">
-          <b>${sp.giaHienTai} VNĐ</b>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
-          <em>Ngày hết hạn:</em>
-        </div>
-        <div style="margin-right: 2px; font-size: 11px; color: #f92c0a">
-          <b>${sp.ngayHetHan}</b>
-        </div>
-        <div class="thumbpitem_title">
-          <a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
-        </div>
-      </div>
-    </c:forEach>
-  </div>
+	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM MỚI</div>
+	<div class="content" style="display: table;">
+		<c:forEach var="sp" items="${newAuctions}" varStatus="i">
+			<div class="thumbpitem">
+					<div class="thumbpitem_img_con">
+						<div class="thumbpitem_img_con_inner">
+							<div class="thumbpitem_img">
+								<a href="#"><img width="118px" height="108px"
+									src="<c:url value='${listImageNewAuctions.get(i.index)}'/>">
+								</a>
+							</div>
+						</div>
+					</div>
+					<div
+						style="float: left; margin-right: 5px; font-size: 9px; color: #cccccc">
+						<em>Price:</em>
+					</div>
+					<div style="margin-right: 5px; font-size: 11px; color: #f92c0a">
+						<b>${sp.giaHienTai} VNĐ</b>
+					</div>
+					<div
+						style="float: left; margin-right: 5px; font-size: 9px; color: #cccccc">
+						<em>Ngày hết hạn:</em>
+					</div>
+					<div style="margin-right: 5px; font-size: 11px; color: #f92c0a">
+						<b>${sp.ngayHetHan}</b>
+					</div>
+					<div class="thumbpitem_title">
+						<a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
+					</div>
+			</div>
+		</c:forEach>
+	</div>
 </div>
 
 <div class="contentframe ui-widget-content ui-corner-all">
-  <div class="contentbox ui-widget-header ui-corner-top">SẢN PHẨM HOT</div>
-  <div class="content">
-    <c:forEach var="sp" items="${hotAuctions}" varStatus="i">
-      <div class="thumbpitem">
-        <div class="thumbpitem_img_con">
-          <div class="thumbpitem_img_con_inner">
-            <div class="thumbpitem_img">
-              <a href="#"><img width="118px" height="108px"
-                src="<c:url value='${listImageHotAuctions.get(i.index)}'/>"> </a>
-            </div>
-          </div>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
-          <em>Price:</em>
-        </div>
-        <div style="margin-right: 2px; font-size: 11px; color: #f92c0a">
-          <b>${sp.giaHienTai} VNĐ</b>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
-          <em>Ngày hết hạn:</em>
-        </div>
-        <div style="margin-right: 2px; font-size: 11px; color: #f92c0a">
-          <b>${sp.ngayHetHan}</b>
-        </div>
-        <div class="thumbpitem_title">
-          <a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
-        </div>
-      </div>
-    </c:forEach>
-  </div>
+	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM HOT</div>
+	<div class="content" style="display: table;">
+		<c:forEach var="sp" items="${hotAuctions}" varStatus="i">
+			<div class="thumbpitem">
+				<div class="thumbpitem_img_con">
+					<div class="thumbpitem_img_con_inner">
+						<div class="thumbpitem_img">
+							<a href="#"><img width="118px" height="108px"
+								src="<c:url value='${listImageHotAuctions.get(i.index)}'/>">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div
+					style="float: left; margin-right: 2px; font-size: 9px; color: #cccccc">
+					<em>Price:</em>
+				</div>
+				<div style="margin-right: 5px; font-size: 11px; color: #f92c0a">
+					<b>${sp.giaHienTai} VNĐ</b>
+				</div>
+				<div
+					style="float: left; margin-right: 5px; font-size: 9px; color: #cccccc">
+					<em>Ngày hết hạn:</em>
+				</div>
+				<div style="margin-right: 5px; font-size: 11px; color: #f92c0a">
+					<b>${sp.ngayHetHan}</b>
+				</div>
+				<div class="thumbpitem_title">
+					<a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+</div>
+<div class="contentframe ui-widget-content ui-corner-all">
+	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM ĐÃ BÁN</div>
+	<div class="content" style="display: table;">
+		<c:forEach var="ct" items="${recentlySoldProducts}" varStatus="i">
+			<div class="thumbpitem">
+				<div class="thumbpitem_img_con">
+					<div class="thumbpitem_img_con_inner">
+						<div class="thumbpitem_img">
+							<a href="#"><img width="118px" height="108px"
+								src="<c:url value='${listImageRecentlySold.get(i.index)}'/>">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div
+					style="float: left; margin-right: 5px; font-size: 16px; color: #f92c0a">
+					<b><em>Selled:</em></b>
+				</div>
+				<div
+					style="margin-right: 2px;margin-bottom: 10px;font-size: 16px; color: yellow;">
+					<b>${ct.giaGiaoDich} VNĐ</b>
+				</div>
+				<div class="thumbpitem_title">
+					<a href="#"><b>${ct.sanPham.tenSanPham.toUpperCase()}</b></a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 </div>
 
-<div class="contentframe ui-widget-content ui-corner-all">
-  <div class="contentbox ui-widget-header ui-corner-top">SẢN PHẨM ĐÃ BÁN</div>
-  <div class="content">
-    <c:forEach var="ct" items="${recentlySoldProducts}" varStatus="i">
-      <div class="thumbpitem">
-        <div class="thumbpitem_img_con">
-          <div class="thumbpitem_img_con_inner">
-            <div class="thumbpitem_img">
-              <a href="#"><img width="118px" height="108px"
-                src="<c:url value='${listImageRecentlySold.get(i.index)}'/>"> </a>
-            </div>
-          </div>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 16px; color: #cccccc">
-          <b><em>Selled:</em></b>
-        </div>
-        <div style="float: left; margin-right: 2px; font-size: 16px; color: #f92c0a">
-          <b>${ct.giaGiaoDich} VNĐ</b>
-        </div>
-        <div class="thumbpitem_title">
-          <a href="#"><b>${ct.sanPham.tenSanPham.toUpperCase()}</b></a>
-        </div>
-      </div>
-    </c:forEach>
-  </div>
-</div>
+
 
 <div class="contentframe ui-widget-content ui-corner-all">
   <div class="captionbox ui-widget-header ui-corner-top">XIN CHÀO</div>

@@ -130,7 +130,7 @@ public class Search {
 		else {
 			for (SanPham sp : dsSanPham) {
 				try {						
-					dsHinhAnh.add(sanPhamDao.layDanhSachHinhAnh(sp.getMaSanPham()).get(0));
+					dsHinhAnh.add(sanPhamDao.layDanhSachHinhAnh(sp).get(0));
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
