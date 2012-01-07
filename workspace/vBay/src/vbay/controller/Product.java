@@ -45,7 +45,7 @@ public class Product {
     public ModelAndView show(@RequestParam String maSanPham) {
         ModelAndView modelView = new ModelAndView("Product");
 
-        SanPham sanPham = sanPhamDao.laySanPham(Integer.valueOf(maSanPham));
+        SanPham sanPham = sanPhamDao.timSanPhamTheoId(Integer.valueOf(maSanPham));
         modelView.addObject(sanPham);
         if (sanPham.getMultimedias().size() > 0) {
             modelView.addObject("multimedia01", sanPham.getMultimedias().toArray()[0]);
@@ -100,7 +100,7 @@ public class Product {
             return "Vui lòng <b><a class='lnkLogIn' href=''>Đăng nhập lại.</a></b>";
         }
 
-        SanPham sanPham = sanPhamDao.laySanPham(Integer.valueOf(maSanPham));
+        SanPham sanPham = sanPhamDao.timSanPhamTheoId(Integer.valueOf(maSanPham));
         if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() != 1) { // dau gia ket thuc
             return "So sorry, the auction has just ended.";
         }

@@ -49,6 +49,8 @@
 		$('#dialog-form')
 				.dialog(
 						{
+							show: "fold",
+							hide: "fold",
 							autoOpen : false,
 							height : 300,
 							width : 350,

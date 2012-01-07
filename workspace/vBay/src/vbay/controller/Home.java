@@ -27,7 +27,7 @@ public class Home {
 
     @Autowired
     SanPhamDao sanPhamDao;
-    
+
     @Autowired
     LoaiSanPhamDao loaiSanPhamDao;
 
@@ -36,37 +36,46 @@ public class Home {
         System.out.println("home " + request.getCookies().length);
 
         List<SanPham> hotAuctions = sanPhamDao.hotAuctions();
-        for (SanPham sanPham : hotAuctions) {
-        	if (sanPham.getTenSanPham().length() > 12){
-        		String tenSanPhamRutGon = sanPham.getTenSanPham().substring(0, 12) + "...";
-        		sanPham.setTenSanPham(tenSanPhamRutGon);
-        	}
-			
-		}
-        ArrayList<String> listImageHotAuctions = layHinhAnhSanPham(hotAuctions);
+        ArrayList<String> listImageHotAuctions = null;
+        if (hotAuctions != null) {
+            for (SanPham sanPham : hotAuctions) {
+                if (sanPham.getTenSanPham().length() > 12) {
+                    String tenSanPhamRutGon = sanPham.getTenSanPham().substring(0, 12) + "...";
+                    sanPham.setTenSanPham(tenSanPhamRutGon);
+                }
+            }
+
+            listImageHotAuctions = layHinhAnhSanPham(hotAuctions);
+        }
 
         List<SanPham> newAuctions = sanPhamDao.newAuctions();
-        for (SanPham sanPham : newAuctions) {
-        	if (sanPham.getTenSanPham().length() > 12){
-        		String tenSanPhamRutGon = sanPham.getTenSanPham().substring(0, 12) + "...";
-        		sanPham.setTenSanPham(tenSanPhamRutGon);
-        	}
-			
-		}
-        ArrayList<String> listImageNewAuctions = layHinhAnhSanPham(newAuctions);
+        ArrayList<String> listImageNewAuctions = null;
+        if (newAuctions != null) {
+            for (SanPham sanPham : newAuctions) {
+                if (sanPham.getTenSanPham().length() > 12) {
+                    String tenSanPhamRutGon = sanPham.getTenSanPham().substring(0, 12) + "...";
+                    sanPham.setTenSanPham(tenSanPhamRutGon);
+                }
+            }
+            listImageNewAuctions = layHinhAnhSanPham(newAuctions);
+        }
 
         List<ChiTietDauGia> recentlySoldProducts = sanPhamDao.recentlySoldProducts();
-
         List<SanPham> listProducts = new ArrayList<SanPham>();
-        for (ChiTietDauGia chiTiet : recentlySoldProducts) {
-            listProducts.add(chiTiet.getSanPham());
-            if (chiTiet.getSanPham().getTenSanPham().length() > 12){
-				String tenSanPhamRutGon = chiTiet.getSanPham().getTenSanPham().substring(0,12)+" ...";
-				chiTiet.getSanPham().setTenSanPham(tenSanPhamRutGon);
-			}
+        ArrayList<String> listImageRecentlySold = null;
+        if (recentlySoldProducts != null) {
+            for (ChiTietDauGia chiTiet : recentlySoldProducts) {
+                listProducts.add(chiTiet.getSanPham());
+                if (chiTiet.getSanPham().getTenSanPham().length() > 12) {
+                    String tenSanPhamRutGon = chiTiet.getSanPham().getTenSanPham().substring(0, 12)
+                            + " ...";
+                    chiTiet.getSanPham().setTenSanPham(tenSanPhamRutGon);
+                }
+            }
+
+            listImageRecentlySold = layHinhAnhSanPham(listProducts);
         }
-       
-        ArrayList<String> listImageRecentlySold = layHinhAnhSanPham(listProducts);
+
         List<LoaiSanPham> dsLoaiSanPham = loaiSanPhamDao.layDanhSachLoaiSanPham();
         request.setAttribute("dsLoaiSanPham", dsLoaiSanPham);
         request.setAttribute("hotAuctions", hotAuctions);
@@ -86,9 +95,10 @@ public class Home {
         else {
             for (SanPham sp : dsSanPham) {
                 try {
-                	ArrayList<String> ds = sanPhamDao.layDanhSachHinhAnh(sp);
-                	String url = ds.get(0);
+                    ArrayList<String> ds = sanPhamDao.layDanhSachHinhAnh(sp);
+                    String url = ds.get(0);
                     dsHinhAnh.add(url);
+                    System.out.println("hinh anh: " + sp.getMaSanPham() + " " + url);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -96,5 +106,5 @@ public class Home {
         }
         return dsHinhAnh;
     }
-        
+
 }

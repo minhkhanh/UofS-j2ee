@@ -42,10 +42,10 @@
 				$.post($('#contextPath').val() + '/product/checkall');
 				setTimeout('checkAllProduct()', 30000);
 			}
-			
+
 			$(function() {
 				$("input:submit, button").button();
-				
+
 				checkAllProduct();
 			});
 		</script>
