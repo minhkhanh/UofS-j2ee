@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="quickview">
   <div id="ending">
     <div class="contentframe ui-widget-content ui-corner-all">
@@ -12,7 +12,7 @@
 			</c:if>        
 			<c:forEach var="sanPham" items="${dsSanPhamSapKetThuc}">
 				<li>
-					<a href='./Detail.vby?id=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${sanPham.giaHienTai?sanPham.giaHienTai:sanPham.giaKhoiDiem}</a>
+					<a href='./Detail.vby?id=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${empty sanPham.giaHienTai?sanPham.giaKhoiDiem:sanPham.giaHienTai}</a>
 				</li> 
 			</c:forEach>   
         </ul>
@@ -29,7 +29,7 @@
 			</c:if>        
 			<c:forEach var="sanPham" items="${dsSanPhamMoiDang}">
 				<li>
-					<a href='./Detail.vby?id=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${sanPham.giaHienTai?sanPham.giaHienTai:sanPham.giaKhoiDiem}</a>
+					<a href='./Product.vby?maSanPham=${sanPham.maSanPham}'>${sanPham.tenSanPham} - ${empty sanPham.giaHienTai?sanPham.giaKhoiDiem:sanPham.giaHienTai}</a>
 				</li> 
 			</c:forEach>            
         </ul>
@@ -75,57 +75,25 @@
     </table>
   </form>
   <br />
-<%--   <table width="100%" class="product_table" cellspacing="0" cellpadding="5">
-    <tr>
-      <td width="20%"><strong>Hình ảnh</strong></td>
-      <td width="28%"><strong>Mô tả</strong></td>
-      <td width="19%"><strong>Giá</strong></td>
-      <td width="9%"><strong>Số lượng</strong></td>
-      <td width="7%"><strong>Bids</strong></td>
-      <td width="17%"><strong>Thời điểm kết thúc</strong></td>
-    </tr>
-    <tr>
-      <td width="20%"><a href="#"><img width="150px" height="150px"
-          src="<c:url value='res/image/homer_wall_clock.jpg'/>"> </a></td>
-      <td width="28%">Đồng hồ vui nhộn</td>
-      <td width="19%"><strong>VNĐ 100.000</strong></td>
-      <td width="9%"><strong>1</strong></td>
-      <td width="7%"><strong>0</strong></td>
-      <td width="17%"><strong>22/12/2012</strong></td>
-    </tr>
-    <tr>
-      <td width="20%"><a href="#"><img width="150px" height="150px"
-          src="<c:url value='res/image/digital-blot-clock.jpg' />"> </a></td>
-      <td width="28%">Đồng hồ giấy điện tử</td>
-      <td width="19%"><strong>VNĐ 100.000</strong></td>
-      <td width="9%"><strong>1</strong></td>
-      <td width="7%"><strong>0</strong></td>
-      <td width="17%"><strong>22/12/2012</strong></td>
-    </tr>
-  </table> --%>
 	<table class="product_table" width="100%" cellspacing="0" cellpadding="5">
 		<tr>
-			<th width="60%" colspan="2">Mô tả</th>
+			<th width="20%">Hình</th>
+			<th width="40%">Mô tả</th>
+			<th width="20%">Tiên sản phẩm</th>
 			<th width="13%">Giá</th>
-			<th width="14%">Bids</th>
+			<th >Bids</th>
 			<th width="13%">Kết thúc</th>
 		</tr>
 		<c:forEach var="sp" items="${dsSanPham}" varStatus="status">
 			<tr>
-				<td width="20%"><a href="#"><img width="75px"
+				<td><a href="./Product.vby?maSanPham=${sp.maSanPham }"><img width="75px"
 						height="75px"
 						src="<c:url value='${dsHinhAnh.get(count.index)}'/>"> </a></td>
-				<c:choose>
-					<c:when test="${status.first == true }">
-						<td colspan="4">${sp.moTaSanPham}</td>
-					</c:when>
-					<c:otherwise>
-						<td width="40%"><a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a></td>
-						<td width="13%" align="center">${sp.giaKhoiDiem }</td>
-						<td width="14%" align="center">${sp.giaHienTai}</td>
-						<td width="13%">${sp.ngayHetHan}</td>
-					</c:otherwise>
-				</c:choose>
+				<td>${sp.moTaSanPham}</td>
+				<td><a href="#"><b>${sp.tenSanPham.toUpperCase()}</b></a></td>
+				<td align="center">${sp.giaKhoiDiem }</td>
+				<td align="center">${sp.giaHienTai}</td>
+				<td>${sp.ngayHetHan}</td>
 			</tr>
 		</c:forEach>
 	</table>  

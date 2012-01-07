@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import vbay.dao.CuaHangDao;
+import vbay.dao.LoaiSanPhamDao;
 import vbay.dao.SanPhamDao;
 import vbay.dao.TaiKhoanDao;
 import vbay.dao.ThongTinTaiKhoanDao;
 import vbay.model.CuaHang;
+import vbay.model.LoaiSanPham;
 import vbay.model.SanPham;
 import vbay.model.TaiKhoan;
 import vbay.util.Utils;
@@ -33,26 +35,9 @@ public class Store {
 	TaiKhoanDao taiKhoanDao;
 	@Autowired
 	SanPhamDao sanPhamDao;
+	@Autowired
+	LoaiSanPhamDao loaiSanPhamDao;
 
-/*    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView show(HttpSession session, HttpServletRequest request) {
-        if (session.getAttribute(Utils.SESS_ACC) == null) {
-            session.setAttribute(Utils.SESS_ACTFAIL,
-                    "Bạn cần phải đăng nhập mới sử dụng được chức năng này.");
-            session.setAttribute(Utils.SESS_RETURL, "/Store.vby");
-            return new ModelAndView("redirect:/LogIn.vby");
-        }
-
-        TaiKhoan tk = (TaiKhoan)session.getAttribute(Utils.SESS_ACC);
-        CuaHang cuaHang = tk.getThongTinTaiKhoan().getCuaHang();
-        if (cuaHang==null) {
-            session.setAttribute(Utils.SESS_ACTFAIL,
-                    "Bạn hiện chưa có trang cửa hàng! Cần tạo trang.");
-        	return new ModelAndView("CreateStore");
-        }
-        request.setAttribute("cuaHang", cuaHang);  
-        return new ModelAndView("Store");
-    }*/
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView show(HttpSession session, HttpServletRequest request, String id) {
     	System.out.println("id:" + id);
@@ -138,33 +123,12 @@ public class Store {
 		ArrayList<String> dsHinhAnh = layDanhSachHinhAnh(dsSanPham);
 		request.setAttribute("dsHinhAnh", dsHinhAnh);
         
+		List<LoaiSanPham> dsLoaiSanPham = loaiSanPhamDao.layDanhSachLoaiSanPham();
+		request.setAttribute("dsLoaiSanPham", dsLoaiSanPham);
         
         return new ModelAndView("Store");
     }
-    @RequestMapping(value="/createStore", method = RequestMethod.POST)
-    public ModelAndView createStore(HttpSession session, HttpServletRequest request) {
-        if (session.getAttribute(Utils.SESS_ACC) == null) {
-            session.setAttribute(Utils.SESS_ACTFAIL,
-                    "Bạn phải đăng nhập mới có thể dùng chức năng này.");
-            session.setAttribute(Utils.SESS_RETURL, "/Store.vby");
-            return new ModelAndView("redirect:/LogIn.vby");
-        }
-        
-        TaiKhoan tk = (TaiKhoan)session.getAttribute(Utils.SESS_ACC);
-        CuaHang cuaHang = tk.getThongTinTaiKhoan().getCuaHang();
-        if (cuaHang==null) {
-        	System.out.println("tao cua hang.");
-        	cuaHang = new CuaHang();
-        	cuaHang.setMoTaCuaHang("Mô tả cửa hàng.");
-        	if (cuaHangDao.themCuaHang(cuaHang)) {
-        		tk.getThongTinTaiKhoan().setCuaHang(cuaHang);
-        		thongTinTaiKhoanDao.capNhatThongTinTaiKhoan(tk.getThongTinTaiKhoan());
-        		return new ModelAndView("redirect:/Store.vby");
-        	}
-        }
-        request.setAttribute("cuaHang", cuaHang);
-        return new ModelAndView("Store");
-    }    
+   
     @RequestMapping(value="/capNhatMoTaCuaHang", method = RequestMethod.POST)
     public @ResponseBody String capNhatMoTaCuaHang(HttpServletRequest request , HttpSession session) {
         if (session.getAttribute(Utils.SESS_ACC) == null) {
