@@ -75,7 +75,7 @@
 				<tr>
 					<td width="20%"><a href="#"><img width="75px"
 							height="75px"
-							src="<c:url value='${dsHinhAnh.get(count.index)}'/>"> </a></td>
+							src="<c:url value='${dsHinhAnh.get(status.index)}'/>"> </a></td>
 					<c:choose>
 						<c:when test="${status.first == true }">
 							<td colspan="4">${sp.moTaSanPham}</td>

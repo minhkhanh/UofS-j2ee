@@ -12,12 +12,10 @@
           <form method="get" action="Search.vby" name="formTimNhanh">
             <input type="text" name="khoaTimKiem" value="" style="width: 100%" />
             <select name="maLoaiSanPham" style="width: 75%">
-              <option value="" selected="selected">Tất cả</option>
-              <option value="mã danh mục thứ nhất">Antiques</option>
-              <option value="mã danh mục thứ hai">Baby</option>
-              <option value="mã danh mục thứ hai">Coins And Currency</option>
-              <option value="mã danh mục thứ hai">DVD's And Movies</option>
-              <option value="mã danh mục thứ hai">Electronics</option>
+            <option value="-1" selected="selected">Tất cả</option>
+            <c:forEach var="loaiSanPham" items="${dsLoaiSanPham}">
+            	<option value="${loaiSanPham.maLoaiSanPham }">${loaiSanPham.tenLoaiSanPham }</option>
+            </c:forEach>
             </select>
             <input type="submit" value="Tìm kiếm" name="submitTimNhanh" style=" width : 102px;">
           </form>

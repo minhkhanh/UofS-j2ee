@@ -9,10 +9,11 @@ import vbay.model.SanPham;
 
 public interface SanPhamDao {
 	Integer themSanPham(SanPham sanPham);
-    ArrayList<String> layDanhSachHinhAnh(int maSanPham);    
+    ArrayList<String> layDanhSachHinhAnh(SanPham sanPham);    
     SanPham laySanPham(int maSanPham);
     Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian);
     Integer soLuongTrangTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int soSPTrenTrang, Integer soLuong);
+    List<SanPham> laySanPhamTheoDanhMuc(int maLoaiSanPham,int trangHienThi, int soSPTrenTrang);
     List<SanPham> timKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int trangHienThi, int soSPTrenTrang);
     List<SanPham> hotAuctions();
     List<ChiTietDauGia> recentlySoldProducts();

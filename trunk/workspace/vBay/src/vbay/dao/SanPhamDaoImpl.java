@@ -35,16 +35,10 @@ public class SanPhamDaoImpl implements SanPhamDao {
 
 	@Override
 	@Transactional(readOnly = true)
-	public ArrayList<String> layDanhSachHinhAnh(int maSanPham) {
-		SanPham sp = new SanPham();
+	public ArrayList<String> layDanhSachHinhAnh(SanPham sanPham) {
 		ArrayList<String> dsHinhAnh = new ArrayList<String>();
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			String hql = "from SanPham sp where sp.maSanPham =:maSanPham";
-			Query query = session.createQuery(hql);
-			query.setInteger("maSanPham", maSanPham);
-			sp = (SanPham) query.list().get(0);
-			Iterator<Multimedia> multimedias = sp.getMultimedias().iterator();
+			Iterator<Multimedia> multimedias = sanPham.getMultimedias().iterator();
 			while (multimedias.hasNext()) {
 				String linkUrl = multimedias.next().getLinkURL();
 				dsHinhAnh.add(linkUrl);
@@ -59,7 +53,7 @@ public class SanPhamDaoImpl implements SanPhamDao {
 			String str = "no_image";
 			dsHinhAnh.add(str);
 		}
-		
+
 		return dsHinhAnh;
 	}
 
@@ -250,11 +244,15 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		return dsSanPham;
 	}
 
-	@Override
+<<<<<<< .mine	@Override
+	public void capNhat(SanPham sanPham) {
+		sessionFactory.getCurrentSession().update(sanPham);
+	}
+=======	@Override
     public void capNhat(SanPham sanPham) {
         sessionFactory.getCurrentSession().update(sanPham);
     }
-
+>>>>>>> .theirs
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
@@ -273,7 +271,32 @@ public class SanPhamDaoImpl implements SanPhamDao {
 		}
 		return dsSanPham;
 	}
+<<<<<<< .mine
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SanPham> laySanPhamTheoDanhMuc(int maLoaiSanPham,
+			int trangHienThi, int soSPTrenTrang) {
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			String hql = "from SanPham sp where sp.loaiSanPham=:maLoaiSanPham";
+			Query query = session.createQuery(hql);
+			query.setInteger("maLoaiSanPham", maLoaiSanPham);
+			if (soSPTrenTrang == -1 && trangHienThi == -1) {
+				dsSanPham = query.list();
+			} else {
+				int pos = (trangHienThi - 1) * soSPTrenTrang;
+				dsSanPham = query.setFirstResult(pos).setMaxResults(soSPTrenTrang).list();
+			}
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			dsSanPham = null;
+		}
+		return dsSanPham;
+	}
+=======
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
@@ -353,4 +376,4 @@ public class SanPhamDaoImpl implements SanPhamDao {
 
 		return dsSanPham;
 	}
-}
+>>>>>>> .theirs}
