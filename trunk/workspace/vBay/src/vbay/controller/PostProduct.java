@@ -113,6 +113,7 @@ public class PostProduct {
                         sanPham.setTenSanPham(value);
                     } else if (name.equals("moTaSanPham")) {
                         sanPham.setMoTaSanPham(value);
+                        System.out.println("editor");
                     } else if (name.equals("giaKhoiDiem")) {
                         sanPham.setGiaKhoiDiem(Integer.valueOf(value));
                     } else if (name.equals("ngayHetHan")) {
