@@ -1,6 +1,6 @@
 .msg_slideshow{
-	width:400px;
-	height:400px;
+	width:700px;
+	height:200px;
 	padding:10px;
 	position:relative;
 	overflow:hidden;
@@ -16,8 +16,8 @@
 	border:none;
 }
 .msg_wrapper{
-	width:400px;
-	height:400px;
+	width:700px;
+	height:200px;
 	position:relative;
 	margin:0;
 	padding:0;
