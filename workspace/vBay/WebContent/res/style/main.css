@@ -4,6 +4,19 @@
 	color: red;
 }
 
+.ajaxDemoLink {
+	font-weight: bold;
+}
+
+.ajaxDemoLink:hover {
+	text-decoration: underline;
+}
+
+#ajaxProductDemo img {
+	height: 100%;
+	width: auto;
+}
+
 #ajaxProductDemo {
 	width: 100%;
 	height: 300px;
@@ -234,23 +247,18 @@ a.back:hover {
 	float: left; /* default direction to float*/
 }
 
-.bl {
-	/*background: url(../image/bl_corner.png) 0 100% no-repeat;*/
+.bl { /*background: url(../image/bl_corner.png) 0 100% no-repeat;*/
+	
 }
 
-.br {
-	/*background: url(../image/br_corner.png) 100% 100% no-repeat;*/
+.br { /*background: url(../image/br_corner.png) 100% 100% no-repeat;*/
+	
 }
 
-.tl {
-<<<<<<< .mine
-	background: url(../image/tl_corner.png) 0 0 no-repeat;
-=======
-	/*background: url(../image/tl_corner.png) 0 0 no-repeat;*/	
->>>>>>> .r57
+.tl { /*background: url(../image/tl_corner.png) 0 0 no-repeat;*/
+	
 }
 
-.tr {
-	/*background: url(../image/tr_corner.png) 100% 0 no-repeat;*/
+.tr { /*background: url(../image/tr_corner.png) 100% 0 no-repeat;*/
 	padding: 10px;
 }

@@ -46,7 +46,7 @@
 					$('#matKhauCu').val(MD5($('#matKhauCu').val()));
 					$('#matKhauMoi').val(MD5($('#matKhauMoi').val()));
 					$('#matKhauMoi02').val(MD5($('#matKhauMoi02').val()));
-					
+
 					return true;
 				});
 
@@ -109,6 +109,9 @@
             <td>Ảnh đại diện</td>
             <td width="128" height="128"><img width="128" height="128" alt="Ảnh đại diện"
               src="<c:url value='${taiKhoan.multimediaAvatar.linkURL }'/>"></td>
+          </tr>
+          <tr>
+            <td></td>
             <td><input type="file" name="anhDaiDien"></td>
           </tr>
           <tr>
