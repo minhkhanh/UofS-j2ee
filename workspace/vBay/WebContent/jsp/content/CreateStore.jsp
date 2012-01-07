@@ -9,7 +9,7 @@
         <jsp:param value="${actionFailure}" name="cautionMessage" />
       </jsp:include>
     </c:if>  
-    <form action="<c:url value='#/createStore' />" method="post">
+    <form action="<c:url value='./Store/createStore' />" method="post">
     	<input type="submit" name="submitCreateStore" value="Tạo cửa hàng" />      
     </form>
   </div>

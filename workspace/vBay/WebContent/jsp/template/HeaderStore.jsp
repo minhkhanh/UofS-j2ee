@@ -40,7 +40,7 @@
 			    			if (data == "true") {
 			    				document.getElementById('contentThongTinCuaHang').innerHTML  =  CKEDITOR.instances['editor1'].getData();
 								CKEDITOR.instances['editor1'].destroy();
-			    			}
+			    			} else alert("Bạn không có quyền sửa hoặc có lỗi truy cập!")
 			    	    }
 			    	});
 					$( this ).dialog( "close" );
