@@ -3,7 +3,7 @@
 #sidewrap {
 	float: left;
 	width: 24%;
-	background: #ffffff;
+	background: inherit;
 }
 
 #sidewrap p {

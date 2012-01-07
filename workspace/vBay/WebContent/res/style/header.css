@@ -1,17 +1,21 @@
 @charset "utf-8";
 
 #header {
-	background: #ffffff;
+	background: #fff;
 	min-height: 150px;
 }
 
 #toplogo {
 	float: left;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
 #quicksearch {
-	background: #cbd5e3;
-	float: right;
+	background: #c6e99c;
+	border-radius: 6px;
+	border: #5aa500 1px solid;
+	float: left;
 	width: 450px;
 	margin-top: 20px;
 	margin-left: 50px;

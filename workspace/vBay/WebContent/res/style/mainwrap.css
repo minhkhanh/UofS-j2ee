@@ -3,7 +3,7 @@
 #mainwrap {
 	width: 76%;
 	float: left;
-	background: #ffffff;
+	background: inherit;
 	min-height: 700px;
 }
 

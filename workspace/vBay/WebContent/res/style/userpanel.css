@@ -1,12 +1,16 @@
 @charset "utf-8";
 
 #userpanel {
-	background-color: #a7ccff;
-	margin-bottom: 3px;
-	line-height: 30px;
+	background-color: #c6e99c;
+	margin-bottom: 5px;
+	line-height: 35px;
 	vertical-align: middle;
-	border: #a1b8d8 1px solid;
+	border-left: #5aa500 1px solid;
+	border-right: #5aa500 1px solid;
+	border-bottom: #5aa500 1px solid;
 	color: #000000;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
 }
 
 #userlocations a:hover {

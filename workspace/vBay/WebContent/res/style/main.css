@@ -12,9 +12,9 @@
 }
 
 body {
-	background: #333 url("../jquery-ui/trontastic/images/ui-bg_diagonals-small_50_262626_40x40.png");
+	background: #ddd url("../image/phpThumb_generated_thumbnailpng.png");
 	font: 85% Arial, Helvetica, sans-serif;
-	margin: 10px 0 10px 0; /* separated to the top line*/
+	margin: 0 0 0 0; /* separated to the top line*/
 	padding: 0;
 	text-align: center;
 	color: #000000;
@@ -25,14 +25,18 @@ a {
 }
 
 #bodywrap {
-	background: #FFFFFF;
+	background: #fff;
 }
 
 #container {
-	background: #ffffff;
+	background: #fff;
 	width: 1100px;
 	margin: 0 auto;
 	text-align: left;
+	border-left: #ccc 1px solid;
+	border-right: #ccc 1px solid;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .clearfloat {
@@ -148,15 +152,19 @@ a {
 
 #footer {
 	padding: 0 10px;
-	background: #06266f;
-	border: #000 1px solid;
-	margin-top: 3px;
+	background: #c6e99c;
+	border-left: #5aa500 1px solid;
+	border-right: #5aa500 1px solid;
+	border-top: #5aa500 1px solid;
+	margin-top: 5px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
 }
 
 #footer p {
 	margin: 0;
 	padding: 10px 0;
-	color: #6c8cd5;
+	color: #000;
 }
 
 .vertlist {
@@ -184,18 +192,18 @@ a {
 
 
 .bl {
-	background: url(../image/bl_corner.png) 0 100% no-repeat;
+	/*background: url(../image/bl_corner.png) 0 100% no-repeat;*/
 }
 
 .br {
-	background: url(../image/br_corner.png) 100% 100% no-repeat;
+	/*background: url(../image/br_corner.png) 100% 100% no-repeat;*/
 }
 
 .tl {
-	background: url(../image/tl_corner.png) 0 0 no-repeat;	
+	/*background: url(../image/tl_corner.png) 0 0 no-repeat;*/	
 }
 
 .tr {
-	background: url(../image/tr_corner.png) 100% 0 no-repeat;
+	/*background: url(../image/tr_corner.png) 100% 0 no-repeat;*/
 	padding: 10px;
 }

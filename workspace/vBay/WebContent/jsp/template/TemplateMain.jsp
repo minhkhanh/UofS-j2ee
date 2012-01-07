@@ -35,13 +35,20 @@
 <script src="<c:url value='/res/script/main.js' />" type="text/javascript"></script>
 <script src="<c:url value='/res/script/jquery.form-2.77.js' />" type="text/javascript"></script>
 <script src="<c:url value='/res/script/register.js' />" type="text/javascript"></script>
-<script>
-	$(function() {
-		$("input:submit, button").button();
-	});
-</script>
 </head>
 <body>
+  <script>
+			function checkAllProduct() {
+				$.post($('#contextPath').val() + '/product/checkall');
+				setTimeout('checkAllProduct()', 30000);
+			}
+			
+			$(function() {
+				$("input:submit, button").button();
+				
+				checkAllProduct();
+			});
+		</script>
   <c:set var="contextPath" value="${pageContext.servletContext.contextPath }" scope="request"></c:set>
   <input type="hidden" value="${pageContext.servletContext.contextPath }" id="contextPath">
   <div id="container">
