@@ -2,36 +2,37 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div id="msg_slideshow" class="msg_slideshow"
-	style="margin-bottom: 5px;">
-	<div id="msg_wrapper" class="msg_wrapper"></div>
-	<div id="msg_controls" class="msg_controls">
-		<!-- right has to animate to 15px, default -110px -->
-		<a href="#" id="msg_grid" class="msg_grid"></a> <a href="#"
-			id="msg_prev" class="msg_prev"></a> <a href="#" id="msg_pause_play"
-			class="msg_pause"></a>
-		<!-- has to change to msg_play if paused-->
-		<a href="#" id="msg_next" class="msg_next"></a>
-	</div>
-	<div id="msg_thumbs" class="msg_thumbs">
-		<!-- top has to animate to 0px, default -230px -->
-		<div class="msg_thumb_wrapper">
-			<c:forEach var="hinhAnh" items="${listImageProducts }">
-				<a href="#"><img src="<c:url value='${hinhAnh}'/>"
-					alt="<c:url value='${hinhAnh}'/>" /></a>
-			</c:forEach>
+<div class="slidecontent">
+	<div id="msg_slideshow" class="msg_slideshow"
+		style="margin-bottom: 5px;">
+		<div id="msg_wrapper" class="msg_wrapper"></div>
+		<div id="msg_controls" class="msg_controls">
+			<!-- right has to animate to 15px, default -110px -->
+			<a href="#" id="msg_grid" class="msg_grid"></a> <a href="#"
+				id="msg_prev" class="msg_prev"></a> <a href="#" id="msg_pause_play"
+				class="msg_pause"></a>
+			<!-- has to change to msg_play if paused-->
+			<a href="#" id="msg_next" class="msg_next"></a>
 		</div>
-		<a href="#" id="msg_thumb_next" class="msg_thumb_next"></a> <a
-			href="#" id="msg_thumb_prev" class="msg_thumb_prev"></a> <a href="#"
-			id="msg_thumb_close" class="msg_thumb_close"></a> <span
-			class="msg_loading"></span>
+		<div id="msg_thumbs" class="msg_thumbs">
+			<!-- top has to animate to 0px, default -230px -->
+			<div class="msg_thumb_wrapper">
+				<c:forEach var="hinhAnh" items="${listImageProducts }">
+					<a href="#"><img src="<c:url value='${hinhAnh}'/>"
+						alt="<c:url value='${hinhAnh}'/>" /></a>
+				</c:forEach>
+			</div>
+			<a href="#" id="msg_thumb_next" class="msg_thumb_next"></a> <a
+				href="#" id="msg_thumb_prev" class="msg_thumb_prev"></a> <a href="#"
+				id="msg_thumb_close" class="msg_thumb_close"></a> <span
+				class="msg_loading"></span>
+		</div>
 	</div>
 </div>
-
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		MỚI</div>
-	<div class="content" style="display: table;width: 800px">
+	<div class="content" style="display: table; width: 800px">
 		<c:forEach var="sp" items="${newAuctions}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
@@ -70,7 +71,7 @@
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		HOT</div>
-	<div class="content" style="display: table;width: 800px ">
+	<div class="content" style="display: table; width: 800px">
 		<c:forEach var="sp" items="${hotAuctions}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
@@ -109,7 +110,7 @@
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		ĐÃ BÁN</div>
-	<div class="content" style="display: table;width: 800px">
+	<div class="content" style="display: table; width: 800px">
 		<c:forEach var="ct" items="${recentlySoldProducts}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
