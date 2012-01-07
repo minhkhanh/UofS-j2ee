@@ -31,7 +31,7 @@
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		MỚI</div>
-	<div class="content" style="display: table;">
+	<div class="content" style="display: table;width: 800px">
 		<c:forEach var="sp" items="${newAuctions}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
@@ -70,7 +70,7 @@
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		HOT</div>
-	<div class="content" style="display: table;">
+	<div class="content" style="display: table;width: 800px ">
 		<c:forEach var="sp" items="${hotAuctions}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
@@ -109,7 +109,7 @@
 <div class="contentframe ui-widget-content ui-corner-all">
 	<div class="captionbox ui-widget-header ui-corner-top">SẢN PHẨM
 		ĐÃ BÁN</div>
-	<div class="content" style="display: table;">
+	<div class="content" style="display: table;width: 800px">
 		<c:forEach var="ct" items="${recentlySoldProducts}" varStatus="i">
 			<div class="thumbpitem">
 				<div class="thumbpitem_img_con">
