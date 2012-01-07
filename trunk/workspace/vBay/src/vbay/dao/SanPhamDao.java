@@ -13,6 +13,7 @@ public interface SanPhamDao {
     ArrayList<String> layDanhSachHinhAnh(SanPham sanPham);    
     Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian);
     Integer soLuongTrangTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int soSPTrenTrang, Integer soLuong);
+    List<SanPham> showSliderProducts();
     List<SanPham> laySanPhamTheoDanhMuc(int maLoaiSanPham,int trangHienThi, int soSPTrenTrang);
     List<SanPham> timKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat, int giaLonNhat, Date thoiGian, int trangHienThi, int soSPTrenTrang);
     List<SanPham> hotAuctions();

@@ -24,6 +24,48 @@ a {
 	text-decoration: none;
 }
 
+span.reference {
+	position: fixed;
+	left: 10px;
+	bottom: 10px;
+	font-size: 12px;
+}
+
+span.reference a {
+	color: #666;
+	text-shadow: 1px 1px 1px #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-right: 30px;
+}
+
+span.reference a:hover {
+	color: #333;
+}
+
+.content {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.msg_slideshow {
+	margin: 0 auto;
+}
+
+a.back {
+	background: transparent url(back.png) no-repeat top left;
+	height: 13px;
+	width: 248px;
+	display: block;
+	clear: both;
+	text-indent: -9000px;
+	margin: 20px auto;
+}
+
+a.back:hover {
+	background-position: 0px -13px;
+}
+
 #bodywrap {
 	background: #fff;
 }
@@ -95,7 +137,7 @@ a {
 
 .thumbpitem {
 	float: left;
-	width: 127px; 
+	width: 125px;
 	margin: 0px 17px 15px 17px;
 }
 
@@ -105,19 +147,21 @@ a {
 	margin-top: 10px;
 	border: #cccccc 1px solid;
 }
+
 .thumbpitem_img_con_inner {
 	border: white 1px solid;
 	height: 108px;
 	width: 118px;
 	overflow: hidden;
 }
+
 .thumbpitem_img {
-	
 	height: 108px;
 	width: 118px;
 	display: table;
 	overflow: hidden;
 }
+
 .thumbpitem_title {
 	margin-top: 8px;
 	size: 10px;
@@ -190,7 +234,6 @@ a {
 	float: left; /* default direction to float*/
 }
 
-
 .bl {
 	/*background: url(../image/bl_corner.png) 0 100% no-repeat;*/
 }
@@ -200,7 +243,11 @@ a {
 }
 
 .tl {
+<<<<<<< .mine
+	background: url(../image/tl_corner.png) 0 0 no-repeat;
+=======
 	/*background: url(../image/tl_corner.png) 0 0 no-repeat;*/	
+>>>>>>> .r57
 }
 
 .tr {

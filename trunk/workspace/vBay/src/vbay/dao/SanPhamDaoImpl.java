@@ -57,15 +57,31 @@ public class SanPhamDaoImpl implements SanPhamDao {
         return dsHinhAnh;
     }
 
+    @SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public List<SanPham> showSliderProducts() {
+		List<SanPham> dsSanPham = null;
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			String hql = "from SanPham sp order by sp.ngayDang desc";
+			Query query = session.createQuery(hql);
+			dsSanPham = query.setMaxResults(12).list();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			dsSanPham = null;
+		}
+		return dsSanPham;
+	}
+    
     @Override
     @Transactional(readOnly = true)
     public Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat,
             int giaLonNhat, Date thoiGian) {
-
         if (khoaTimKiem == null) {
             khoaTimKiem = "";
         }
-
         if (khoaTimKiem.equals("") && maLoaiSanPham == -1 && giaNhoNhat == 0 && giaLonNhat == 0
                 && thoiGian == null) {
             return 0;
@@ -354,7 +370,6 @@ public class SanPhamDaoImpl implements SanPhamDao {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return pageNume;
     }
 
