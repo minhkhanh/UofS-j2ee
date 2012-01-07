@@ -59,12 +59,6 @@ public class SanPhamDaoImpl implements SanPhamDao {
 
     @Override
     @Transactional(readOnly = true)
-    public SanPham laySanPham(int maSanPham) {
-        return (SanPham) sessionFactory.getCurrentSession().get(SanPham.class, maSanPham);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public Integer soLuongSanPhamTimKiem(String khoaTimKiem, int maLoaiSanPham, int giaNhoNhat,
             int giaLonNhat, Date thoiGian) {
 
@@ -267,9 +261,9 @@ public class SanPhamDaoImpl implements SanPhamDao {
     @Override
     public List<SanPham> timSanPhamTheoTinhTrang(int maTinhTrangSanPham) {
         try {
-            String hql = "select sp from SanPham sp where sp.tinhTrangSanPham.maTinhTrangSanPham = :maTinhTrangSanPham";
-            Query query = sessionFactory.getCurrentSession().createQuery(hql)
-                    .setInteger("maTinhTrangSanPham", maTinhTrangSanPham);
+            String sql = "select * from `sanpham` where `sanpham`.`matinhtrangsanpham` = ?";
+            Query query = sessionFactory.getCurrentSession().createSQLQuery(sql)
+                    .addEntity(SanPham.class).setInteger(0, maTinhTrangSanPham);
             return query.list();
         } catch (Exception ex) {
             ex.printStackTrace();
