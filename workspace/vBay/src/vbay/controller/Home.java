@@ -77,6 +77,8 @@ public class Home {
         }
 
         List<LoaiSanPham> dsLoaiSanPham = loaiSanPhamDao.layDanhSachLoaiSanPham();
+        ArrayList<String> listImageProducts = layHinhAnhSanPham(sanPhamDao.showSliderProducts());
+        
         request.setAttribute("dsLoaiSanPham", dsLoaiSanPham);
         request.setAttribute("hotAuctions", hotAuctions);
         request.setAttribute("newAuctions", newAuctions);
@@ -84,7 +86,8 @@ public class Home {
         request.setAttribute("listImageNewAuctions", listImageNewAuctions);
         request.setAttribute("listImageHotAuctions", listImageHotAuctions);
         request.setAttribute("listImageRecentlySold", listImageRecentlySold);
-
+        request.setAttribute("listImageProducts", listImageProducts);
+        
         return new ModelAndView("Home");
     }
 
