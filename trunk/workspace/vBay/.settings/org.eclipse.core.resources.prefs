@@ -1,7 +1,10 @@
-#Fri Jan 06 10:53:13 ICT 2012
+#Fri Jan 06 22:23:51 ICT 2012
 eclipse.preferences.version=1
 encoding//src/vbay/controller/Account.java=UTF-8
 encoding//src/vbay/controller/GeneralController.java=UTF-8
+encoding//src/vbay/controller/PasswordRecover.java=UTF-8
 encoding//src/vbay/controller/PostProduct.java=UTF-8
 encoding//src/vbay/controller/Product.java=UTF-8
+encoding//src/vbay/controller/ProductServices.java=UTF-8
 encoding//src/vbay/controller/Store.java=UTF-8
+encoding//src/vbay/util/EmailService.java=UTF-8

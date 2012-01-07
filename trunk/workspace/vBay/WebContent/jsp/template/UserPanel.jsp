@@ -129,7 +129,7 @@
 </div>
 
 <div id="homebutton">
-  <a href="<c:url value='/Home.vby' />"><img width="60" height="28" align="middle"
+  <a href="<c:url value='/Home.vby' />">TRANG CHỦ <img alt="Home" width="60" height="28" align="top"
     src="<c:url value='/res/image/minilogo.png'/>" /></a>
 </div>
 <c:choose>
@@ -152,7 +152,8 @@
   <c:otherwise>
     <div id="userlocations">
       <a class="lnkLogIn" href="#">ĐĂNG NHẬP</a> <a href="<c:url value='/Register.vby' />">ĐĂNG
-        KÝ</a> <a href="#">HƯỚNG DẪN</a>
+        KÝ</a> <a href="<c:url value='/PasswordRecover.vby' />">PHỤC HỒI MẬT KHẨU</a> <a href="#">HƯỚNG
+        DẪN</a>
     </div>
   </c:otherwise>
 </c:choose>

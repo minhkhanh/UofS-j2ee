@@ -18,6 +18,20 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
 
     @Override
     @Transactional(readOnly = true)
+    public TaiKhoan timTaiKhoanTheoEmail(String email) {
+        try {
+            String hql = "select tk from TaiKhoan tk where tk.email = :email and tk.coHieuLuc = 1";
+
+            return (TaiKhoan) sessionFactory.getCurrentSession().createQuery(hql)
+                    .setString("email", email).list().get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public TaiKhoan dangNhap(String tenTaiKhoan, String matKhau) {
         TaiKhoan taiKhoan = null;
         Session session = null;
@@ -107,6 +121,23 @@ public class TaiKhoanDaoImpl implements TaiKhoanDao {
             sessionFactory.getCurrentSession().update(taiKhoan);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public TaiKhoan timTaiKhoanTheoTenTaiKhoan(String tenTaiKhoan) {
+        TaiKhoan taiKhoan = null;
+        
+        try {
+            String hql = "select tk from TaiKhoan tk where tk.tenTaiKhoan = :tenTaiKhoan and tk.coHieuLuc = 1";
+
+            taiKhoan = (TaiKhoan) sessionFactory.getCurrentSession().createQuery(hql)
+                    .setString("tenTaiKhoan", tenTaiKhoan).list().get(0);
+            
+            return taiKhoan;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

@@ -4,8 +4,26 @@
 <%@ taglib uri="/WEB-INF/CustomTagLibrary" prefix="custag"%>
 
 <script>
+	function checkProduct(maSanPham) {
+		$.post('${contextPath}/product/check', {
+			maSanPham : maSanPham
+		}, function(data) {
+			if (data != '') {
+				$('#giaHienTai').html(data);
+			} else {
+				location.reload();
+			}
+		});
+
+		setTimeout('checkProduct(${sanPham.maSanPham})', 30000);
+	}
+
 	$(function() {
 		$('#tabs').tabs();
+
+		if ('${sanPham.tinhTrangSanPham.maTinhTrangSanPham}' == '1') {
+			checkProduct('${sanPham.maSanPham}');
+		}
 
 		$('.ajaxDemoLink').click(function() {
 			$.post('${contextPath}/Product.vby', {
@@ -21,7 +39,10 @@
 		if (status > 0) {
 			$('#countdown').countdown({
 				until : status,
-				layout : '{dn} {dl}, {hn} {hl}, {mn} {ml}, và {sn} {sl}'
+				layout : '{dn} {dl}, {hn} {hl}, {mn} {ml}, và {sn} {sl}',
+				onExpiry : function() {
+					location.reload();
+				}
 			});
 		}
 
@@ -58,7 +79,7 @@
 				'Thoát' : function() {
 					$(this).dialog('close');
 
-					location.href = window.document.URL;
+					location.reload();
 				}
 			}
 		});
@@ -89,19 +110,18 @@
   <div class="captionbox ui-widget-header ui-corner-top">CHI TIẾT PHIÊN ĐẤU GIÁ</div>
   <div class="content">
     <h1>${sanPham.tenSanPham}</h1>
-    Tình trạng:
-    <c:choose>
-      <c:when test="${status > 0 }">
-        <b><span id="countdown" style="display: inline"></span></b>
-      </c:when>
-      <c:when test="${status == -1 }">
+    Tình trạng:<b> <c:choose>
+        <c:when test="${status > 0 }">
+          <span id="countdown" style="display: inline"></span>
+        </c:when>
+        <c:when test="${status == -1 }">
         Đã có người mua.
       </c:when>
-      <c:when test="${status == -2 }">
+        <c:when test="${status == -2 }">
         Đã hết hạn.
       </c:when>
-    </c:choose>
-
+      </c:choose>
+    </b>
     <p>
       Người bán: <a href="../TrangCuaHang.html">${sanPham.taiKhoan.tenTaiKhoan }</a>
     </p>
@@ -140,7 +160,7 @@
               </tr>
               <tr>
                 <td><b>Giá hiện tại</b></td>
-                <td style="color: red;"><custag:GiaTienTag unit="VND"
+                <td id="giaHienTai" style="color: red;"><custag:GiaTienTag unit="VND"
                     value="${sanPham.giaHienTai }" /></td>
               </tr>
               <tr>

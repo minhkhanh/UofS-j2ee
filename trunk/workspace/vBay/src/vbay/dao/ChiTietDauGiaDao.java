@@ -10,4 +10,5 @@ public interface ChiTietDauGiaDao {
 	List<SanPham> hotAuctions();
 	List<ChiTietDauGia> recentlySoldProducts();
 	ChiTietDauGiaId themChiTietDauGia(ChiTietDauGia chiTietDauGia);
+	ChiTietDauGia timChiTietDauGiaLonNhat(int maSanPham);
 }

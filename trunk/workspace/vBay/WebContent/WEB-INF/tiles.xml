@@ -40,6 +40,10 @@
 		<put-attribute name="content" value="/jsp/content/LogIn.jsp" />
 		<put-attribute name="title" value="vBay - Trang Đăng Nhập" />
 	</definition>
+	<definition name="PasswordRecover" extends="TemplateMain">
+		<put-attribute name="content" value="/jsp/content/PasswordRecover.jsp" />
+		<put-attribute name="title" value="vBay - Trang Phục Hồi Mật Khẩu" />
+	</definition>
 	<definition name="Account" extends="TemplateMain">
 		<put-attribute name="content" value="/jsp/content/Account.jsp" />
 		<put-attribute name="title" value="vBay - Trang Chủ" />

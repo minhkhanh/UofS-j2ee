@@ -1,5 +1,6 @@
 package vbay.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -16,7 +17,7 @@ import vbay.model.SanPham;
 
 @Repository("chiTietDauGiaDao")
 @Transactional(propagation = Propagation.REQUIRES_NEW)
-public class ChiTietDauGiaImpl implements ChiTietDauGiaDao {
+public class ChiTietDauGiaDaoImpl implements ChiTietDauGiaDao {
 
     @Autowired
     SessionFactory sessionFactory;
@@ -65,5 +66,17 @@ public class ChiTietDauGiaImpl implements ChiTietDauGiaDao {
     @Override
     public ChiTietDauGiaId themChiTietDauGia(ChiTietDauGia chiTietDauGia) {
         return (ChiTietDauGiaId) sessionFactory.getCurrentSession().save(chiTietDauGia);
+    }
+
+    @Override
+    public ChiTietDauGia timChiTietDauGiaLonNhat(int maSanPham) {
+        try {
+            String hql = "select ct from ChiTietDauGia ct where ct.chiTietDauGiaId.sanPham.maSanPham = :maSanPham and ct.giaGiaoDich = (select max(ct2.giaGiaoDich) from ChiTietDauGia ct2 where ct2.chiTietDauGiaId.sanPham.maSanPham = :maSanPham2)";
+            Query query = sessionFactory.getCurrentSession().createQuery(hql).setInteger("maSanPham", maSanPham).setInteger("maSanPham2", maSanPham);;
+            return (ChiTietDauGia) query.list().get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -1,6 +1,5 @@
 package vbay.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 import vbay.dao.ChiTietDauGiaDao;
 import vbay.dao.MultimediaDao;
 import vbay.dao.SanPhamDao;
+import vbay.dao.TinhTrangSanPhamDao;
 import vbay.model.ChiTietDauGia;
-import vbay.model.ChiTietDauGiaId;
 import vbay.model.Multimedia;
 import vbay.model.SanPham;
 import vbay.model.TaiKhoan;
+import vbay.model.TinhTrangSanPham;
+import vbay.util.EmailService;
 import vbay.util.Utils;
 
 @Controller
@@ -33,9 +34,12 @@ public class Product {
 
     @Autowired
     MultimediaDao multimediaDao;
-    
+
     @Autowired
     ChiTietDauGiaDao chiTietDauGiaDao;
+    
+    @Autowired
+    TinhTrangSanPhamDao tinhTrangSanPhamDao;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView show(@RequestParam String maSanPham) {
@@ -47,17 +51,44 @@ public class Product {
             modelView.addObject("multimedia01", sanPham.getMultimedias().toArray()[0]);
         }
 
-        long status = -1;
+        long status = 0;
         if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() == 1) { // 'dang dau gia'
             status = (sanPham.getNgayHetHan().getTime() - new java.util.Date().getTime()) / 1000;
+            if (status <= 0) {
+                ChiTietDauGia chiTietDauGiaLonNhat = chiTietDauGiaDao
+                        .timChiTietDauGiaLonNhat(sanPham.getMaSanPham());
+                TinhTrangSanPham tinhTrangSanPham = new TinhTrangSanPham();
+
+                if (chiTietDauGiaLonNhat == null) {
+                    tinhTrangSanPham = tinhTrangSanPhamDao.timTinhTrangSanPham(3); // het han khong ai mua
+                    status = -2;
+                } else {
+                    tinhTrangSanPham = tinhTrangSanPhamDao.timTinhTrangSanPham(2); // dau gia thanh cong
+                    status = -1;
+                    
+                    try {
+                        EmailService
+                                .send("pop.gmail.com", chiTietDauGiaLonNhat.getTaiKhoan()
+                                        .getEmail(), "vbaynet@gmail.com", "ak127601",
+                                        "vBay Đấu giá Online - Đấu giá thành công",
+                                        "Bạn vừa làm chủ một món hàng đấu giá trên vBay. Mời bạn đăng nhập để kiểm tra.");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                sanPham.setTinhTrangSanPham(tinhTrangSanPham);
+                sanPhamDao.capNhat(sanPham);
+            }
         } else if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() == 2) { // 'dau gia thanh
                                                                                  // cong')
             status = -1;
-        } else if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() == 2) { // 'het han')
+        } else if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() == 3) { // 'het han')
             status = -2;
         }
-        modelView.addObject("status", status);
 
+        modelView.addObject("status", status);
+        System.out.println("product status: " + status);
         return modelView;
     }
 
@@ -68,26 +99,26 @@ public class Product {
         if (taiKhoan == null) {
             return "Vui lòng <b><a class='lnkLogIn' href=''>Đăng nhập lại.</a></b>";
         }
-        
+
         SanPham sanPham = sanPhamDao.laySanPham(Integer.valueOf(maSanPham));
-        if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() != 1) {   // dau gia ket thuc
+        if (sanPham.getTinhTrangSanPham().getMaTinhTrangSanPham() != 1) { // dau gia ket thuc
             return "So sorry, the auction has just ended.";
         }
-        
+
         int iGiaDat = Integer.valueOf(giaDat);
         if (sanPham.getGiaHienTai() > iGiaDat) {
             return "So sorry, a higher bid has just placed: " + sanPham.getGiaHienTai();
         }
-        
+
         sanPham.setGiaHienTai(iGiaDat);
         sanPhamDao.capNhat(sanPham);
-                
+
         ChiTietDauGia chiTietDauGia = new ChiTietDauGia();
         chiTietDauGia.setSanPham(sanPham);
         chiTietDauGia.setTaiKhoan(taiKhoan);
         chiTietDauGia.setGiaGiaoDich(iGiaDat);
         chiTietDauGia.setThoiGianGiaoDich(new Date());
-        
+
         chiTietDauGiaDao.themChiTietDauGia(chiTietDauGia);
 
         return "Successfully.";

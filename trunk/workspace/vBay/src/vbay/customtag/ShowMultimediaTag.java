@@ -49,7 +49,7 @@ public class ShowMultimediaTag extends TagSupport {
             } else if (multimedia.getLoaiMultimedia().getMaLoaiMultimedia() == 2) { // multimedia is a Youtube video clip
                 out.println("<iframe width='" + width + "' height='" + height + "' src='http://www.youtube.com/embed/" + multimedia.getLinkURL() + "' frameborder='0' allowfullscreen></iframe>");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }   
         return SKIP_BODY;

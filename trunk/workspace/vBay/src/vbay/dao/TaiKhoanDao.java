@@ -10,5 +10,6 @@ public interface TaiKhoanDao {
     TaiKhoan layTaiKhoanTheoMa(int maTaiKhoan);
 
     void capNhat(TaiKhoan taiKhoan);
-
+    TaiKhoan timTaiKhoanTheoEmail(String email);
+    TaiKhoan timTaiKhoanTheoTenTaiKhoan(String tenTaiKhoan);
 }

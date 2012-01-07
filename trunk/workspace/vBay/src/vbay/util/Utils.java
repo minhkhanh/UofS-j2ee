@@ -26,32 +26,44 @@ public class Utils {
     public final static String SESS_ACC = "taiKhoan";
     public final static String SESS_ACTFAIL = "actionFailure";
     public final static String SESS_RETURL = "returnUrl";
-    
+
     public final static String SESATT_ACCNAME = "tenTaiKhoan";
     public final static String SESATT_PASSW = "matKhau";
-    
+
     public final static String REQATT_CATLIST = "dsLoaiSanPham";
-    
+
+    // from js code at http://javascriptsource.com/passwords/random-password-generator.html
+    public final static String genRandPassword(int length) {
+        String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String pass = "";
+        for (int x = 0; x < length; x++) {
+            int i = (int) Math.floor(Math.random() * 62);
+            pass += chars.charAt(i);
+        }
+
+        return pass;
+    }
+
     public final static Cookie createCookie(String name, String value, String path, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath(path);
         cookie.setMaxAge(maxAge);
-        
+
         return cookie;
     }
-    
+
     public final static void removeLoggingCookie(Cookie[] cookies, HttpServletResponse response) {
         Cookie cookie = new Cookie(Utils.SESATT_ACCNAME, "");
         cookie.setPath("/");
         cookie.setMaxAge(0);// delete this cookie
         response.addCookie(cookie);
-        
+
         cookie = new Cookie(Utils.SESATT_PASSW, "");
         cookie.setPath("/");
         cookie.setMaxAge(0);// delete this cookie
-        
+
         response.addCookie(cookie);
-        
+
         System.out.println("logging cookie removed ");
     }
 
@@ -120,10 +132,8 @@ public class Utils {
         request.setAttribute("youtubePostUrl", token.getUrl());
         request.setAttribute("youtubeToken", token.getToken());
     }
-    
-    
-    
-    /// Code by TMK 
-	public final static String RECAPTCHA_PUBLIC_KEY = "6Ldnp8gSAAAAACWq30BgevqwCrYiVGK-sKh3_hKT";
-	public final static String RECAPTCHA_PRIVATE_KEY = "6Ldnp8gSAAAAAFKglqGXBjxa9D1lhsESqgJNvPLb";
+
+    // / Code by TMK
+    public final static String RECAPTCHA_PUBLIC_KEY = "6Ldnp8gSAAAAACWq30BgevqwCrYiVGK-sKh3_hKT";
+    public final static String RECAPTCHA_PRIVATE_KEY = "6Ldnp8gSAAAAAFKglqGXBjxa9D1lhsESqgJNvPLb";
 }
